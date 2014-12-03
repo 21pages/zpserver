@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/pkCtrlPannel">
+        <file>resources/0089.png</file>
+        <file>resources/111.png</file>
+        <file>resources/Alert_04.png</file>
+        <file>resources/AquaBubble 037.png</file>
+        <file>resources/chrysler_300m.png</file>
+        <file>resources/Documents-12.png</file>
+        <file>resources/havecar.png</file>
+        <file>resources/nocar.png</file>
+        <file>resources/services-2.png</file>
+        <file>resources/No Battery.png</file>
+        <file>resources/good.png</file>
+    </qresource>
+</RCC>
