@@ -11,6 +11,7 @@ mainwndCtrlPannel::mainwndCtrlPannel(QWidget *parent) :
 	ui(new Ui::mainwndCtrlPannel)
 {
 	ui->setupUi(this);
+	m_nTimer = startTimer(60000);
 	m_pSettingsDlg = new DialogSettings(this);
 	m_pLoginDlg = new DialogLogin(this);
 	m_pModel_Summary_PK = new QColorIconSqlModel(this);  ui->listView_sum_pklts->setModel(m_pModel_Summary_PK);
@@ -140,6 +141,15 @@ bool mainwndCtrlPannel::login()
 
 void mainwndCtrlPannel::timerEvent(QTimerEvent * e)
 {
+	if (e->timerId()==m_nTimer)
+	{
+		this->m_pModel_Summary_PK->setQuery(m_pModel_Summary_PK->query().executedQuery());
+		this->m_pModel_Summary_MAC->setQuery(m_pModel_Summary_MAC->query().executedQuery());
+		this->m_pModel_Summary_DEV->setQuery(m_pModel_Summary_DEV->query().executedQuery());
+		this->m_pModel_Detail->setQuery(m_pModel_Detail->query().executedQuery());
+		this->m_pModel_EvtHis->setQuery(m_pModel_EvtHis->query().executedQuery());
+		this->m_pModel_MacHis->setQuery(m_pModel_MacHis->query().executedQuery());
+	}
 	return QMainWindow::timerEvent(e);
 }
 void mainwndCtrlPannel::on_action_Refresh_triggered()

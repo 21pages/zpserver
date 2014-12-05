@@ -30,6 +30,7 @@ protected:
 	QColorIconSqlModel * m_pModel_EvtHis;
 	QColorIconSqlModel * m_pModel_MacHis;
 private:
+	int m_nTimer;
 	Ui::mainwndCtrlPannel *ui;
 	QSqlDatabase m_db;
 	bool login();
