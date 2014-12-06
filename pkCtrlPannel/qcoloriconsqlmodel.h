@@ -9,7 +9,7 @@ class QColorIconSqlModel : public QSqlQueryModel
 public:
 	QColorIconSqlModel(QObject *parent = 0);
 protected:
-	QMap<QModelIndex,QMap<int,QVariant>> m_map_data;
+	QMap<QModelIndex,QMap<int,QVariant> > m_map_data;
 public:
 	Qt::ItemFlags flags(const QModelIndex &index) const;
 	bool setData(const QModelIndex &index, const QVariant &value, int role);

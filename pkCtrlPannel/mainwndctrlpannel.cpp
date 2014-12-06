@@ -143,12 +143,12 @@ void mainwndCtrlPannel::timerEvent(QTimerEvent * e)
 {
 	if (e->timerId()==m_nTimer)
 	{
-		this->m_pModel_Summary_PK->setQuery(m_str_sqlSummary_PK);
-		this->m_pModel_Summary_MAC->setQuery(m_str_sqlSummary_MAC);
-		this->m_pModel_Summary_DEV->setQuery(m_str_sqlSummary_DEV);
-		this->m_pModel_Detail->setQuery(m_str_sqlDetail);
-		this->m_pModel_EvtHis->setQuery(m_str_sqlEvtHis);
-		this->m_pModel_MacHis->setQuery(m_str_sqlMacHis);
+		this->m_pModel_Summary_PK->setQuery(m_str_sqlSummary_PK,m_db);
+		this->m_pModel_Summary_MAC->setQuery(m_str_sqlSummary_MAC,m_db);
+		this->m_pModel_Summary_DEV->setQuery(m_str_sqlSummary_DEV,m_db);
+		this->m_pModel_Detail->setQuery(m_str_sqlDetail,m_db);
+		this->m_pModel_EvtHis->setQuery(m_str_sqlEvtHis,m_db);
+		this->m_pModel_MacHis->setQuery(m_str_sqlMacHis,m_db);
 	}
 	return QMainWindow::timerEvent(e);
 }
