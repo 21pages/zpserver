@@ -963,14 +963,21 @@ namespace ParkinglotsSvr{
 		QSqlDatabase & db = *m_pDb;
 		if (db.isValid()==true && db.isOpen()==true )
 		{
+			QString strVal = QString("%1,%2,%3,%4")
+					.arg(para_dal_status)
+					.arg(para_dal_batt)
+					.arg(para_dal_tempr)
+					.arg((int)para_dal_WMODE)
+					;
 			QSqlQuery query(db);
-			QString sql = "update sensorlist set occupied = ? ,temperature = ?, batteryvoltage = ?, lastacttime = ?  where deviceid = ?;";
+			QString sql = "update sensorlist set occupied = ? ,temperature = ?, batteryvoltage = ?, lastacttime = ?  , lastdetailpara = ?    where deviceid = ?;";
 			query.prepare(sql);
 			QString devID = hex2ascii(pEvent->DeviceID,24);
 			query.addBindValue(para_dal_status);
 			query.addBindValue(para_dal_tempr);
 			query.addBindValue(para_dal_batt);
 			query.addBindValue(QDateTime::currentDateTimeUtc());
+			query.addBindValue(strVal);
 			query.addBindValue(devID);
 			if (false==query.exec())
 			{
@@ -996,12 +1003,6 @@ namespace ParkinglotsSvr{
 			query.addBindValue(pEvent->DALEventID);
 			query.addBindValue(9);
 			query.addBindValue((int)ParkinglotsSvr::DAL_TYPE_STRING);
-			QString strVal = QString("%1,%2,%3,%4")
-					.arg(para_dal_status)
-					.arg(para_dal_batt)
-					.arg(para_dal_tempr)
-					.arg((int)para_dal_WMODE)
-					;
 			query.addBindValue(strVal);
 			query.addBindValue(QDateTime::currentDateTimeUtc());
 			if (false==query.exec())
@@ -1237,14 +1238,30 @@ namespace ParkinglotsSvr{
 		QSqlDatabase & db = *m_pDb;
 		if (db.isValid()==true && db.isOpen()==true )
 		{
+			QString strVal = QString("%1,%2,%3,%4")
+					.arg(para_dal_status)
+					.arg(para_dal_vol)
+					.arg(para_dal_tempr)
+					.arg((int)para_dal_WMODE)
+					;
+			for (int gpi = 0; gpi < 3; ++ gpi)
+				strVal +=  QString(",%1").arg(para_dal_cmaga[gpi]);
+			for (int gpi = 0; gpi < 3; ++ gpi)
+				strVal +=  QString(",%1").arg(para_dal_bmaga[gpi]);
+			for (int gpi = 0; gpi < 6; ++ gpi)
+				strVal +=  QString(",%1").arg(para_dal_groupt[gpi]);
+			for (int gpi = 0; gpi < 4; ++ gpi)
+				strVal +=  QString(",%1").arg(para_dal_groupRP[gpi]);
+
 			QSqlQuery query(db);
-			QString sql = "update sensorlist set occupied = ? ,temperature = ?, batteryvoltage = ?, lastacttime = ?  where deviceid = ?;";
+			QString sql = "update sensorlist set occupied = ? ,temperature = ?, batteryvoltage = ?, lastacttime = ? , lastdetailpara = ?   where deviceid = ?;";
 			query.prepare(sql);
 			QString devID = hex2ascii(pEvent->DeviceID,24);
 			query.addBindValue(para_dal_status);
 			query.addBindValue(para_dal_tempr);
 			query.addBindValue(para_dal_vol);
 			query.addBindValue(QDateTime::currentDateTimeUtc());
+			query.addBindValue(strVal);
 			query.addBindValue(devID);
 			if (false==query.exec())
 			{
@@ -1270,20 +1287,7 @@ namespace ParkinglotsSvr{
 			query.addBindValue(pEvent->DALEventID);
 			query.addBindValue(9);
 			query.addBindValue((int)ParkinglotsSvr::DAL_TYPE_STRING);
-			QString strVal = QString("%1,%2,%3,%4")
-					.arg(para_dal_status)
-					.arg(para_dal_vol)
-					.arg(para_dal_tempr)
-					.arg((int)para_dal_WMODE)
-					;
-			for (int gpi = 0; gpi < 3; ++ gpi)
-				strVal +=  QString(",%1").arg(para_dal_cmaga[gpi]);
-			for (int gpi = 0; gpi < 3; ++ gpi)
-				strVal +=  QString(",%1").arg(para_dal_bmaga[gpi]);
-			for (int gpi = 0; gpi < 6; ++ gpi)
-				strVal +=  QString(",%1").arg(para_dal_groupt[gpi]);
-			for (int gpi = 0; gpi < 4; ++ gpi)
-				strVal +=  QString(",%1").arg(para_dal_groupRP[gpi]);
+
 			query.addBindValue(strVal);
 			query.addBindValue(QDateTime::currentDateTimeUtc());
 			if (false==query.exec())
@@ -1433,14 +1437,26 @@ namespace ParkinglotsSvr{
 		QSqlDatabase & db = *m_pDb;
 		if (db.isValid()==true && db.isOpen()==true )
 		{
+			QString strVal = QString("Occupied=%1, cm = {%2,%3,%4}, bm = {%5, %6, %7}, tempr = %8, bat = %9")
+					.arg(para_dal_status)
+					.arg(para_dal_cmaga[0])
+					.arg(para_dal_cmaga[1])
+					.arg(para_dal_cmaga[2])
+					.arg(para_dal_bmaga[0])
+					.arg(para_dal_bmaga[1])
+					.arg(para_dal_bmaga[2])
+					.arg(para_dal_tempr)
+					.arg(para_dal_vol);
+
 			QSqlQuery query(db);
-			QString sql = "update sensorlist set occupied = ? ,temperature = ?, batteryvoltage = ?, lastacttime = ?  where deviceid = ?;";
+			QString sql = "update sensorlist set occupied = ? ,temperature = ?, batteryvoltage = ?, lastacttime = ?, lastdetailpara = ?  where deviceid = ?;";
 			query.prepare(sql);
 			QString devID = hex2ascii(pEvent->DeviceID,24);
 			query.addBindValue(para_dal_status);
 			query.addBindValue(para_dal_tempr);
 			query.addBindValue(para_dal_vol);
 			query.addBindValue(QDateTime::currentDateTimeUtc());
+			query.addBindValue(strVal);
 			query.addBindValue(devID);
 			if (false==query.exec())
 			{
@@ -1466,16 +1482,6 @@ namespace ParkinglotsSvr{
 			query.addBindValue(pEvent->DALEventID);
 			query.addBindValue(9);
 			query.addBindValue((int)ParkinglotsSvr::DAL_TYPE_STRING);
-			QString strVal = QString("Occupied=%1, cm = {%2,%3,%4}, bm = {%5, %6, %7}, tempr = %8, bat = %9")
-					.arg(para_dal_status)
-					.arg(para_dal_cmaga[0])
-					.arg(para_dal_cmaga[1])
-					.arg(para_dal_cmaga[2])
-					.arg(para_dal_bmaga[0])
-					.arg(para_dal_bmaga[1])
-					.arg(para_dal_bmaga[2])
-					.arg(para_dal_tempr)
-					.arg(para_dal_vol);
 			query.addBindValue(strVal);
 			query.addBindValue(QDateTime::currentDateTimeUtc());
 			if (false==query.exec())
