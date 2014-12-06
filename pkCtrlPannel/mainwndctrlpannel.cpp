@@ -149,6 +149,7 @@ void mainwndCtrlPannel::timerEvent(QTimerEvent * e)
 		this->m_pModel_Detail->setQuery(m_str_sqlDetail,m_db);
 		this->m_pModel_EvtHis->setQuery(m_str_sqlEvtHis,m_db);
 		this->m_pModel_MacHis->setQuery(m_str_sqlMacHis,m_db);
+		UpdateIconAndColors();
 	}
 	return QMainWindow::timerEvent(e);
 }

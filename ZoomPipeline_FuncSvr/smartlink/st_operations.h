@@ -44,7 +44,9 @@ namespace ParkinglotsSvr{
 		quint8 dal_sensor_0x00(const stEvent_DeviceEvent * pEvent,const quint8 * ptrDal, int nMaxLen);
 		quint8 dal_sensor_0x01(const stEvent_DeviceEvent * pEvent,const quint8 * ptrDal, int nMaxLen);
 		quint8 dal_sensor_0x02(const stEvent_DeviceEvent * pEvent,const quint8 * ptrDal, int nMaxLen);
-		void RecalcSensorStatics(quint32 macid);
+		quint8 dal_sensor_0x02_nonDbg(const stEvent_DeviceEvent * pEvent,const quint8 * ptrDal, int nMaxLen);
+		quint8 dal_sensor_0x02_Dbg(const stEvent_DeviceEvent * pEvent,const quint8 * ptrDal, int nMaxLen);
+		quint8 dal_sensor_0x02_classical(const stEvent_DeviceEvent * pEvent,const quint8 * ptrDal, int nMaxLen);
 	};
 }
 
