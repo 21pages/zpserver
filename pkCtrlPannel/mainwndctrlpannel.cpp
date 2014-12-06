@@ -143,12 +143,12 @@ void mainwndCtrlPannel::timerEvent(QTimerEvent * e)
 {
 	if (e->timerId()==m_nTimer)
 	{
-		this->m_pModel_Summary_PK->setQuery(m_pModel_Summary_PK->query().executedQuery());
-		this->m_pModel_Summary_MAC->setQuery(m_pModel_Summary_MAC->query().executedQuery());
-		this->m_pModel_Summary_DEV->setQuery(m_pModel_Summary_DEV->query().executedQuery());
-		this->m_pModel_Detail->setQuery(m_pModel_Detail->query().executedQuery());
-		this->m_pModel_EvtHis->setQuery(m_pModel_EvtHis->query().executedQuery());
-		this->m_pModel_MacHis->setQuery(m_pModel_MacHis->query().executedQuery());
+		this->m_pModel_Summary_PK->setQuery(m_str_sqlSummary_PK);
+		this->m_pModel_Summary_MAC->setQuery(m_str_sqlSummary_MAC);
+		this->m_pModel_Summary_DEV->setQuery(m_str_sqlSummary_DEV);
+		this->m_pModel_Detail->setQuery(m_str_sqlDetail);
+		this->m_pModel_EvtHis->setQuery(m_str_sqlEvtHis);
+		this->m_pModel_MacHis->setQuery(m_str_sqlMacHis);
 	}
 	return QMainWindow::timerEvent(e);
 }
@@ -159,9 +159,9 @@ void mainwndCtrlPannel::on_action_Refresh_triggered()
 	QString strSQL;
 	//Refresh Parking Lots
 	strSQL = QString("select * from view_summary_park_user where username = '%1' order by parkid;").arg(strUserName);
-	m_pModel_Summary_PK->setQuery(strSQL,m_db);
+	m_pModel_Summary_PK->setQuery(strSQL,m_db);	m_str_sqlSummary_PK = strSQL;
 	strSQL = QString("SELECT * FROM view_dev_mac_park_user where username = '%1' order by parkid, macid , deviceid;").arg(strUserName);
-	m_pModel_Detail->setQuery(strSQL,m_db);
+	m_pModel_Detail->setQuery(strSQL,m_db);    m_str_sqlDetail = strSQL;
 }
 void mainwndCtrlPannel::on_listView_sum_pklts_doubleClicked(const QModelIndex & index)
 {
@@ -175,7 +175,7 @@ void mainwndCtrlPannel::on_listView_sum_pklts_doubleClicked(const QModelIndex & 
 		//Refresh Mac
 		strSQL = QString("select * from view_summary_mac_park_user where parkid = %1 and username = '%2' order by macid").arg(ID).arg(strUserName);
 		m_pModel_Summary_MAC->setQuery(strSQL,m_db);
-
+		m_str_sqlSummary_MAC = strSQL;
 	}
 }
 void mainwndCtrlPannel::on_listView_sum_macs_doubleClicked(const QModelIndex & index)
@@ -189,9 +189,9 @@ void mainwndCtrlPannel::on_listView_sum_macs_doubleClicked(const QModelIndex & i
 		QString strSQL;
 		//Refresh Mac
 		strSQL = QString("select * from view_dev_mac_park_user where macid = %1 and username = '%2'  order by deviceid").arg(ID).arg(strUserName);
-		m_pModel_Summary_DEV->setQuery(strSQL,m_db);
+		m_pModel_Summary_DEV->setQuery(strSQL,m_db);	m_str_sqlSummary_DEV = strSQL;
 		strSQL = QString("select * from macevent where macevt_sourceid = %1 order by evtid desc limit 65536").arg(ID);
-		m_pModel_MacHis->setQuery(strSQL,m_db);
+		m_pModel_MacHis->setQuery(strSQL,m_db);			m_str_sqlMacHis = strSQL;
 		UpdateIconAndColors();
 	}
 }
@@ -204,7 +204,7 @@ void mainwndCtrlPannel::on_listView_sum_devices_doubleClicked(const QModelIndex 
 		QString strSQL;
 		//Refresh Mac
 		strSQL = QString("select * from sensorevent where deviceid = '%1' order by evtid desc limit 65536").arg(ID);
-		m_pModel_EvtHis->setQuery(strSQL,m_db);
+		m_pModel_EvtHis->setQuery(strSQL,m_db);			m_str_sqlEvtHis = strSQL;
 	}
 }
 void  mainwndCtrlPannel::on_tableView_detailed_doubleClicked(const QModelIndex & index)
@@ -216,7 +216,7 @@ void  mainwndCtrlPannel::on_tableView_detailed_doubleClicked(const QModelIndex &
 		QString strSQL;
 		//Refresh Mac
 		strSQL = QString("select * from sensorevent where deviceid = '%1' order by evtid desc limit 65536").arg(ID);
-		m_pModel_EvtHis->setQuery(strSQL,m_db);
+		m_pModel_EvtHis->setQuery(strSQL,m_db);			m_str_sqlEvtHis = strSQL;
 		UpdateIconAndColors();
 	}
 }
