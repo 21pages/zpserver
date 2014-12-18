@@ -5,7 +5,11 @@
 #include <QSqlQuery>
 #include "mainwndctrlpannel.h"
 #include "ui_mainwndctrlpannel.h"
+#include "./pklts_ctrl/st_ctrl.h"
 #define PKLTS_VIEW ("PKLTS_VIEW")
+
+using namespace ParkinglotsSvr;
+
 mainwndCtrlPannel::mainwndCtrlPannel(QWidget *parent) :
 	QMainWindow(parent),
 	ui(new Ui::mainwndCtrlPannel)
@@ -288,4 +292,148 @@ void mainwndCtrlPannel::UpdateIconAndColors()
 			}
 		}
 	}
+}
+
+void  mainwndCtrlPannel::ui_pntf(const char * pFmt , ...)
+{
+	va_list args;
+	int     len;
+	char    *buffer;
+
+	// retrieve the variable arguments
+	va_start( args, pFmt );
+
+	len = _vscprintf( pFmt, args ) // _vscprintf doesn't count
+			+ 1; // terminating '\0'
+
+	buffer = (char*)malloc( len * sizeof(char) );
+
+	vsprintf( buffer, pFmt, args ); // C4996
+
+	ui->plainTextEdit_result->appendPlainText(QString::fromLocal8Bit(buffer));
+	puts( buffer );
+	free( buffer );
+
+}
+
+void mainwndCtrlPannel::on_pushButton_getMacInfo_clicked()
+{
+	ui->plainTextEdit_result->clear();
+	//First, Get The Mac ID you want to ask.
+	//Then, define a structure, to hold result.
+	stMsg_GetHostDetailsRsp rsp;
+
+	quint32 nMacID = ui->lineEdit_tarID_Mac->text().toUInt();
+	std::string strAddr = ui->lineEdit_SvrIP->text().toStdString();
+	const char * address = strAddr.c_str();
+	quint16 port = ui->lineEdit_Svr_Port->text().toShort();
+	//And then, Call the method directly, just like a native method.
+	//Inside the function, a remote call will be executed.
+	int res = st_getMACInfo(address,port,nMacID, &rsp);
+
+	//Check the result, and print the result.
+	ui_pntf ("Res = %d\n",res);
+	if (res == ALL_SUCCEED)
+	{
+		ui_pntf ("rsp.DoneCode = %d\n",(unsigned int)rsp.DoneCode);
+		ui_pntf ("rsp.HostType = %d\n",(unsigned int)rsp.HostType);
+		ui_pntf ("rsp.FirmwareVersion = %d\n",(unsigned int)rsp.FirmwareVersion);
+		ui_pntf ("rsp.HostName = %s\n",rsp.HostName);
+		ui_pntf ("rsp.HostInfo = %s\n",rsp.HostInfo);
+		ui_pntf ("rsp.ConnetType = %d\n",(unsigned int)rsp.ConnetType);
+		ui_pntf ("...\n");
+		ui_pntf ("rsp.SensorNum = %d\n",(unsigned int)rsp.SensorNum);
+		ui_pntf ("rsp.RelayNum = %d\n",(unsigned int)rsp.RelayNum);
+		ui_pntf ("rsp.ANSensorNum = %d\n",(unsigned int)rsp.ANSensorNum);
+		ui_pntf ("rsp.ANRelayNum = %d\n",(unsigned int)rsp.ANRelayNum);
+	}
+}
+
+void mainwndCtrlPannel::on_pushButton_getDevList_clicked()
+{
+	ui->plainTextEdit_result->clear();
+	//First, Get The Mac ID you want to ask.
+	quint32 nMacID = ui->lineEdit_tarID_Mac->text().toUInt();
+	std::string strAddr = ui->lineEdit_SvrIP->text().toStdString();
+	const char * address = strAddr.c_str();
+	quint16 port = ui->lineEdit_Svr_Port->text().toShort();
+
+	//Then, define a structure, to hold result.
+	stMsg_GetDeviceListRsp * rsp = 0;
+	//And then, Call the method directly, just like a native method.
+	//Inside the function, a remote call will be executed.
+	int res = st_getDeviceList(address,port,nMacID, &rsp);
+	//Check the result, and print the result.
+	ui_pntf ("Res = %d\n",res);
+	if (res == ALL_SUCCEED)
+	{
+		ui_pntf ("rsp.DoneCode = %d\n",(unsigned int)rsp->DoneCode);
+		ui_pntf ("rsp.nDevCount = %d\n",(unsigned int)rsp->nDevCount);
+		for (int i=0;i<rsp->nDevCount;++i)
+		{
+			ui_pntf ("DeviceName[%5d] = %s\n",i,rsp->devicetable[i].DeviceName);
+			ui_pntf ("DeviceNO  [%5d] = %s\n",i,rsp->devicetable[i].No);
+			ui_pntf ("DeviceID  [%5d] = ",i);
+			for (int j=0;j<24;++j)	ui_pntf ("%02x",rsp->devicetable[i].DeviceID[j]);
+			ui_pntf ("\n");
+		}
+	}
+	if (rsp)
+		st_freeDeviceList(rsp);
+}
+
+void mainwndCtrlPannel::on_pushButton_getDevPara_clicked()
+{
+	ui->plainTextEdit_result->clear();
+	//First, Get The Mac ID you want to ask.
+	quint32 nMacID = ui->lineEdit_tarID_Mac->text().toUInt();
+	std::string strAddr = ui->lineEdit_SvrIP->text().toStdString();
+	const char * address = strAddr.c_str();
+	quint16 port = ui->lineEdit_Svr_Port->text().toShort();
+
+	stMsg_GetDeviceParamReq req;
+	//Get Device ID
+	std::string strDevID = ui->lineEdit_tarID_Dev->text().toStdString();
+	char buf[256];
+	strncpy(buf,strDevID.c_str(),49);
+	for (int i=0;i<24;++i)
+	{
+		unsigned __int8 cv = 0;
+		if (buf[i*2] >='0' &&  buf[i*2] <='9')	cv += buf[i*2]-'0';
+		else if (buf[i*2] >='a' &&  buf[i*2] <='f') cv += buf[i*2]-'a' + 10;
+		else if (buf[i*2] >='A' &&  buf[i*2] <='F') cv += buf[i*2]-'A' + 10;
+		else {ui_pntf ("Error Reading Hex Data! "); return;};
+		cv <<= 4;
+		if (buf[i*2+1] >='0' &&  buf[i*2+1] <='9')	cv += buf[i*2+1]-'0';
+		else if (buf[i*2+1] >='a' &&  buf[i*2+1] <='f') cv += buf[i*2+1]-'a' + 10;
+		else if (buf[i*2+1] >='A' &&  buf[i*2+1] <='F') cv += buf[i*2+1]-'A' + 10;
+		else {ui_pntf ("Error Reading Hex Data! "); return;};
+		req.DeviceID[i] = cv;
+	}
+	req.Opt_DALStatus = 1;
+	req.Opt_DeviceInfo = 1;
+	req.Opt_DeviceName = 1;
+
+	//Then, define a structure, to hold result.
+	stMsg_GetDeviceParamRsp  * rsp;	//And then, Call the method directly, just like a native method.
+	//Inside the function, a remote call will be executed.
+	int res = st_getDeviceParam(address,port,nMacID, &req,&rsp);
+
+	//Check the result, and print the result.
+	ui_pntf ("Res = %d\n",res);
+	if (res == ALL_SUCCEED)
+	{
+		ui_pntf ("rsp.DoneCode = %d\n",(unsigned int)rsp->DoneCode);
+		if (rsp->Opt_DeviceName) ui_pntf ("rsp.DeviceName = %s\n",rsp->DeviceName);
+		if (rsp->Opt_DeviceInfo) ui_pntf ("rsp.DeviceName = %s\n",rsp->DeviceInfo);
+		if (rsp->Opt_DALStatus)
+		{
+			ui_pntf ("rsp.DALLen = %d\n",(unsigned int)rsp->DALStatusBytesLen);
+			for (size_t i=0;i<(unsigned int)rsp->DALStatusBytesLen;++i)
+				ui_pntf ("%02X",rsp->DALStatusBytes[i]);
+			ui_pntf ("\n");
+		}
+	}
+	st_freeDeviceParam(rsp);
+
 }

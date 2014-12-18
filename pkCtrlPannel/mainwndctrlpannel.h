@@ -28,13 +28,15 @@ protected:
 	QColorIconSqlModel * m_pModel_Summary_DEV;		QString m_str_sqlSummary_DEV;
 	QColorIconSqlModel * m_pModel_Detail;			QString m_str_sqlDetail;
 	QColorIconSqlModel * m_pModel_EvtHis;			QString m_str_sqlEvtHis;
-	QColorIconSqlModel * m_pModel_MacHis;			QString m_str_sqlMacHis;;
+	QColorIconSqlModel * m_pModel_MacHis;			QString m_str_sqlMacHis;
 private:
 	int m_nTimer;
 	Ui::mainwndCtrlPannel *ui;
 	QSqlDatabase m_db;
 	bool login();
 	void UpdateIconAndColors();
+	void ui_pntf(const char * pFmt,...);
+
 public slots:
 	void on_actionExit_triggered();
 	void on_actionConfig_triggered();
@@ -46,6 +48,10 @@ public slots:
 	void on_listView_sum_macs_doubleClicked(const QModelIndex & index);
 	void on_listView_sum_devices_doubleClicked(const QModelIndex & index);
 	void on_tableView_detailed_doubleClicked(const QModelIndex & index);
+	//Ctrl Messages
+	void on_pushButton_getMacInfo_clicked();
+	void on_pushButton_getDevList_clicked();
+	void on_pushButton_getDevPara_clicked();
 };
 
 #endif // MAINWNDCTRLPANNEL_H
