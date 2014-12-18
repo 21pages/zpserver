@@ -30,7 +30,7 @@ namespace ParkinglotsSvr{
 		char HostName[64];
 		char HostInfo[64];
 		quint8 ConnetType;
-		//1£ºGPRS£¬2£º3G£¬3£ºWAN£¬4£ºLAN
+		//1:GPRS,2:3G,3:WAN,4:LAN
 		quint8 IEEEAdd[8];
 		quint8 IEEEAdd_Flag;
 		quint8 PANID[2];

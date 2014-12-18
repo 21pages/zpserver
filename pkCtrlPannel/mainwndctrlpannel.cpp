@@ -15,7 +15,7 @@ mainwndCtrlPannel::mainwndCtrlPannel(QWidget *parent) :
 	ui(new Ui::mainwndCtrlPannel)
 {
 	ui->setupUi(this);
-	m_nTimer = startTimer(60000);
+	m_nTimer = startTimer(2000);
 	m_pSettingsDlg = new DialogSettings(this);
 	m_pLoginDlg = new DialogLogin(this);
 	m_pModel_Summary_PK = new QColorIconSqlModel(this);  ui->listView_sum_pklts->setModel(m_pModel_Summary_PK);
@@ -147,13 +147,15 @@ void mainwndCtrlPannel::timerEvent(QTimerEvent * e)
 {
 	if (e->timerId()==m_nTimer)
 	{
-		this->m_pModel_Summary_PK->setQuery(m_str_sqlSummary_PK,m_db);
-		this->m_pModel_Summary_MAC->setQuery(m_str_sqlSummary_MAC,m_db);
-		this->m_pModel_Summary_DEV->setQuery(m_str_sqlSummary_DEV,m_db);
-		this->m_pModel_Detail->setQuery(m_str_sqlDetail,m_db);
-		this->m_pModel_EvtHis->setQuery(m_str_sqlEvtHis,m_db);
-		this->m_pModel_MacHis->setQuery(m_str_sqlMacHis,m_db);
+		this->killTimer(m_nTimer);
+		this->m_pModel_Summary_PK->refresh();
+		this->m_pModel_Summary_MAC->refresh();
+		this->m_pModel_Summary_DEV->refresh();
+		this->m_pModel_Detail->refresh();
+		this->m_pModel_EvtHis->refresh();
+		this->m_pModel_MacHis->refresh();
 		UpdateIconAndColors();
+		m_nTimer = startTimer(2000);
 	}
 	return QMainWindow::timerEvent(e);
 }
@@ -163,10 +165,10 @@ void mainwndCtrlPannel::on_action_Refresh_triggered()
 	QString strUserName = settings.value("login/UserName","").toString();
 	QString strSQL;
 	//Refresh Parking Lots
-	strSQL = QString("select * from view_summary_park_user where username = '%1' order by parkid;").arg(strUserName);
-	m_pModel_Summary_PK->setQuery(strSQL,m_db);	m_str_sqlSummary_PK = strSQL;
-	strSQL = QString("SELECT * FROM view_dev_mac_park_user where username = '%1' order by parkid, macid , deviceid;").arg(strUserName);
-	m_pModel_Detail->setQuery(strSQL,m_db);    m_str_sqlDetail = strSQL;
+	strSQL = QString("select * from view_summary_park_user where username = '%1' ").arg(strUserName);
+	m_pModel_Summary_PK->setQueryPrefix(strSQL,m_db);
+	strSQL = QString("SELECT * FROM view_dev_mac_park_user where username = '%1' ").arg(strUserName);
+	m_pModel_Detail->setQueryPrefix(strSQL,m_db);
 }
 void mainwndCtrlPannel::on_listView_sum_pklts_doubleClicked(const QModelIndex & index)
 {
@@ -178,9 +180,8 @@ void mainwndCtrlPannel::on_listView_sum_pklts_doubleClicked(const QModelIndex & 
 		int ID = m_pModel_Summary_PK->data(m_pModel_Summary_PK->index(nrow,0)).toInt();
 		QString strSQL;
 		//Refresh Mac
-		strSQL = QString("select * from view_summary_mac_park_user where parkid = %1 and username = '%2' order by macid").arg(ID).arg(strUserName);
-		m_pModel_Summary_MAC->setQuery(strSQL,m_db);
-		m_str_sqlSummary_MAC = strSQL;
+		strSQL = QString("select * from view_summary_mac_park_user where parkid = %1 and username = '%2' ").arg(ID).arg(strUserName);
+		m_pModel_Summary_MAC->setQueryPrefix(strSQL,m_db);
 	}
 }
 void mainwndCtrlPannel::on_listView_sum_macs_doubleClicked(const QModelIndex & index)
@@ -193,10 +194,10 @@ void mainwndCtrlPannel::on_listView_sum_macs_doubleClicked(const QModelIndex & i
 		int ID = m_pModel_Summary_MAC->data(m_pModel_Summary_MAC->index(nrow,0)).toInt();
 		QString strSQL;
 		//Refresh Mac
-		strSQL = QString("select * from view_dev_mac_park_user where macid = %1 and username = '%2'  order by deviceid").arg(ID).arg(strUserName);
-		m_pModel_Summary_DEV->setQuery(strSQL,m_db);	m_str_sqlSummary_DEV = strSQL;
-		strSQL = QString("select * from macevent where macevt_sourceid = %1 order by evtid desc limit 65536").arg(ID);
-		m_pModel_MacHis->setQuery(strSQL,m_db);			m_str_sqlMacHis = strSQL;
+		strSQL = QString("select * from view_dev_mac_park_user where macid = %1 and username = '%2'  ").arg(ID).arg(strUserName);
+		m_pModel_Summary_DEV->setQueryPrefix(strSQL,m_db);
+		strSQL = QString("select * from macevent where macevt_sourceid = %1 ").arg(ID);
+		m_pModel_MacHis->setQueryPrefix(strSQL,m_db,0,1024,true);
 		UpdateIconAndColors();
 	}
 }
@@ -208,8 +209,8 @@ void mainwndCtrlPannel::on_listView_sum_devices_doubleClicked(const QModelIndex 
 		QString ID = m_pModel_Summary_DEV->data(m_pModel_Summary_DEV->index(nrow,0)).toString();
 		QString strSQL;
 		//Refresh Mac
-		strSQL = QString("select * from sensorevent where deviceid = '%1' order by evtid desc limit 65536").arg(ID);
-		m_pModel_EvtHis->setQuery(strSQL,m_db);			m_str_sqlEvtHis = strSQL;
+		strSQL = QString("select * from sensorevent where deviceid = '%1' ").arg(ID);
+		m_pModel_EvtHis->setQueryPrefix(strSQL,m_db,0,1024,true);
 	}
 }
 void  mainwndCtrlPannel::on_tableView_detailed_doubleClicked(const QModelIndex & index)
@@ -220,8 +221,8 @@ void  mainwndCtrlPannel::on_tableView_detailed_doubleClicked(const QModelIndex &
 		QString ID = m_pModel_Detail->data(m_pModel_Detail->index(nrow,0)).toString();
 		QString strSQL;
 		//Refresh Mac
-		strSQL = QString("select * from sensorevent where deviceid = '%1' order by evtid desc limit 65536").arg(ID);
-		m_pModel_EvtHis->setQuery(strSQL,m_db);			m_str_sqlEvtHis = strSQL;
+		strSQL = QString("select * from sensorevent where deviceid = '%1' ").arg(ID);
+		m_pModel_EvtHis->setQueryPrefix(strSQL,m_db,0,1024,true);
 		UpdateIconAndColors();
 	}
 }

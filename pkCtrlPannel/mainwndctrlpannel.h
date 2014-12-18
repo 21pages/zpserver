@@ -23,12 +23,12 @@ protected:
 	void timerEvent(QTimerEvent * e);
 	DialogSettings * m_pSettingsDlg;
 	DialogLogin * m_pLoginDlg;
-	QColorIconSqlModel * m_pModel_Summary_PK;		QString m_str_sqlSummary_PK;
-	QColorIconSqlModel * m_pModel_Summary_MAC;		QString m_str_sqlSummary_MAC;
-	QColorIconSqlModel * m_pModel_Summary_DEV;		QString m_str_sqlSummary_DEV;
-	QColorIconSqlModel * m_pModel_Detail;			QString m_str_sqlDetail;
-	QColorIconSqlModel * m_pModel_EvtHis;			QString m_str_sqlEvtHis;
-	QColorIconSqlModel * m_pModel_MacHis;			QString m_str_sqlMacHis;
+	QColorIconSqlModel * m_pModel_Summary_PK;
+	QColorIconSqlModel * m_pModel_Summary_MAC;
+	QColorIconSqlModel * m_pModel_Summary_DEV;
+	QColorIconSqlModel * m_pModel_Detail;
+	QColorIconSqlModel * m_pModel_EvtHis;
+	QColorIconSqlModel * m_pModel_MacHis;
 private:
 	int m_nTimer;
 	Ui::mainwndCtrlPannel *ui;
