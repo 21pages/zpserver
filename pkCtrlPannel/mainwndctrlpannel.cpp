@@ -149,13 +149,13 @@ void mainwndCtrlPannel::timerEvent(QTimerEvent * e)
 	if (e->timerId()==m_nTimer)
 	{
 		this->killTimer(m_nTimer);
-		this->m_pModel_Summary_PK->refresh();
-		this->m_pModel_Summary_MAC->refresh();
-		this->m_pModel_Summary_DEV->refresh();
+		//this->m_pModel_Summary_PK->refresh();
+		//this->m_pModel_Summary_MAC->refresh();
+		//this->m_pModel_Summary_DEV->refresh();
 		this->m_pModel_Express_DEV->refresh();
-		this->m_pModel_Detail->refresh();
-		this->m_pModel_EvtHis->refresh();
-		this->m_pModel_MacHis->refresh();
+		//this->m_pModel_Detail->refresh();
+		//this->m_pModel_EvtHis->refresh();
+		//this->m_pModel_MacHis->refresh();
 		UpdateIconAndColors();
 		m_nTimer = startTimer(2000);
 	}
@@ -171,6 +171,12 @@ void mainwndCtrlPannel::on_action_Refresh_triggered()
 	m_pModel_Summary_PK->setQueryPrefix(strSQL,m_db);
 	strSQL = QString("SELECT * FROM view_dev_mac_park_user where username = '%1' ").arg(strUserName);
 	m_pModel_Detail->setQueryPrefix(strSQL,m_db);
+	this->m_pModel_Summary_MAC->refresh();
+	this->m_pModel_Summary_DEV->refresh();
+	this->m_pModel_Express_DEV->refresh();
+	this->m_pModel_EvtHis->refresh();
+	this->m_pModel_MacHis->refresh();
+	UpdateIconAndColors();
 }
 void mainwndCtrlPannel::on_listView_sum_pklts_doubleClicked(const QModelIndex & index)
 {
@@ -184,7 +190,7 @@ void mainwndCtrlPannel::on_listView_sum_pklts_doubleClicked(const QModelIndex & 
 		//Refresh Mac
 		strSQL = QString("select * from view_summary_mac_park_user where parkid = %1 and username = '%2' ").arg(ID).arg(strUserName);
 		m_pModel_Summary_MAC->setQueryPrefix(strSQL,m_db);
-		strSQL = QString("select CONCAT(IFNULL(devicename,'NONAME'),'-',deviceid,'-',IF(occupied=0,'-IDLE','-BUSY')) as currstatus from view_dev_mac_park_user where username = '%1' and deviceid like '0100%' and status = 0 order by devicename,deviceid asc ").arg(strUserName);
+		strSQL = QString("select CONCAT(IFNULL(devicename,deviceid),'-',IF(occupied=0,'-IDLE','-BUSY')) as currstatus from view_dev_mac_park_user  where parkid = %1 and username = '%2' and deviceid like '0100%' and status = 0 order by devicename,deviceid asc ").arg(ID).arg(strUserName);
 		m_pModel_Express_DEV->setQueryPrefix(strSQL,m_db,-1);
 	}
 }
