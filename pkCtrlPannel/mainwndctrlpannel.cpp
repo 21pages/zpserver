@@ -24,6 +24,7 @@ mainwndCtrlPannel::mainwndCtrlPannel(QWidget *parent) :
 	m_pModel_Detail = new QColorIconSqlModel(this);      ui->tableView_detailed->setModel(m_pModel_Detail);
 	m_pModel_EvtHis = new QColorIconSqlModel(this);      ui->tableView_events->setModel(m_pModel_EvtHis);
 	m_pModel_MacHis = new QColorIconSqlModel(this);      ui->tableView_macevt->setModel(m_pModel_MacHis);
+	m_pModel_Express_DEV = new QColorIconSqlModel(this); ui->listView_express->setModel(m_pModel_Express_DEV);
 }
 
 mainwndCtrlPannel::~mainwndCtrlPannel()
@@ -151,6 +152,7 @@ void mainwndCtrlPannel::timerEvent(QTimerEvent * e)
 		this->m_pModel_Summary_PK->refresh();
 		this->m_pModel_Summary_MAC->refresh();
 		this->m_pModel_Summary_DEV->refresh();
+		this->m_pModel_Express_DEV->refresh();
 		this->m_pModel_Detail->refresh();
 		this->m_pModel_EvtHis->refresh();
 		this->m_pModel_MacHis->refresh();
@@ -182,6 +184,8 @@ void mainwndCtrlPannel::on_listView_sum_pklts_doubleClicked(const QModelIndex & 
 		//Refresh Mac
 		strSQL = QString("select * from view_summary_mac_park_user where parkid = %1 and username = '%2' ").arg(ID).arg(strUserName);
 		m_pModel_Summary_MAC->setQueryPrefix(strSQL,m_db);
+		strSQL = QString("select CONCAT(IFNULL(devicename,'NONAME'),'-',deviceid,'-',IF(occupied=0,'-IDLE','-BUSY')) as currstatus from view_dev_mac_park_user where username = '%1' and deviceid like '0100%' and status = 0 order by devicename,deviceid asc ").arg(strUserName);
+		m_pModel_Express_DEV->setQueryPrefix(strSQL,m_db,-1);
 	}
 }
 void mainwndCtrlPannel::on_listView_sum_macs_doubleClicked(const QModelIndex & index)
@@ -248,14 +252,14 @@ void mainwndCtrlPannel::UpdateIconAndColors()
 				pModel->setData(pModel->index(i,6),QIcon(":/pkCtrlPannel/resources/good.png"),Qt::DecorationRole);
 				if (devID.left(4)==QString("0100"))
 				{
-					if (occp==0)
+					if (occp==1)
 						pModel->setData(pModel->index(i,0),QIcon(":/pkCtrlPannel/resources/havecar.png"),Qt::DecorationRole);
 					else
 						pModel->setData(pModel->index(i,0),QIcon(":/pkCtrlPannel/resources/nocar.png"),Qt::DecorationRole);
 				}
 				else
 				{
-						pModel->setData(pModel->index(i,0),QIcon(":/pkCtrlPannel/resources/AquaBubble 037.png"),Qt::DecorationRole);
+					pModel->setData(pModel->index(i,0),QIcon(":/pkCtrlPannel/resources/AquaBubble 037.png"),Qt::DecorationRole);
 				}
 			}
 			else if (Status==1)
@@ -263,14 +267,14 @@ void mainwndCtrlPannel::UpdateIconAndColors()
 				pModel->setData(pModel->index(i,6),QIcon(":/pkCtrlPannel/resources/No Battery.png"),Qt::DecorationRole);
 				if (devID.left(4)==QString("0100"))
 				{
-					if (occp==0)
+					if (occp==1)
 						pModel->setData(pModel->index(i,0),QIcon(":/pkCtrlPannel/resources/havecar.png"),Qt::DecorationRole);
 					else
 						pModel->setData(pModel->index(i,0),QIcon(":/pkCtrlPannel/resources/nocar.png"),Qt::DecorationRole);
 				}
 				else
 				{
-						pModel->setData(pModel->index(i,0),QIcon(":/pkCtrlPannel/resources/AquaBubble 037.png"),Qt::DecorationRole);
+					pModel->setData(pModel->index(i,0),QIcon(":/pkCtrlPannel/resources/AquaBubble 037.png"),Qt::DecorationRole);
 				}
 				pModel->setData(pModel->index(i,0),QBrush(QColor(255,0,0,64)),Qt::BackgroundColorRole);
 
@@ -280,17 +284,31 @@ void mainwndCtrlPannel::UpdateIconAndColors()
 				pModel->setData(pModel->index(i,6),QIcon(":/pkCtrlPannel/resources/Alert_04.png"),Qt::DecorationRole);
 				if (devID.left(4)==QString("0100"))
 				{
-					if (occp==0)
+					if (occp==1)
 						pModel->setData(pModel->index(i,0),QIcon(":/pkCtrlPannel/resources/havecar.png"),Qt::DecorationRole);
 					else
 						pModel->setData(pModel->index(i,0),QIcon(":/pkCtrlPannel/resources/nocar.png"),Qt::DecorationRole);
 				}
 				else
 				{
-						pModel->setData(pModel->index(i,0),QIcon(":/pkCtrlPannel/resources/AquaBubble 037.png"),Qt::DecorationRole);
+					pModel->setData(pModel->index(i,0),QIcon(":/pkCtrlPannel/resources/AquaBubble 037.png"),Qt::DecorationRole);
 				}
 				pModel->setData(pModel->index(i,0),QBrush(QColor(255,0,0,128)),Qt::BackgroundColorRole);
 			}
+		}
+	}
+	{
+		pModel = m_pModel_Express_DEV;
+		int nRows = pModel->rowCount();
+		for (int i=0;i<nRows;++i)
+		{
+			QModelIndex idxDevID = pModel->index(i,0);
+			QString devID = pModel->data(idxDevID).toString();
+
+			if (devID.right(4)==QString("BUSY"))
+				pModel->setData(pModel->index(i,0),QIcon(":/pkCtrlPannel/resources/havecar.png"),Qt::DecorationRole);
+			else
+				pModel->setData(pModel->index(i,0),QIcon(":/pkCtrlPannel/resources/nocar.png"),Qt::DecorationRole);
 		}
 	}
 }

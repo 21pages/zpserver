@@ -29,6 +29,7 @@ protected:
 	QColorIconSqlModel * m_pModel_Detail;
 	QColorIconSqlModel * m_pModel_EvtHis;
 	QColorIconSqlModel * m_pModel_MacHis;
+	QColorIconSqlModel * m_pModel_Express_DEV;
 private:
 	int m_nTimer;
 	Ui::mainwndCtrlPannel *ui;
