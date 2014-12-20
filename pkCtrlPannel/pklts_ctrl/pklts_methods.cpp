@@ -6,8 +6,19 @@
 #include <QHostAddress>
 #include <QCoreApplication>
 #include <QDebug>
+#include <assert.h>
 #include "st_ctrlmsg.h"
 namespace ParkinglotsSvr{
+#ifndef memcpy_s
+	void memcpy_s(void * tar, size_t szTar, const void * src, size_t szSrc)
+	{
+		assert(szSrc <= szTar);
+		memcpy(tar,src,szSrc);
+	}
+#endif
+#ifndef _countof
+#define _countof(X) (sizeof(X)/sizeof(X[0]))
+#endif
 	int RemoteFunctionCall(
 			const char * address,
 			quint16 port,
@@ -107,7 +118,7 @@ namespace ParkinglotsSvr{
 		do{
 			quint16 seed = rand();
 			dwALLid = (quint32(seed & 0x7f00) << 16) + (quint32(seed & 0x00ff) << 8);
-			dwALLid ^=((((quint64)(dwProcessID & 0x00ffffffff)) <<16) + (quint32)dwThreadID);
+			dwALLid ^= (((((quint64)(dwProcessID & 0x00ffffffff)) <<16) + (quint64)(dwThreadID)&0x00ffffffff));
 			dwALLid |= 0X80000000;
 		}while (dwALLid >=0xFFFFFFFC);
 		return dwALLid;

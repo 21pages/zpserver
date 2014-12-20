@@ -422,7 +422,7 @@ void mainwndCtrlPannel::on_pushButton_getDevPara_clicked()
 	strncpy(buf,strDevID.c_str(),49);
 	for (int i=0;i<24;++i)
 	{
-		unsigned __int8 cv = 0;
+		quint8 cv = 0;
 		if (buf[i*2] >='0' &&  buf[i*2] <='9')	cv += buf[i*2]-'0';
 		else if (buf[i*2] >='a' &&  buf[i*2] <='f') cv += buf[i*2]-'a' + 10;
 		else if (buf[i*2] >='A' &&  buf[i*2] <='F') cv += buf[i*2]-'A' + 10;
