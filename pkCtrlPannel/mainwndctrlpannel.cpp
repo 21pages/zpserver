@@ -321,24 +321,23 @@ void mainwndCtrlPannel::UpdateIconAndColors()
 
 void  mainwndCtrlPannel::ui_pntf(const char * pFmt , ...)
 {
-	va_list args;
-	int     len;
-	char    *buffer;
+	int     len = 1024;
+	int ret = 0;
+	do{
+		len *= 2;
+		va_list args;
+		char    *buffer = 0;
+		// retrieve the variable arguments
+		va_start( args, pFmt );
+		buffer = (char*)malloc( len * sizeof(char) );
+		ret = vsnprintf( buffer,len-1, pFmt, args );
+		va_end (args);
 
-	// retrieve the variable arguments
-	va_start( args, pFmt );
+		if (ret >=0 || len >=65536)
+			ui->plainTextEdit_result->appendPlainText(QString::fromLocal8Bit(buffer));
 
-	len = _vscprintf( pFmt, args ) // _vscprintf doesn't count
-			+ 1; // terminating '\0'
-
-	buffer = (char*)malloc( len * sizeof(char) );
-
-	vsprintf( buffer, pFmt, args ); // C4996
-
-	ui->plainTextEdit_result->appendPlainText(QString::fromLocal8Bit(buffer));
-	puts( buffer );
-	free( buffer );
-
+		free( buffer );
+	} while (ret <0 && len < 65536);
 }
 
 void mainwndCtrlPannel::on_pushButton_getMacInfo_clicked()
