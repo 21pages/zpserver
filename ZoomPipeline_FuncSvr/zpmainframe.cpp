@@ -414,8 +414,8 @@ void  ZPMainFrame::timerEvent(QTimerEvent * e)
 		if (m_pDatabases->currentDatabaseConnections().size()>0 && (++ctt) % 75 == 0)
 		//delete old events
 			m_clientTable->delOldevents(m_evtTableLastDays);
-
-
+		if (ctt % 12 == 0)
+			m_clientTable->checkTimeout();
 		if (ui->action_Start_Stop->isChecked()==true)
 		{
 			//Cluster re-connection Test

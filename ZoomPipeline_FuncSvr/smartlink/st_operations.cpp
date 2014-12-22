@@ -1530,4 +1530,26 @@ namespace ParkinglotsSvr{
 		return res;
 	}
 
+	bool   st_operations::checkTimeout()
+	{
+		bool res = true;
+		QSqlDatabase & db = *m_pDb;
+		if (db.isValid()==true && db.isOpen()==true )
+		{
+			QSqlQuery query(db);
+			QString sql = QString("update sensorlist set status = 2 where lastacttime <= adddate(now(),INTERVAL -9 HOUR);");
+			if (false==query.exec(sql))
+			{
+				qCritical()<<tr("Database Access Error :")+query.lastError().text();
+				res = false;
+				db.close();
+			}
+		}
+		else
+		{
+			qCritical()<<tr("Database is not ready.");
+			res = false;
+		}
+		return res;
+	}
 }

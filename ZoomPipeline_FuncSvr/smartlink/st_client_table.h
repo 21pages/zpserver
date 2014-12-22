@@ -128,7 +128,8 @@ namespace ParkinglotsSvr{
 		bool SendToNode(quint32 uuid, QByteArray  msg);
 		//Delete old events from db;
 		void delOldevents(qint32 evtTableLastDays);
-
+		//Update sensor List, set time-out flags
+		void checkTimeout();
 	};
 }
 #endif // ST_CLIENT_TABLE_H

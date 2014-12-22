@@ -463,5 +463,11 @@ namespace ParkinglotsSvr{
 		st_operations dboper(&db);
 		dboper.deleteOldEventTableRecords(evtTableLastDays);
 	}
+	void st_client_table::checkTimeout()
+	{
+		QSqlDatabase db = dbRes()->databse(Database_UserAcct());
+		st_operations dboper(&db);
+		dboper.checkTimeout();
+	}
 }
 
