@@ -74,7 +74,7 @@ namespace ParkinglotsSvr{
 				if (query.next())
 				{
 					bool bOk = false;
-					int ncurrid = query.value(1).toInt(&bOk);
+					quint32 ncurrid = query.value(1).toUInt(&bOk);
 					int nregisdited =  query.value(2).toInt();
 					if (bOk==true)
 					{
@@ -172,14 +172,30 @@ namespace ParkinglotsSvr{
 			QSqlQuery query(db);
 			for (int i=0;i<nItems && res == true; ++i)
 			{
-				QString sql = "select deviceid from sensorlist where deviceid = ?;";
+				QString sql = "select deviceid ,macid,status from sensorlist where deviceid = ?;";
 				query.prepare(sql);
 				query.addBindValue(vec_dev_ids[i]);
 				if (true==query.exec())
 				{
 					if (query.next()) //need update
 					{
-						sql = "update sensorlist set devicename =  ? , sensorlist.no = ?  , macid = ? where deviceid = ?;";
+						quint32 nDbMacId = query.value(1).toUInt();
+						int nDbStatus = query.value(2).toInt();
+						// if this device belongs to me
+						if (nDbMacId == macid)
+							sql = "update sensorlist set devicename =  ? , sensorlist.no = ?  , macid = ? where deviceid = ?;";
+						// if this device is abnormal, set it belong to me
+						else if (nDbStatus == 2)
+							sql = "update sensorlist set devicename =  ? , sensorlist.no = ?  , macid = ? where deviceid = ?;";
+						// this is another mac's device, log waring
+						else
+						{
+							sql = "update sensorlist set devicename =  ? , sensorlist.no = ?  , macid = ? where deviceid = ? and deviceid = null ;";
+							qWarning()<<tr("MacID %1 update a device %2 that belongs to macID %3, please remove old items from mac %1 soon.")
+										.arg(macid)
+										.arg(vec_dev_ids[i])
+										.arg(nDbMacId);
+						}
 						query.prepare(sql);
 						query.addBindValue(vec_dev_names[i]);
 						query.addBindValue(vec_dev_nos[i]);
@@ -297,7 +313,7 @@ namespace ParkinglotsSvr{
 		if (db.isValid()==true && db.isOpen()==true )
 		{
 			QSqlQuery query(db);
-			QString sql = "select deviceid from sensorlist where deviceid = ?;";
+			QString sql = "select  deviceid ,macid,status from sensorlist where deviceid = ?;";
 			query.prepare(sql);
 			QString devID = hex2ascii(deviceID,24);
 			query.addBindValue(devID);
@@ -306,9 +322,26 @@ namespace ParkinglotsSvr{
 			{
 				if (query.next()) //need update
 				{
+					quint32 nDbMacId = query.value(1).toUInt();
+					int nDbStatus = query.value(2).toInt();
+					// if this device belongs to me
+					if (nDbMacId == macid)
+						sql = "update sensorlist set  macid = ? where deviceid = ?;";
+					// if this device is abnormal, set it belong to me
+					else if (nDbStatus == 2)
+						sql = "update sensorlist set  macid = ? where deviceid = ?;";
+					// this is another mac's device, log waring
+					else
+					{
+						sql = "update sensorlist set  macid = ? where deviceid = ? and deviceid = null ;";
+						qWarning()<<tr("MacID %1 add a device %2 that belongs to macID %3, please remove old items from mac %1 soon.")
+									.arg(macid)
+									.arg(devID)
+									.arg(nDbMacId);
+					}
 					//Already has this ID
 					qWarning()<<tr("Already exists a Device :") + devID;
-					sql = "update sensorlist set  macid = ? where deviceid = ?;";
+					//sql = "update sensorlist set  macid = ? where deviceid = ?;";
 					query.prepare(sql);
 					query.addBindValue(macid);
 					query.addBindValue(devID);
@@ -349,7 +382,7 @@ namespace ParkinglotsSvr{
 		if (db.isValid()==true && db.isOpen()==true )
 		{
 			QSqlQuery query(db);
-			QString sql = "select deviceid from sensorlist where deviceid = ?;";
+			QString sql = "select deviceid, macid from sensorlist where deviceid = ?;";
 			query.prepare(sql);
 			QString devID = hex2ascii(deviceID,24);
 			query.addBindValue(devID);
@@ -371,6 +404,12 @@ namespace ParkinglotsSvr{
 						db.close();
 					}
 
+				}
+				else
+				{
+					quint32 nDbMacID = query.value(1).toUInt();
+					if (nDbMacID != macid)
+						res = false;
 				}
 
 			}
@@ -427,13 +466,13 @@ namespace ParkinglotsSvr{
 			switch (pEvent->DALEventID)
 			{
 			case 0x00:
-				res = dal_sensor_0x00(pEvent,pDalLayer,nTotalDalLen);
+				res = dal_sensor_0x00(macid,pEvent,pDalLayer,nTotalDalLen);
 				break;
 			case 0x01:
-				res = dal_sensor_0x01(pEvent,pDalLayer,nTotalDalLen);
+				res = dal_sensor_0x01(macid,pEvent,pDalLayer,nTotalDalLen);
 				break;
 			case 0x02:
-				res = dal_sensor_0x02(pEvent,pDalLayer,nTotalDalLen);
+				res = dal_sensor_0x02(macid,pEvent,pDalLayer,nTotalDalLen);
 				break;
 			default:
 				qCritical()<<tr("DAL EventID Error (Event ID %1 is not valid.").arg(pEvent->DALEventID);
@@ -468,10 +507,11 @@ namespace ParkinglotsSvr{
 					if (db.isValid()==true && db.isOpen()==true )
 					{
 						QSqlQuery query(db);
-						QString sql = "update sensorlist set lastacttime = ?, status = 0 where deviceid = ? and status > 1;";
+						QString sql = "update sensorlist set lastacttime = ?, status = 0 , macid = ? where deviceid = ? and status > 1;";
 						query.prepare(sql);
 						QString devID = hex2ascii(pEvent->DeviceID,24);
 						query.addBindValue(QDateTime::currentDateTimeUtc());
+						query.addBindValue(macid);
 						query.addBindValue(devID);
 						if (false==query.exec())
 						{
@@ -509,11 +549,12 @@ namespace ParkinglotsSvr{
 					if (db.isValid()==true && db.isOpen()==true )
 					{
 						QSqlQuery query(db);
-						QString sql = "update sensorlist set batteryvoltage = ?, lastacttime = ?, status = 0 where deviceid = ? and status > 1;";
+						QString sql = "update sensorlist set batteryvoltage = ?, lastacttime = ?, status = 0, macid = ? where deviceid = ? and status > 1;";
 						query.prepare(sql);
 						QString devID = hex2ascii(pEvent->DeviceID,24);
 						query.addBindValue(value);
 						query.addBindValue(QDateTime::currentDateTimeUtc());
+						query.addBindValue(macid);
 						query.addBindValue(devID);
 						if (false==query.exec())
 						{
@@ -568,7 +609,7 @@ namespace ParkinglotsSvr{
 		//0xCBFE0001 is the sensor
 		if (pEvent->DeviceID[0] == 0x01 && pEvent->DeviceID[1] == 0x00 &&pEvent->DeviceID[2] == 0xFE &&pEvent->DeviceID[3] == 0xCB)
 		{
-			this->confirm_device(macid,pEvent->DeviceID);
+			bool bFailedCf = this->confirm_device(macid,pEvent->DeviceID);
 			int nStatus = 0;
 			if (pEvent->ExceptionID==1)
 				nStatus = 2;
@@ -580,14 +621,21 @@ namespace ParkinglotsSvr{
 			if (db.isValid()==true && db.isOpen()==true )
 			{
 				QSqlQuery query(db);
-				QString sql = "update sensorlist set status = ? , lastacttime = ? where deviceid = ?;";
+				QString sql = "update sensorlist set status = ? , lastacttime = ? where deviceid = ? and macid = ?;";
 				query.prepare(sql);
-
 				query.addBindValue(nStatus);
 				query.addBindValue(QDateTime::currentDateTimeUtc());
 				QString devID = hex2ascii(pEvent->DeviceID,24);
 				query.addBindValue(devID);
-				if (false==query.exec())
+				query.addBindValue(macid);
+				//Device is not opened, or belongs to another mac
+				if (bFailedCf == false)
+				{
+					qWarning()<<tr("MacID %1 report a exception of a device %2 that not belongs to it, please remove old items from mac %1 soon.")
+								.arg(macid)
+								.arg(devID);
+				}
+				else if (false==query.exec())
 				{
 					qCritical()<<tr("Database Access Error :")+query.lastError().text();
 					res = 1;
@@ -621,7 +669,7 @@ namespace ParkinglotsSvr{
 		//0xCBFE0101 is the Router
 		else if (pEvent->DeviceID[0] == 0x01 && pEvent->DeviceID[1] == 0x01 &&pEvent->DeviceID[2] == 0xFE &&pEvent->DeviceID[3] == 0xCB)
 		{
-			this->confirm_device(macid,pEvent->DeviceID);
+			bool bFailedCf = this->confirm_device(macid,pEvent->DeviceID);
 			int nStatus = 0;
 			if (pEvent->ExceptionID==1)
 				nStatus = 2;
@@ -633,14 +681,20 @@ namespace ParkinglotsSvr{
 			if (db.isValid()==true && db.isOpen()==true )
 			{
 				QSqlQuery query(db);
-				QString sql = "update sensorlist set status = ? , lastacttime = ? where deviceid = ?;";
+				QString sql = "update sensorlist set status = ? , lastacttime = ? where deviceid = ? and macid = ?;";
 				query.prepare(sql);
-
 				query.addBindValue(nStatus);
 				query.addBindValue(QDateTime::currentDateTimeUtc());
 				QString devID = hex2ascii(pEvent->DeviceID,24);
 				query.addBindValue(devID);
-				if (false==query.exec())
+				query.addBindValue(macid);
+				if (bFailedCf == false)
+				{
+					qWarning()<<tr("MacID %1 report a exception of a device %2 that not belongs to it, please remove old items from mac %1 soon.")
+								.arg(macid)
+								.arg(devID);
+				}
+				else if (false==query.exec())
 				{
 					qCritical()<<tr("Database Access Error :")+query.lastError().text();
 					res = 1;
@@ -681,7 +735,7 @@ namespace ParkinglotsSvr{
 	}
 
 
-	quint8 st_operations::dal_sensor_0x00(const stEvent_DeviceEvent * pEvent,const quint8 * pDalLayer, int nTotalDalLen)
+	quint8 st_operations::dal_sensor_0x00(quint32 macid,const stEvent_DeviceEvent * pEvent,const quint8 * pDalLayer, int nTotalDalLen)
 	{
 		quint8 res = 0;
 		if (pEvent->ParamNum>=1)
@@ -697,11 +751,12 @@ namespace ParkinglotsSvr{
 					{
 						//Update sensor list
 						QSqlQuery query(db);
-						QString sql = "update sensorlist set occupied = ?, lastacttime = ? where deviceid = ?;";
+						QString sql = "update sensorlist set occupied = ?, lastacttime = ?, macid = ? where deviceid = ?;";
 						query.prepare(sql);
 						QString devID = hex2ascii(pEvent->DeviceID,24);
 						query.addBindValue(value);
 						query.addBindValue(QDateTime::currentDateTimeUtc());
+						query.addBindValue(macid);
 						query.addBindValue(devID);
 						if (false==query.exec())
 						{
@@ -762,7 +817,7 @@ namespace ParkinglotsSvr{
 		}
 		return res;
 	}
-	quint8 st_operations::dal_sensor_0x01(const stEvent_DeviceEvent * pEvent,const quint8 * pDalLayer, int nTotalDalLen)
+	quint8 st_operations::dal_sensor_0x01(quint32 macid,const stEvent_DeviceEvent * pEvent,const quint8 * pDalLayer, int nTotalDalLen)
 	{
 		quint8 res = 0;
 		if (pEvent->ParamNum>=1)
@@ -843,20 +898,20 @@ namespace ParkinglotsSvr{
 		}
 		return res;
 	}
-	quint8 st_operations::dal_sensor_0x02(const stEvent_DeviceEvent * pEvent,const quint8 * pDalLayer, int nTotalDalLen)
+	quint8 st_operations::dal_sensor_0x02(quint32 macid,const stEvent_DeviceEvent * pEvent,const quint8 * pDalLayer, int nTotalDalLen)
 	{
 		quint8 res = 0;
 		//New heartbeat non-debug
 		if (pEvent->ParamNum==4)
-			res = dal_sensor_0x02_nonDbg(pEvent,pDalLayer,nTotalDalLen);
+			res = dal_sensor_0x02_nonDbg(macid,pEvent,pDalLayer,nTotalDalLen);
 		else if (pEvent->ParamNum<=10)
-			res = dal_sensor_0x02_classical(pEvent,pDalLayer,nTotalDalLen);
+			res = dal_sensor_0x02_classical(macid,pEvent,pDalLayer,nTotalDalLen);
 		else /*if (pEvent->ParamNum > 10*/
-			res = dal_sensor_0x02_Dbg(pEvent,pDalLayer,nTotalDalLen);
+			res = dal_sensor_0x02_Dbg(macid,pEvent,pDalLayer,nTotalDalLen);
 		return res;
 	}
 
-	quint8  st_operations::dal_sensor_0x02_nonDbg(const stEvent_DeviceEvent * pEvent,const quint8 * pDalLayer, int nTotalDalLen)
+	quint8  st_operations::dal_sensor_0x02_nonDbg(quint32 macid,const stEvent_DeviceEvent * pEvent,const quint8 * pDalLayer, int nTotalDalLen)
 	{
 		quint8 res = 0;
 		int nSwim = 0;
@@ -970,7 +1025,7 @@ namespace ParkinglotsSvr{
 					.arg((int)para_dal_WMODE)
 					;
 			QSqlQuery query(db);
-			QString sql = "update sensorlist set occupied = ? ,temperature = ?, batteryvoltage = ?, lastacttime = ?  , lastdetailpara = ?    where deviceid = ?;";
+			QString sql = "update sensorlist set occupied = ? ,temperature = ?, batteryvoltage = ?, lastacttime = ?  , lastdetailpara = ? , macid = ?    where deviceid = ?;";
 			query.prepare(sql);
 			QString devID = hex2ascii(pEvent->DeviceID,24);
 			query.addBindValue(para_dal_status);
@@ -978,6 +1033,7 @@ namespace ParkinglotsSvr{
 			query.addBindValue(para_dal_batt);
 			query.addBindValue(QDateTime::currentDateTimeUtc());
 			query.addBindValue(strVal);
+			query.addBindValue(macid);
 			query.addBindValue(devID);
 			if (false==query.exec())
 			{
@@ -1020,7 +1076,7 @@ namespace ParkinglotsSvr{
 		return res;
 	}
 
-	quint8  st_operations::dal_sensor_0x02_Dbg(const stEvent_DeviceEvent * pEvent,const quint8 * pDalLayer, int nTotalDalLen)
+	quint8  st_operations::dal_sensor_0x02_Dbg(quint32 macid,const stEvent_DeviceEvent * pEvent,const quint8 * pDalLayer, int nTotalDalLen)
 	{
 		quint8 res = 0;
 		int nSwim = 0;
@@ -1254,7 +1310,7 @@ namespace ParkinglotsSvr{
 				strVal +=  QString(",%1").arg(para_dal_groupRP[gpi]);
 
 			QSqlQuery query(db);
-			QString sql = "update sensorlist set occupied = ? ,temperature = ?, batteryvoltage = ?, lastacttime = ? , lastdetailpara = ?   where deviceid = ?;";
+			QString sql = "update sensorlist set occupied = ? ,temperature = ?, batteryvoltage = ?, lastacttime = ? , lastdetailpara = ? ,macid = ?  where deviceid = ?;";
 			query.prepare(sql);
 			QString devID = hex2ascii(pEvent->DeviceID,24);
 			query.addBindValue(para_dal_status);
@@ -1262,6 +1318,7 @@ namespace ParkinglotsSvr{
 			query.addBindValue(para_dal_vol);
 			query.addBindValue(QDateTime::currentDateTimeUtc());
 			query.addBindValue(strVal);
+			query.addBindValue(macid);
 			query.addBindValue(devID);
 			if (false==query.exec())
 			{
@@ -1305,7 +1362,7 @@ namespace ParkinglotsSvr{
 		return res;
 	}
 
-	quint8  st_operations::dal_sensor_0x02_classical(const stEvent_DeviceEvent * pEvent,const quint8 * pDalLayer, int nTotalDalLen)
+	quint8  st_operations::dal_sensor_0x02_classical(quint32 macid,const stEvent_DeviceEvent * pEvent,const quint8 * pDalLayer, int nTotalDalLen)
 	{
 		quint8 res = 0;
 		int nSwim = 0;
@@ -1449,7 +1506,7 @@ namespace ParkinglotsSvr{
 					.arg(para_dal_vol);
 
 			QSqlQuery query(db);
-			QString sql = "update sensorlist set occupied = ? ,temperature = ?, batteryvoltage = ?, lastacttime = ?, lastdetailpara = ?  where deviceid = ?;";
+			QString sql = "update sensorlist set occupied = ? ,temperature = ?, batteryvoltage = ?, lastacttime = ?, lastdetailpara = ? , macid = ? where deviceid = ?;";
 			query.prepare(sql);
 			QString devID = hex2ascii(pEvent->DeviceID,24);
 			query.addBindValue(para_dal_status);
@@ -1457,6 +1514,7 @@ namespace ParkinglotsSvr{
 			query.addBindValue(para_dal_vol);
 			query.addBindValue(QDateTime::currentDateTimeUtc());
 			query.addBindValue(strVal);
+			query.addBindValue(macid);
 			query.addBindValue(devID);
 			if (false==query.exec())
 			{

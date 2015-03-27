@@ -42,12 +42,12 @@ namespace ParkinglotsSvr{
 											QString macevt_comment
 											);
 	protected:
-		quint8 dal_sensor_0x00(const stEvent_DeviceEvent * pEvent,const quint8 * ptrDal, int nMaxLen);
-		quint8 dal_sensor_0x01(const stEvent_DeviceEvent * pEvent,const quint8 * ptrDal, int nMaxLen);
-		quint8 dal_sensor_0x02(const stEvent_DeviceEvent * pEvent,const quint8 * ptrDal, int nMaxLen);
-		quint8 dal_sensor_0x02_nonDbg(const stEvent_DeviceEvent * pEvent,const quint8 * ptrDal, int nMaxLen);
-		quint8 dal_sensor_0x02_Dbg(const stEvent_DeviceEvent * pEvent,const quint8 * ptrDal, int nMaxLen);
-		quint8 dal_sensor_0x02_classical(const stEvent_DeviceEvent * pEvent,const quint8 * ptrDal, int nMaxLen);
+		quint8 dal_sensor_0x00(quint32 macid,const stEvent_DeviceEvent * pEvent,const quint8 * ptrDal, int nMaxLen);
+		quint8 dal_sensor_0x01(quint32 macid,const stEvent_DeviceEvent * pEvent,const quint8 * ptrDal, int nMaxLen);
+		quint8 dal_sensor_0x02(quint32 macid,const stEvent_DeviceEvent * pEvent,const quint8 * ptrDal, int nMaxLen);
+		quint8 dal_sensor_0x02_nonDbg(quint32 macid,const stEvent_DeviceEvent * pEvent,const quint8 * ptrDal, int nMaxLen);
+		quint8 dal_sensor_0x02_Dbg(quint32 macid,const stEvent_DeviceEvent * pEvent,const quint8 * ptrDal, int nMaxLen);
+		quint8 dal_sensor_0x02_classical(quint32 macid,const stEvent_DeviceEvent * pEvent,const quint8 * ptrDal, int nMaxLen);
 	};
 }
 
