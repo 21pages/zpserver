@@ -461,3 +461,12 @@ void mainwndCtrlPannel::on_pushButton_getDevPara_clicked()
 	st_freeDeviceParam(rsp);
 
 }
+void mainwndCtrlPannel::on_toolButton_brff_clicked()
+{
+
+}
+
+void mainwndCtrlPannel::on_pushButton_runfu_clicked()
+{
+
+}

@@ -53,6 +53,8 @@ public slots:
 	void on_pushButton_getMacInfo_clicked();
 	void on_pushButton_getDevList_clicked();
 	void on_pushButton_getDevPara_clicked();
+	void on_toolButton_brff_clicked();
+	void on_pushButton_runfu_clicked();
 };
 
 #endif // MAINWNDCTRLPANNEL_H

@@ -52,6 +52,25 @@ namespace ParkinglotsSvr{
 	struct stMsg_SetHostDetailsRsp{
 		quint8 DoneCode;
 	};
+
+
+	//0x2002
+	struct stMsg_PushFirmUpPackReq{
+		quint16 SectionNum;		//total sections
+		quint16 SectionIndex;	//current sections
+		quint16 SectionLen;		//current length£¨<=4096£©
+		quint8 pSectionData[1];	//data
+	};
+
+	//0x2802
+	struct stMsg_PushFirmUpPackRsp{
+		quint8 DoneCode;		//recieve mark,0 succeed,1 failed
+		quint16 SectionNum;		//section num
+	};
+
+
+
+
 	//0x200A
 	struct stMsg_RemoveDeviceReq {
 		quint8 DeviceID[24];
