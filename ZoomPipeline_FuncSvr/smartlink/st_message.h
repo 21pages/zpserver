@@ -1,4 +1,4 @@
-#ifndef ST_MESSAGE_H
+﻿#ifndef ST_MESSAGE_H
 #define ST_MESSAGE_H
 
 namespace SmartLink{

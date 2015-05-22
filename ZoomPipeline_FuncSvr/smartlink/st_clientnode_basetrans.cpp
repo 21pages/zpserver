@@ -1,4 +1,4 @@
-#include "st_clientnode_basetrans.h"
+﻿#include "st_clientnode_basetrans.h"
 #include "st_client_table.h"
 namespace SmartLink{
 	st_clientNode_baseTrans::st_clientNode_baseTrans(st_client_table * pClientTable, QObject * pClientSock ,QObject *parent) :
