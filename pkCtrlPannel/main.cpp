@@ -1,4 +1,4 @@
-#include "mainwndctrlpannel.h"
+﻿#include "mainwndctrlpannel.h"
 #include <QApplication>
 #include <QTranslator>
 #include <QLibraryInfo>

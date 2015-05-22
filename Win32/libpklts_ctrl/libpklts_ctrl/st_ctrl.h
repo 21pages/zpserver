@@ -1,4 +1,4 @@
-#ifndef ST_CTRL_H
+ï»¿#ifndef ST_CTRL_H
 #define ST_CTRL_H
 #include <windows.h>
 #include <tchar.h>
@@ -36,7 +36,7 @@ namespace ParkinglotsSvr{
 		char HostName[64];
 		char HostInfo[64];
 		unsigned __int8 ConnetType;
-		//1£ºGPRS£¬2£º3G£¬3£ºWAN£¬4£ºLAN
+		//1ï¼šGPRSï¼Œ2ï¼š3Gï¼Œ3ï¼šWANï¼Œ4ï¼šLAN
 		unsigned __int8 IEEEAdd[8];
 		unsigned __int8 IEEEAdd_Flag;
 		unsigned __int8 PANID[2];

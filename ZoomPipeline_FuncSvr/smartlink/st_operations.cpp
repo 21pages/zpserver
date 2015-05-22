@@ -1,4 +1,4 @@
-#include "st_operations.h"
+﻿#include "st_operations.h"
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QVariant>

@@ -1,4 +1,4 @@
-#include <QSettings>
+﻿#include <QSettings>
 #include <QMessageBox>
 #include "dialoglogin.h"
 #include "ui_dialoglogin.h"

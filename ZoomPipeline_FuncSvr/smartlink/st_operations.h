@@ -1,4 +1,4 @@
-#ifndef ST_OPERATIONS_H
+﻿#ifndef ST_OPERATIONS_H
 #define ST_OPERATIONS_H
 
 #include <QObject>

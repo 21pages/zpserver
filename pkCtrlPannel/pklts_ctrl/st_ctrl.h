@@ -1,4 +1,4 @@
-#ifndef ST_CTRL_H
+ï»¿#ifndef ST_CTRL_H
 #define ST_CTRL_H
 #include <Qt>
 namespace ParkinglotsSvr{
@@ -58,7 +58,7 @@ namespace ParkinglotsSvr{
 	struct stMsg_PushFirmUpPackReq{
 		quint16 SectionNum;		//total sections
 		quint16 SectionIndex;	//current sections
-		quint16 SectionLen;		//current length£¨<=4096£©
+		quint16 SectionLen;		//current lengthï¼ˆ<=4096ï¼‰
 		quint8 pSectionData[1];	//data
 	};
 

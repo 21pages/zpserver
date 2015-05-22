@@ -1,4 +1,4 @@
-#include "qcoloriconsqlmodel.h"
+﻿#include "qcoloriconsqlmodel.h"
 #include <QSqlQuery>
 #include <QSqlRecord>
 QColorIconSqlModel::QColorIconSqlModel(QObject *parent)

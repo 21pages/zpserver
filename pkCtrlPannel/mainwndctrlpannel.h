@@ -1,4 +1,4 @@
-#ifndef MAINWNDCTRLPANNEL_H
+﻿#ifndef MAINWNDCTRLPANNEL_H
 #define MAINWNDCTRLPANNEL_H
 
 #include <QMainWindow>

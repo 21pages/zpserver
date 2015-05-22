@@ -1,4 +1,4 @@
-#include <QSettings>
+﻿#include <QSettings>
 #include <QMessageBox>
 #include <QCoreApplication>
 #include "dialogsettings.h"

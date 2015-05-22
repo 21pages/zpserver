@@ -1,4 +1,4 @@
-#ifndef QCOLORICONSQLMODEL_H
+﻿#ifndef QCOLORICONSQLMODEL_H
 #define QCOLORICONSQLMODEL_H
 
 #include <QSqlQueryModel>

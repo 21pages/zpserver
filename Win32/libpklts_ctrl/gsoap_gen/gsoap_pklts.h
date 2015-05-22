@@ -1,4 +1,4 @@
-//gsoap ns service name:        PKLTSCtrlService
+ï»¿//gsoap ns service name:        PKLTSCtrlService
 //gsoap ns service style:       rpc
 //gsoap ns service encoding:    encoded
 //gsoap ns service namespace:   http://127.0.0.1/PKLTSCtrlService.wsdl
@@ -37,7 +37,7 @@
 		char HostName[64];
 		char HostInfo[64];
 		unsigned char ConnetType;
-		//1£ºGPRS£¬2£º3G£¬3£ºWAN£¬4£ºLAN
+		//1ï¼šGPRSï¼Œ2ï¼š3Gï¼Œ3ï¼šWANï¼Œ4ï¼šLAN
 		unsigned char IEEEAdd[8];
 		unsigned char IEEEAdd_Flag;
 		unsigned char PANID[2];

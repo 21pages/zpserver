@@ -1,4 +1,4 @@
-#include "../libpklts_ctrl/st_ctrl.h"
+﻿#include "../libpklts_ctrl/st_ctrl.h"
 using namespace ParkinglotsSvr;
 typedef unsigned __int32 (__stdcall * fp_st_getMACInfo)(const char * address, unsigned __int16 port,unsigned __int32 macID,stMsg_GetHostDetailsRsp * pOutputBuf);
 typedef unsigned __int32 (__stdcall * fp_st_setHostDetails)(const char * address, unsigned __int16 port,unsigned __int32 macID, const stMsg_SetHostDetailsReq * pInData,stMsg_SetHostDetailsRsp * pOutputBuf);

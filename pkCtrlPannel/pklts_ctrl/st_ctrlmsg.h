@@ -1,4 +1,4 @@
-#ifndef ST_CTRLMESSAGE_H
+﻿#ifndef ST_CTRLMESSAGE_H
 #define ST_CTRLMESSAGE_H
 #include "st_ctrl.h"
 namespace ParkinglotsSvr{

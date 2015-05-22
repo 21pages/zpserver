@@ -1,4 +1,4 @@
-/*
+﻿/*
 	stdsoap2.h 2.8.18
 
 	gSOAP runtime engine
