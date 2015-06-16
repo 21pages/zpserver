@@ -3,6 +3,8 @@
 #include <QSettings>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QFileDialog>
+#include <QFileInfo>
 #include "mainwndctrlpannel.h"
 #include "ui_mainwndctrlpannel.h"
 #include "./pklts_ctrl/st_ctrl.h"
@@ -464,6 +466,24 @@ void mainwndCtrlPannel::on_pushButton_getDevPara_clicked()
 }
 void mainwndCtrlPannel::on_toolButton_brff_clicked()
 {
+	QSettings settings(QCoreApplication::applicationFilePath()+".ini",QSettings::IniFormat);
+	QString lastOpenDir = settings.value("history/lastfudir","./").toString();
+	QString fm = QFileDialog::getOpenFileName(
+				this,
+				tr("Open firmware update cab"),
+				lastOpenDir,
+				QString("dat files(*.dat);;cab files(*.cab);;bin files(*.bin);;All files(*.*)")
+				);
+
+	if (fm.size()<2)
+		return;
+
+	QFileInfo info(fm);
+	QString abspath = info.absolutePath();
+
+	settings.setValue("history/lastfudir",abspath);
+
+	ui->lineEdit_firmwarePath->setText(info.absoluteFilePath());
 
 }
 
