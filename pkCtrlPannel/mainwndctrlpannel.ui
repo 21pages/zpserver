@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>680</width>
-    <height>447</height>
+    <width>587</width>
+    <height>414</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -241,20 +241,6 @@
               <item>
                <widget class="QLineEdit" name="lineEdit_Svr_Port"/>
               </item>
-              <item>
-               <widget class="QLabel" name="label_8">
-                <property name="text">
-                 <string>Tmp ID:</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_tmpid">
-                <property name="text">
-                 <string>0</string>
-                </property>
-               </widget>
-              </item>
              </layout>
             </item>
             <item>
@@ -268,6 +254,20 @@
               </item>
               <item>
                <widget class="QLineEdit" name="lineEdit_tarID_Mac"/>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_getMacInfo">
+                <property name="text">
+                 <string>Get Mac Info</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_getDevList">
+                <property name="text">
+                 <string>Get Dev List</string>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -283,58 +283,10 @@
               <item>
                <widget class="QLineEdit" name="lineEdit_tarID_Dev"/>
               </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_6">
-              <item>
-               <widget class="QPushButton" name="pushButton_getMacInfo">
-                <property name="text">
-                 <string>Get Mac Info</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_getDevList">
-                <property name="text">
-                 <string>Get Dev List</string>
-                </property>
-               </widget>
-              </item>
               <item>
                <widget class="QPushButton" name="pushButton_getDevPara">
                 <property name="text">
                  <string>Get Dev Para</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QRadioButton" name="radioButton_Mac">
-                <property name="text">
-                 <string>Mac</string>
-                </property>
-                <property name="checked">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QRadioButton" name="radioButton_Dev">
-                <property name="text">
-                 <string>Device</string>
                 </property>
                </widget>
               </item>
@@ -439,24 +391,6 @@
                <widget class="QPushButton" name="pushButton_runfu">
                 <property name="text">
                  <string>&amp;Run Batch Update</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_9">
-              <item>
-               <widget class="QLabel" name="label_11">
-                <property name="text">
-                 <string>Progress:</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QProgressBar" name="progressBar_fu">
-                <property name="value">
-                 <number>24</number>
                 </property>
                </widget>
               </item>
@@ -571,7 +505,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>680</width>
+     <width>587</width>
      <height>23</height>
     </rect>
    </property>

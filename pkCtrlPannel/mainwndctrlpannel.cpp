@@ -205,6 +205,7 @@ void mainwndCtrlPannel::on_listView_sum_macs_doubleClicked(const QModelIndex & i
 		QSettings settings(QCoreApplication::applicationFilePath()+".ini",QSettings::IniFormat);
 		QString strUserName = settings.value("login/UserName","").toString();
 		int ID = m_pModel_Summary_MAC->data(m_pModel_Summary_MAC->index(nrow,0)).toInt();
+		ui->lineEdit_tarID_Mac->setText(QString("%1").arg(ID));
 		QString strSQL;
 		//Refresh Mac
 		strSQL = QString("select * from view_dev_mac_park_user where macid = %1 and username = '%2'  ").arg(ID).arg(strUserName);
@@ -223,6 +224,7 @@ void mainwndCtrlPannel::on_listView_sum_devices_doubleClicked(const QModelIndex 
 		QString strSQL;
 		//Refresh Mac
 		strSQL = QString("select * from sensorevent where deviceid = '%1' ").arg(ID);
+		ui->lineEdit_tarID_Dev->setText(QString("%1").arg(ID));
 		m_pModel_EvtHis->setQueryPrefix(strSQL,m_db,0,1024,true);
 	}
 }
@@ -235,6 +237,7 @@ void  mainwndCtrlPannel::on_tableView_detailed_doubleClicked(const QModelIndex &
 		QString strSQL;
 		//Refresh Mac
 		strSQL = QString("select * from sensorevent where deviceid = '%1' ").arg(ID);
+		ui->lineEdit_tarID_Dev->setText(QString("%1").arg(ID));
 		m_pModel_EvtHis->setQueryPrefix(strSQL,m_db,0,1024,true);
 		UpdateIconAndColors();
 	}
@@ -583,9 +586,107 @@ void mainwndCtrlPannel::on_pushButton_removeDev_clicked()
 
 void mainwndCtrlPannel::on_pushButton_runfu_clicked()
 {
+	QFile file (ui->lineEdit_firmwarePath->text());
+	if (file.open(QIODevice::ReadOnly)==false)
+		return;
 
+	//file total size
+	int totalsz = file.size();
+	int groups = totalsz / 4096 + totalsz % 4096==0?0:1;
+
+	ui->plainTextEdit_result->clear();
+	//First, Get The Mac ID you want to ask.
+	//Then, define a structure, to hold result.
+	stMsg_PushFirmUpPackRsp rsp;
+	stMsg_PushFirmUpPackReq req;
+
+	quint32 nMacID = ui->lineEdit_tarID_Mac->text().toUInt();
+	std::string strAddr = ui->lineEdit_SvrIP->text().toStdString();
+	const char * address = strAddr.c_str();
+	quint16 port = ui->lineEdit_Svr_Port->text().toShort();
+
+
+	quint8 buf[4096];
+
+	int nRed = 0;
+	int gp = 0;
+	while (nRed = file.read((char *)buf,4096))
+	{
+		req.SectionIndex = gp;
+		req.SectionNum = groups;
+		req.SectionLen = nRed;
+
+		//And then, Call the method directly, just like a native method.
+		//Inside the function, a remote call will be executed.
+		int res = st_updateFirmware(address,port,nMacID,&req,buf, &rsp);
+
+		//Check the result, and print the result.
+		ui_pntf ("Res = %d\n",res);
+		int retry = 0;
+		while (res == ALL_SUCCEED && retry < 10)
+		{
+			if (rsp.DoneCode!=0)
+			{
+				ui_pntf ("Block %d:%d retrying...!\n",gp,groups);
+				res = st_updateFirmware(address,port,nMacID,&req,buf, &rsp);
+			}
+			else
+			{
+				ui_pntf ("Block %d%d succeeded...!\n",gp,groups);
+				break;
+			}
+			++retry;
+		}
+		if (res != ALL_SUCCEED || rsp.DoneCode!=0)
+		{
+			ui_pntf ("Update Failed!\n");
+			break;
+		}
+
+	}
+
+	file.close();
 }
 void mainwndCtrlPannel::on_pushButton_dalctrl_clicked()
 {
+	ui->plainTextEdit_result->clear();
+	//First, Get The Mac ID you want to ask.
+	//Then, define a structure, to hold result.
+	stMsg_DeviceCtrlRsp rsp;
+	stMsg_DeviceCtrlReq req;
+
+	quint32 nMacID = ui->lineEdit_tarID_Mac->text().toUInt();
+	std::string strAddr = ui->lineEdit_SvrIP->text().toStdString();
+	const char * address = strAddr.c_str();
+	quint16 port = ui->lineEdit_Svr_Port->text().toShort();
+
+	//Get Device ID
+	std::string strDevID = ui->lineEdit_tarID_Dev->text().toStdString();
+	if (false==devidStr2Array(strDevID,req.DeviceID,sizeof(req.DeviceID)))
+	{
+		ui_pntf ("Error Reading Hex Data! ");
+		return;
+	}
+	//get the dAL message
+	QByteArray arrayDAL;
+	std::string strDAL = ui->plainTextEdit_DAL->toPlainText().toStdString();
+	if (false==HexStr2Array(strDAL,&arrayDAL))
+	{
+		ui_pntf ("Error Reading DAL HEX String Data! no \\n or spaces between letters. ");
+		return;
+	}
+
+	req.DALArrayLength = arrayDAL.size();
+
+	//And then, Call the method directly, just like a native method.
+	//Inside the function, a remote call will be executed.
+	int res = st_deviceCtrl(address,port,nMacID,&req,(const quint8 *)arrayDAL.constData(), &rsp);
+
+	//Check the result, and print the result.
+	ui_pntf ("Res = %d\n",res);
+	if (res == ALL_SUCCEED)
+	{
+		ui_pntf ("rsp.DoneCode = %d\n",(unsigned int)rsp.DoneCode);
+	}
 
 }

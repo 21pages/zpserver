@@ -991,7 +991,7 @@ namespace ParkinglotsSvr{
 		pMessageSend->trans_header.Mark = 0x55AA;
 		pMessageSend->trans_header.SrcID = (quint32)((quint64)(getUniqueSrcID()) & 0xffffffff );
 		pMessageSend->trans_header.DstID = (quint32)((quint64)(macID) & 0xffffffff );;
-		pMessageSend->trans_header.DataLen =  sizeof(PKLTS_App_Header);
+		pMessageSend->trans_header.DataLen =  sizeof(PKLTS_App_Header) + sizeof(stMsg_DeviceCtrlReq) + pInData->DALArrayLength ;
 		pMessageSend->trans_payload.app_layer.app_header.MsgType = 0x200E;
 		for (int i=0;i<24;++i)
 			pMessageSend->trans_payload.app_layer.app_data.msg[i] = pInData->DeviceID[i];
@@ -1044,6 +1044,90 @@ namespace ParkinglotsSvr{
 		}
 		return nRes;
 	}
+
+
+	quint32 st_updateFirmware(
+			const char * address,
+			quint16 port,
+			quint32 macID,
+			const stMsg_PushFirmUpPackReq * pInData,
+			const quint8 * pblock,
+			stMsg_PushFirmUpPackRsp *pOutputBuf
+			)
+	{
+		//Calc the string length
+		int nSendLen = sizeof(PKLTS_Trans_Header) + sizeof(PKLTS_App_Header)+ sizeof (stMsg_PushFirmUpPackReq)  + pInData->SectionLen;
+		unsigned char * messageSend = new unsigned char [nSendLen];
+		PKLTS_Message * pMessageSend = (PKLTS_Message *) messageSend;
+		pMessageSend->trans_header.Mark = 0x55AA;
+		pMessageSend->trans_header.SrcID = (quint32)((quint64)(getUniqueSrcID()) & 0xffffffff );
+		pMessageSend->trans_header.DstID = (quint32)((quint64)(macID) & 0xffffffff );;
+		pMessageSend->trans_header.DataLen =  sizeof(PKLTS_App_Header) +  sizeof (stMsg_PushFirmUpPackReq)  + pInData->SectionLen;
+		pMessageSend->trans_payload.app_layer.app_header.MsgType = 0x2002;
+
+		memcpy(pMessageSend->trans_payload.app_layer.app_data.msg, pInData, sizeof(stMsg_PushFirmUpPackReq));
+
+		for (int i=0;i<pInData->SectionLen;++i)
+			pMessageSend->trans_payload.app_layer.app_data.msg[i+ sizeof(stMsg_PushFirmUpPackReq)] = pblock[i];
+
+		std::vector<quint8> vec_response;
+		int nRes = RemoteFunctionCall(address,port,
+									  messageSend,nSendLen,
+									  vec_response
+									  );
+		delete [] messageSend;
+		messageSend = 0;
+		//Dealing with result
+		if (nRes==ALL_SUCCEED )
+		{
+			if ( vec_response.size()>=sizeof(PKLTS_Trans_Header) + sizeof(PKLTS_App_Header))
+			{
+				PKLTS_Message * pMessageSend = (PKLTS_Message *) vec_response.data();
+				if (pMessageSend->trans_header.Mark!=0x55AA)
+					nRes = ERRTRANS_ERROR_MARK;
+				else
+				{
+					if (pMessageSend->trans_payload.app_layer.app_header.MsgType == 0x2802)
+					{
+						unsigned char * pSwim =(unsigned char *) &(pMessageSend->trans_payload.app_layer.app_data);
+						size_t nTotalLen = vec_response.size() - sizeof(PKLTS_Trans_Header) - sizeof(PKLTS_App_Header);
+						size_t nCurrStart = 0;
+						//Done Code
+						if (nRes == ALL_SUCCEED)
+						{
+							if ( nCurrStart - 1 + sizeof(pOutputBuf->DoneCode) < nTotalLen)
+							{
+								memcpy_s(&(pOutputBuf->DoneCode),sizeof(pOutputBuf->DoneCode),pSwim+nCurrStart,sizeof(pOutputBuf->DoneCode));
+								nCurrStart += sizeof(pOutputBuf->DoneCode);
+							}
+							else
+								nRes = ERRTRANS_LESS_DATA;
+						}
+						//serial num
+						if (nRes == ALL_SUCCEED)
+						{
+							if ( nCurrStart - 1 + sizeof(pOutputBuf->SectionNum) < nTotalLen)
+							{
+								memcpy_s(&(pOutputBuf->SectionNum),sizeof(pOutputBuf->SectionNum),pSwim+nCurrStart,sizeof(pOutputBuf->SectionNum));
+								nCurrStart += sizeof(pOutputBuf->SectionNum);
+							}
+							else
+								nRes = ERRTRANS_LESS_DATA;
+						}
+
+					}
+					else if (pMessageSend->trans_payload.app_layer.app_header.MsgType == 0x0000)
+						nRes = ERRTRANS_DST_NOT_REACHABLE;
+					else
+						nRes = ERRTRANS_ERROR_MSG_TYPE;
+				}
+			}
+			else
+				nRes = ERRTRANS_LESS_DATA;
+		}
+		return nRes;
+	}
+
 	/**
 	 * @brief This function convert ASCII HEX string to uint8 bytearray
 	 *
@@ -1074,5 +1158,30 @@ namespace ParkinglotsSvr{
 			array[i] = cv;
 		}
 		return true;
+	}
+
+
+	bool HexStr2Array(const std::string & hexstring,QByteArray * array)
+	{
+		if (!array)
+			return false;
+		int nBytes = hexstring.length()/2;
+		const char * buf = hexstring.c_str();
+		for (int i=0;i<nBytes;++i)
+		{
+			quint8 cv = 0;
+			if (buf[i*2] >='0' &&  buf[i*2] <='9')	cv += buf[i*2]-'0';
+			else if (buf[i*2] >='a' &&  buf[i*2] <='f') cv += buf[i*2]-'a' + 10;
+			else if (buf[i*2] >='A' &&  buf[i*2] <='F') cv += buf[i*2]-'A' + 10;
+			else { return false;};
+			cv <<= 4;
+			if (buf[i*2+1] >='0' &&  buf[i*2+1] <='9')	cv += buf[i*2+1]-'0';
+			else if (buf[i*2+1] >='a' &&  buf[i*2+1] <='f') cv += buf[i*2+1]-'a' + 10;
+			else if (buf[i*2+1] >='A' &&  buf[i*2+1] <='F') cv += buf[i*2+1]-'A' + 10;
+			else { return false;};
+			array->push_back((char )cv);
+		}
+		return true;
+
 	}
 }

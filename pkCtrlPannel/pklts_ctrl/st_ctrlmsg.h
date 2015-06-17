@@ -62,7 +62,7 @@ namespace ParkinglotsSvr{
 		quint16 SectionNum;		//total sections
 		quint16 SectionIndex;	//current sections
 		quint16 SectionLen;		//current length（<=4096）
-		quint8 pSectionData[1];	//data
+		/*quint8 pSectionData[1];*/	//data
 	};
 
 	//0x2802

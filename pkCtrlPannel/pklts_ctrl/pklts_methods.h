@@ -2,6 +2,7 @@
 #define ST_CTRL_H
 #include <Qt>
 #include <string>
+#include <QByteArray>
 #include "st_ctrlmsg.h"
 namespace ParkinglotsSvr{
 
@@ -59,9 +60,18 @@ namespace ParkinglotsSvr{
 			const quint8 * pDAL,
 			stMsg_DeviceCtrlRsp * pOutputBuf);
 
+	quint32 st_updateFirmware(
+			const char * address,
+			quint16 port,
+			quint32 macID,
+			const stMsg_PushFirmUpPackReq * pInData,
+			const quint8 * pblock,
+			stMsg_PushFirmUpPackRsp *pOutputBuf
+			);
+
 	//Toolkit function
 	bool devidStr2Array(const std::string & strDevid, unsigned char array[/*24*/], int arrayMaxSize);
-
+	bool HexStr2Array(const std::string & hexstring,QByteArray * array);
 }
 
 #endif
