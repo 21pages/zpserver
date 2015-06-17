@@ -1,11 +1,150 @@
 ﻿#ifndef ST_CTRLMESSAGE_H
 #define ST_CTRLMESSAGE_H
-#include "st_ctrl.h"
+
 namespace ParkinglotsSvr{
 #define MAXPARAMDATALEN 256
 #define MAXPARAMNUM 8
 
 #pragma  pack (push,1)
+	enum ErrMessage{
+		ALL_SUCCEED          = 0,
+		//Net Errors, 4Bit
+		ERRNET_ConnectionFailed = 4,
+		ERRNET_SendDataFailed   = 5,
+		ERRNET_RecvDataFailed   = 6,
+		//TransLayer Errors, 4Bit
+		ERRTRANS_ERROR_MARK				 =0x10,
+		ERRTRANS_LESS_DATA				 =0x11,
+		ERRTRANS_DST_NOT_REACHABLE		 =0x12,
+		ERRTRANS_ERROR_MSG_TYPE			 =0x13,
+		ERRTRANS_ERROR_DATA              =0x14
+	};
+
+	//0x2000
+	struct stMsg_GetHostDetailsReq{
+
+	};
+
+	//0x2800
+	struct stMsg_GetHostDetailsRsp{
+		quint8 DoneCode;
+		quint16 HostType;
+		quint16 FirmwareVersion;
+		char HostName[64];
+		char HostInfo[64];
+		quint8 ConnetType;
+		//1:GPRS,2:3G,3:WAN,4:LAN
+		quint8 IEEEAdd[8];
+		quint8 IEEEAdd_Flag;
+		quint8 PANID[2];
+		quint8 PANID_Flag;
+		quint8 EPANID[8];
+		quint8 EPANID_Flag;
+		quint16 SensorNum;
+		quint16 RelayNum;
+		quint16 ANSensorNum;
+		quint16 ANRelayNum;
+	};
+	//0x2001
+	struct stMsg_SetHostDetailsReq
+	{
+		char HostName[64];
+		char HostInfo[64];
+	};
+	//0x2801
+	struct stMsg_SetHostDetailsRsp{
+		quint8 DoneCode;
+	};
+
+
+	//0x2002
+	struct stMsg_PushFirmUpPackReq{
+		quint16 SectionNum;		//total sections
+		quint16 SectionIndex;	//current sections
+		quint16 SectionLen;		//current length（<=4096）
+		/*quint8 pSectionData[1];*/	//data
+	};
+
+	//0x2802
+	struct stMsg_PushFirmUpPackRsp{
+		quint8 DoneCode;		//recieve mark,0 succeed,1 failed
+		quint16 SectionNum;		//section num
+	};
+
+
+
+
+	//0x200A
+	struct stMsg_RemoveDeviceReq {
+		quint8 DeviceID[24];
+	};
+	//0x280A
+	struct stMsg_RemoveDeviceRsp{
+		quint8 DoneCode;
+	};
+	//0x200B
+	struct stMsg_GetDeviceListReq{
+
+	};
+	//0x280B
+	struct stMsg_GetDeviceListRsp
+	{
+		quint8   DoneCode;
+		quint16  nDevCount;
+		struct   stCall_DeviceNode
+		{
+			char DeviceName [32];
+			char No[64];
+			unsigned char DeviceID[24];
+		} devicetable[1];
+	};
+	//0x200C
+	struct stMsg_GetDeviceParamReq
+	{
+		quint8 DeviceID[24];
+		quint8 Opt_DeviceName;
+		quint8 Opt_DeviceInfo;
+		quint8 Opt_DALStatus;
+	};
+	//0x280C
+	struct stMsg_GetDeviceParamRsp
+	{
+		quint8 DoneCode;
+		unsigned char DeviceID[24];
+		quint8 Opt_DeviceName;
+		quint8 Opt_DeviceInfo;
+		quint8 Opt_DALStatus;
+		char DeviceName[32];
+		char DeviceInfo[64];
+		quint16 DALStatusBytesLen;
+		unsigned char DALStatusBytes[1];
+	};
+
+	//0x200D
+	struct stMsg_setDeviceParamReq
+	{
+		unsigned char DeviceID[24];
+		quint8 Opt_DeviceName;
+		quint8 Opt_DeviceInfo;
+		char DeviceName[32];
+		char DeviceInfo[64];
+	};
+	//0x280D
+	struct stMsg_setDeviceParamRsp
+	{
+		quint8 DoneCode;
+	};
+	//0x280E
+	struct stMsg_DeviceCtrlReq
+	{
+		unsigned char DeviceID[24];
+		quint16 DALArrayLength;
+	};
+	//0x280E
+	struct stMsg_DeviceCtrlRsp
+	{
+		quint8 DoneCode;
+	};
 
 	enum dal_datatype{
 		DAL_TYPE_NODATA	=0x00,
@@ -32,184 +171,6 @@ namespace ParkinglotsSvr{
 		DAL_TYPE_STRING	=0x42
 	};
 
-	//-------------------------------------------------------------------
-	/**Application Layer Message Types
-	  *0x100X Serial
-	**/
-	//stMsg_HostRegistReq , 0x1000
-	struct stMsg_HostRegistReq{
-		quint8 HostSerialNum[1];  /*max 64 bytes*/
-	};
-
-	//stMsg_HostRegistRsp 0x1800
-	struct stMsg_HostRegistRsp{
-		quint8 DoneCode;
-		qint32 ID;
-	};
-
-	//User Login request
-	//PKLTS_APP_LAYER::MsgType =  0x1001
-	struct stMsg_HostLogonReq{
-		qint32 ID;
-		char HostSerialNum[1];
-	};
-
-	//User Log response
-	//PKLTS_APP_LAYER::MsgType =  0x1801
-	struct stMsg_HostLogonRsp{
-		quint8 DoneCode;            //0- successful, 1-redirect, 3-failed.
-		//qint32 UserID;
-		//quint16 port_Redirect;      // and a port num.
-		//quint8 Address_Redirect[64];// for server-cluster balance, may be this login should be re-direct to another address
-	} ;
-
-
-	//User Log response
-	//SMARTLINK_MSG_APP::MsgType =  0x1002
-	struct stMsg_HostTimeCorrectReq{
-
-	} ;
-
-	//Time Correct
-	struct stMsg_HostTimeCorrectRsp{
-		quint8 DoneCode;
-		//char TextInfo[64];
-		struct tag_stDateTime{
-			quint16 Year;
-			quint8 Month;
-			quint8 Day;
-			quint8 Hour;
-			quint8 Minute;
-			quint8 Second;
-		} DateTime;
-	};
-
-	//0x100B SendDeviceListReq
-	struct stMsg_SendDeviceListReq{
-		quint16 DeviceNums;  //device nums
-		char pStrings[1];
-	};
-
-	//0x0x180B
-	struct stMsg_SendDeviceListRsp{
-		//Empty
-	};
-
-	//0x100C
-	struct stMsg_SendMacInfoReq{
-		quint16 FirmwareVersion;
-		char pStart[1];
-		/*
-		char HostName[64];
-		char HostInfo[64];
-		quint8 ConnetType;	//1:GPRS,2:3G,3:WAN,4:LAN
-		qint8 IEEEAdd[8];
-		qint8 IEEEAdd_Flag;
-		qint8 PANID[2];
-		qint8 PANID_Flag;
-		qint8 EPANID[8];
-		qint8 EPANID_Flag;
-		quint16 SensorNum;
-		quint16 RelayNum;
-		quint16 ANSensorNum;
-		quint16 ANRelayNum;
-		*/
-	};
-	//0x100C Internal
-	struct stMsg_SendMacInfoReq_internal{
-		quint16 FirmwareVersion;
-		char HostName[64];
-		char HostInfo[64];
-		struct tag_TailData{
-			quint8 ConnetType;	//1:GPRS,2:3G,3:WAN,4:LAN
-			quint8 IEEEAdd[8];
-			quint8 IEEEAdd_Flag;
-			quint8 PANID[2];
-			quint8 PANID_Flag;
-			quint8 EPANID[8];
-			quint8 EPANID_Flag;
-			quint16 SensorNum;
-			quint16 RelayNum;
-			quint16 ANSensorNum;
-			quint16 ANRelayNum;
-		} tail_data;
-	};
-	//0x0x180C
-	struct stMsg_SendMacInfoRsp{
-		//Empty
-	};
-
-
-
-
-	//----------------------------------------------------------------
-	//DAL is a variant-length system, so ,this sturct is only for reference.
-	//struct stParam{
-	//	quint8 DataType;
-	//	quint8 Data[MAXPARAMDATALEN];
-	//}
-
-
-
-	//----------------------------------------------------------------
-	//Event system
-	//0x0000, Device Joined event
-	struct stEvent_DeviceJoined{
-		quint8 DeviceID[24];
-	};
-	//0x0001, Device Removed event
-	struct stEvent_DeviceRemoved{
-		quint8 DeviceID[24];
-	};
-	//0x0002, DAL Messages
-	struct stEvent_DeviceEvent{
-		quint8 DeviceID[24];
-		quint8 DALEventID;
-		quint8 ParamNum;
-		/*stParam ParamList[MAXPARAMNUM];
-		 * quint8 DataType;
-		 * quint8 Data[]
-		*/
-	};
-	//0x0003, Device Exception Report
-	struct stEvent_DeviceException{
-		quint8 DeviceID[24];
-		quint8 ExceptionID;
-		quint8 ParamNum;
-		/*stParam ParamList[MAXPARAMNUM];
-		 * quint8 DataType;
-		 * quint8 Data[]
-		*/
-	};
-
-	struct stEvent{
-		quint16 EventType;
-		//Event Priority
-		quint8  Priority;
-		union union_Event{
-			stEvent_DeviceJoined evt_DeviceJoined;
-			stEvent_DeviceRemoved evt_DeviceRemoved;
-			stEvent_DeviceEvent evt_DeviceEvent;
-		} unEvent;
-	};
-
-
-
-	//------------------------------------------------------------------
-	/**Application Layer Message Types
-	  *0x400X Serial
-	**/	//0x4000
-	struct stMsg_EventPushReq{
-		stEvent event;
-	} ;
-
-	struct stMsg_EventPushRsp{
-		quint8 DoneCode;
-	} ;
-
-	//------------------------------------------------------------------
-	/**Trans Layer Structure
-	**/
 
 	struct PKLTS_Message{
 		struct tag_trans_header{
@@ -233,19 +194,6 @@ namespace ParkinglotsSvr{
 				} app_header;
 				union  union_MsgUnion
 				{
-					stMsg_HostRegistReq msg_HostRegistReq;
-					stMsg_HostRegistRsp msg_HostRegistRsp;
-					stMsg_HostLogonReq msg_HostLogonReq;
-					stMsg_HostLogonRsp msg_HostLogonRsp;
-					stMsg_HostTimeCorrectReq msg_HostTimeCorrectReq;
-					stMsg_HostTimeCorrectRsp msg_HostTimeCorrectRsp;
-					stMsg_SendDeviceListReq msg_SendDeviceListReq;
-					stMsg_SendDeviceListRsp msg_SendDeviceListRsp;
-					stMsg_SendMacInfoReq msg_stMsg_SendMacInfoReq;
-					stMsg_SendMacInfoRsp msg_stMsg_SendMacInfoRsp;
-					stMsg_EventPushReq msg_stMsg_EventPushReq;
-					stMsg_EventPushRsp msg_stMsg_EventPushRsp;
-
 					stMsg_GetHostDetailsReq msg_GetHostDetailsReq;
 					stMsg_GetHostDetailsRsp msg_GetHostDetailsRsp;
 					stMsg_SetHostDetailsReq msg_SetHostDetailsReq;

@@ -49,12 +49,20 @@ public slots:
 	void on_listView_sum_macs_doubleClicked(const QModelIndex & index);
 	void on_listView_sum_devices_doubleClicked(const QModelIndex & index);
 	void on_tableView_detailed_doubleClicked(const QModelIndex & index);
-	//Ctrl Messages
+	//Ctrl Messages, get info
 	void on_pushButton_getMacInfo_clicked();
 	void on_pushButton_getDevList_clicked();
 	void on_pushButton_getDevPara_clicked();
+	//Ctrl Messages, command
+	void on_pushButton_setMacInfo_clicked();
+	void on_pushButton_setDevInfo_clicked();
+	void on_pushButton_removeDev_clicked();
+
+	//Ctrl Messages, Update firmware
 	void on_toolButton_brff_clicked();
 	void on_pushButton_runfu_clicked();
+	//DAL
+	void on_pushButton_dalctrl_clicked();
 };
 
 #endif // MAINWNDCTRLPANNEL_H
