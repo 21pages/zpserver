@@ -66,7 +66,9 @@ namespace ParkinglotsSvr{
 		QObject * m_pClientSock;
 		st_client_table * m_pClientTable;
 		QDateTime m_last_Report;
-
+		//Watching Dog
+		QDateTime m_last_Watching;
+		bool m_bWatchingDog;
 		QString m_remoteAddress;
 		quint16 m_remotePort;
 		QString m_peerInfo;

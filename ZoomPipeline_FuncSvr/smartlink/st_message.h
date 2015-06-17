@@ -266,6 +266,13 @@ namespace ParkinglotsSvr{
 		quint16 tmStamp;
 	} ;
 
+	struct  PKLTS_Watchdog{
+		quint16 Mark;  //Always be 0xDFDF
+		quint32 macid;
+		quint16 ClapStamp;
+	};
+
+
 #pragma pack(pop)
 	typedef PKLTS_Message::tag_trans_header PKLTS_Trans_Header;
 	typedef PKLTS_Message::uni_trans_payload::tag_pklts_app_layer::tag_app_layer_header PKLTS_App_Header;
