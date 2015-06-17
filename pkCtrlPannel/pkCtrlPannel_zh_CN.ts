@@ -8,85 +8,97 @@
         <translation type="vanished">对话框</translation>
     </message>
     <message>
-        <location filename="dialogaddressinput.ui" line="14"/>
         <source>Participate in CLUSTER</source>
-        <translation>加入集群</translation>
+        <translation type="vanished">加入集群</translation>
     </message>
     <message>
-        <location filename="dialogaddressinput.ui" line="22"/>
         <source>Addr</source>
-        <translation>地址</translation>
+        <translation type="vanished">地址</translation>
     </message>
     <message>
-        <location filename="dialogaddressinput.ui" line="36"/>
         <source>Port</source>
-        <translation>端口</translation>
+        <translation type="vanished">端口</translation>
     </message>
 </context>
 <context>
     <name>DialogLogin</name>
     <message>
+        <location filename="dialoglogin.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="vanished">对话框</translation>
+        <translation>对话框</translation>
     </message>
     <message>
+        <location filename="dialoglogin.ui" line="24"/>
         <source>Username</source>
-        <translation type="vanished">用户名</translation>
+        <translation>用户名</translation>
     </message>
     <message>
+        <location filename="dialoglogin.ui" line="38"/>
         <source>Passwd</source>
-        <translation type="vanished">口令</translation>
+        <translation>口令</translation>
     </message>
 </context>
 <context>
     <name>DialogSettings</name>
     <message>
+        <location filename="dialogsettings.ui" line="14"/>
         <source>Settings</source>
-        <translation type="vanished">设置</translation>
+        <translation>设置</translation>
     </message>
     <message>
+        <location filename="dialogsettings.ui" line="22"/>
         <source>DB Settings</source>
-        <translation type="vanished">数据库设置</translation>
+        <translation>数据库设置</translation>
     </message>
     <message>
+        <location filename="dialogsettings.ui" line="28"/>
         <source>Driver</source>
-        <translation type="vanished">驱动</translation>
+        <translation>驱动</translation>
     </message>
     <message>
+        <location filename="dialogsettings.ui" line="38"/>
         <source>Server Address</source>
-        <translation type="vanished">主机地址</translation>
+        <translation>主机地址</translation>
     </message>
     <message>
+        <location filename="dialogsettings.ui" line="48"/>
         <source>Server Port</source>
-        <translation type="vanished">主机端口</translation>
+        <translation>主机端口</translation>
     </message>
     <message>
+        <location filename="dialogsettings.ui" line="58"/>
         <source>Database</source>
-        <translation type="vanished">数据库实例</translation>
+        <translation>数据库实例</translation>
     </message>
     <message>
+        <location filename="dialogsettings.ui" line="68"/>
         <source>Username</source>
-        <translation type="vanished">用户名</translation>
+        <translation>用户名</translation>
     </message>
     <message>
+        <location filename="dialogsettings.ui" line="78"/>
         <source>Password</source>
-        <translation type="vanished">口令</translation>
+        <translation>口令</translation>
     </message>
     <message>
+        <location filename="dialogsettings.ui" line="95"/>
         <source>Service</source>
-        <translation type="vanished">服务</translation>
+        <translation>服务</translation>
     </message>
     <message>
+        <location filename="dialogsettings.ui" line="101"/>
         <source>Backend Service</source>
-        <translation type="vanished">后台服务地址</translation>
+        <translation>后台服务地址</translation>
     </message>
     <message>
+        <location filename="dialogsettings.ui" line="124"/>
         <source>&amp;OK</source>
-        <translation type="vanished">确定(&amp;O)</translation>
+        <translation>确定(&amp;O)</translation>
     </message>
     <message>
+        <location filename="dialogsettings.ui" line="131"/>
         <source>&amp;Cancel</source>
-        <translation type="vanished">取消(&amp;C)</translation>
+        <translation>取消(&amp;C)</translation>
     </message>
 </context>
 <context>
@@ -436,533 +448,109 @@
 <context>
     <name>ParkinglotsSvr::st_clientNodeAppLayer</name>
     <message>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="29"/>
-        <source> Deal_ToServer_Handshakes() failed.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="31"/>
         <source>To-server Message Failed.</source>
-        <translation>发往服务器的消息解译/处理失败.</translation>
+        <translation type="vanished">发往服务器的消息解译/处理失败.</translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="42"/>
-        <source> Deal_Node2Svr_Msgs() failed.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="44"/>
         <source>Client To Server Message Failed.</source>
-        <translation>客户端发往主机的程序解译失败.</translation>
+        <translation type="vanished">客户端发往主机的程序解译失败.</translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="50"/>
-        <source> warning, UUID 0xFFFFFFFF.ignore.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="52"/>
         <source>warning, UUID 0xFFFFFFFF.ignore</source>
-        <translation>警告, UUID为 0xFFFFFFF 的消息被忽略</translation>
+        <translation type="vanished">警告, UUID为 0xFFFFFFF 的消息被忽略</translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="58"/>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="59"/>
         <source>Bad UUID %1. Client Kicked out</source>
-        <translation>非法的 UUID %1. 立刻踢出套接字</translation>
+        <translation type="vanished">非法的 UUID %1. 立刻踢出套接字</translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="76"/>
         <source>Destin ID </source>
-        <translation>目的节点ID </translation>
+        <translation type="vanished">目的节点ID </translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="76"/>
         <source> is not currently logged in.</source>
-        <translation>尚未在本服务器登记。</translation>
+        <translation type="vanished">尚未在本服务器登记。</translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="139"/>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="208"/>
-        <source> Send Regisit:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="145"/>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="161"/>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="214"/>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="230"/>
         <source>Broken Message, size not correct.</source>
-        <translation>消息长度不匹配. </translation>
+        <translation type="vanished">消息长度不匹配. </translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="155"/>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="224"/>
-        <source> Send Login  :</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="168"/>
-        <source> Fatal Handshake :</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="169"/>
         <source>Unknown Message:%1</source>
-        <translation>未知的消息类型: %1</translation>
+        <translation type="vanished">未知的消息类型: %1</translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="201"/>
-        <source> Send Msg  :</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="241"/>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="254"/>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="266"/>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="278"/>
-        <source> Broken Message size not correct  :</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="242"/>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="255"/>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="267"/>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="279"/>
         <source>Broken Message size not correct.</source>
-        <translation>消息长度不匹配. </translation>
+        <translation type="vanished">消息长度不匹配. </translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="286"/>
         <source>Unsupported Message:%1,Bytes:%2</source>
-        <translation>尚未实现的消息类型 %1, 首部字节为: %2</translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_applayer.cpp" line="288"/>
-        <source> Unsupported:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="74"/>
-        <source>client regisit operation = </source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="131"/>
-        <source>client login operation = </source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="184"/>
-        <source>client time correction = </source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="216"/>
-        <source>Break Device List, There are  %1 devNames, other than %2.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="231"/>
-        <source>Break Device List, There are  %1 devNos, other than %2.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="250"/>
-        <source>Break Device List, There are  %1 devIDs, other than %2.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="277"/>
-        <source>client send devlist = </source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="315"/>
-        <source>Break tag_TailData, We need  %1 bytes, larger than real data len %2.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="343"/>
-        <source>client send macinfo = </source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="406"/>
-        <source>Unknown Event %1</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="417"/>
-        <source>client send evt = </source>
-        <translation></translation>
+        <translation type="vanished">尚未实现的消息类型 %1, 首部字节为: %2</translation>
     </message>
 </context>
 <context>
     <name>ParkinglotsSvr::st_clientNode_baseTrans</name>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="84"/>
-        <source> m_list_RawData should not be empty!</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="120"/>
-        <source>Task Blocked. %1 tasks in queue...</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="125"/>
-        <source>Task Blocked Too Badly. %1 tasks in queue, lost 1 package!!</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="289"/>
-        <source>Client Send Immediatlly Disconnection Cmd Header 0x0000.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="298"/>
         <source>Client Send a unknown start Header %1 %2. Close client immediately.</source>
-        <translation>客户发出了一个未知的开始头 %1 %2. 立刻关闭连接.</translation>
+        <translation type="vanished">客户发出了一个未知的开始头 %1 %2. 立刻关闭连接.</translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="329"/>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="344"/>
-        <source>Client ID %1 is invalid! Close client immediatly.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="330"/>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="345"/>
         <source>Client ID is invalid! Close client immediatly.</source>
-        <translation>节点的ID是不合标准的，立刻关闭该节点的套接字。</translation>
+        <translation type="vanished">节点的ID是不合标准的，立刻关闭该节点的套接字。</translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="353"/>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="354"/>
         <source>Client ID Changed in Runtime! Close client immediatly, %1-&gt;%2.</source>
-        <translation>客户端的ID在运行时发生了跳变! 立刻关闭与客户端的连接, %1-&gt;%2.</translation>
+        <translation type="vanished">客户端的ID在运行时发生了跳变! 立刻关闭与客户端的连接, %1-&gt;%2.</translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="371"/>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="372"/>
         <source>Client </source>
-        <translation>节点 </translation>
+        <translation type="vanished">节点 </translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="371"/>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="372"/>
         <source> is dead, kick out.</source>
-        <translation>丢失心跳，终止该节点的连接。</translation>
+        <translation type="vanished">丢失心跳，终止该节点的连接。</translation>
     </message>
 </context>
 <context>
     <name>ParkinglotsSvr::st_client_table</name>
     <message>
-        <location filename="smartlink/st_client_table.cpp" line="320"/>
         <source>Send Initial UUIDs to Remote Svr:</source>
-        <translation>打包发送目前所有的UUID到远程服务器：</translation>
+        <translation type="vanished">打包发送目前所有的UUID到远程服务器：</translation>
     </message>
     <message>
         <source>Recieved %1 bytes Msg from </source>
         <translation type="vanished">收到了 %1 字节数据,来源</translation>
     </message>
     <message>
-        <location filename="smartlink/st_client_table.cpp" line="395"/>
         <source>Recieved remote %1 client uuid(s) from svr </source>
-        <translation>收到了远端服务器拥有的 %1 个客户端UUID. 远端服务器 </translation>
+        <translation type="vanished">收到了远端服务器拥有的 %1 个客户端UUID. 远端服务器 </translation>
     </message>
     <message>
-        <location filename="smartlink/st_client_table.cpp" line="424"/>
         <source>Removed remote %1 client uuid(s) from svr </source>
-        <translation>移除了 %1 个属于远端服务器的 UUID. 远端服务器 </translation>
+        <translation type="vanished">移除了 %1 个属于远端服务器的 UUID. 远端服务器 </translation>
     </message>
 </context>
 <context>
     <name>ParkinglotsSvr::st_operations</name>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="48"/>
-        <location filename="smartlink/st_operations.cpp" line="94"/>
-        <location filename="smartlink/st_operations.cpp" line="111"/>
-        <location filename="smartlink/st_operations.cpp" line="156"/>
-        <location filename="smartlink/st_operations.cpp" line="217"/>
-        <location filename="smartlink/st_operations.cpp" line="224"/>
-        <location filename="smartlink/st_operations.cpp" line="284"/>
-        <location filename="smartlink/st_operations.cpp" line="297"/>
-        <location filename="smartlink/st_operations.cpp" line="359"/>
-        <location filename="smartlink/st_operations.cpp" line="366"/>
-        <location filename="smartlink/st_operations.cpp" line="402"/>
-        <location filename="smartlink/st_operations.cpp" line="442"/>
-        <location filename="smartlink/st_operations.cpp" line="518"/>
-        <location filename="smartlink/st_operations.cpp" line="533"/>
-        <location filename="smartlink/st_operations.cpp" line="561"/>
-        <location filename="smartlink/st_operations.cpp" line="576"/>
-        <location filename="smartlink/st_operations.cpp" line="640"/>
-        <location filename="smartlink/st_operations.cpp" line="657"/>
-        <location filename="smartlink/st_operations.cpp" line="699"/>
-        <location filename="smartlink/st_operations.cpp" line="716"/>
-        <location filename="smartlink/st_operations.cpp" line="763"/>
-        <location filename="smartlink/st_operations.cpp" line="772"/>
-        <location filename="smartlink/st_operations.cpp" line="789"/>
-        <location filename="smartlink/st_operations.cpp" line="843"/>
-        <location filename="smartlink/st_operations.cpp" line="852"/>
-        <location filename="smartlink/st_operations.cpp" line="870"/>
-        <location filename="smartlink/st_operations.cpp" line="1040"/>
-        <location filename="smartlink/st_operations.cpp" line="1050"/>
-        <location filename="smartlink/st_operations.cpp" line="1066"/>
-        <location filename="smartlink/st_operations.cpp" line="1325"/>
-        <location filename="smartlink/st_operations.cpp" line="1335"/>
-        <location filename="smartlink/st_operations.cpp" line="1352"/>
-        <location filename="smartlink/st_operations.cpp" line="1521"/>
-        <location filename="smartlink/st_operations.cpp" line="1531"/>
-        <location filename="smartlink/st_operations.cpp" line="1547"/>
-        <location filename="smartlink/st_operations.cpp" line="1571"/>
-        <location filename="smartlink/st_operations.cpp" line="1578"/>
-        <location filename="smartlink/st_operations.cpp" line="1601"/>
         <source>Database Access Error :</source>
-        <translation>数据库访问错误 :</translation>
+        <translation type="vanished">数据库访问错误 :</translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="100"/>
-        <location filename="smartlink/st_operations.cpp" line="104"/>
-        <location filename="smartlink/st_operations.cpp" line="145"/>
-        <location filename="smartlink/st_operations.cpp" line="149"/>
         <source>ID is not valid : %1</source>
-        <translation>ID 取值范围不正确: %1</translation>
+        <translation type="vanished">ID 取值范围不正确: %1</translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="107"/>
         <source>Serial is not valid : %1</source>
-        <translation>序列号不正确: %1</translation>
+        <translation type="vanished">序列号不正确: %1</translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="55"/>
-        <location filename="smartlink/st_operations.cpp" line="117"/>
-        <location filename="smartlink/st_operations.cpp" line="162"/>
-        <location filename="smartlink/st_operations.cpp" line="235"/>
-        <location filename="smartlink/st_operations.cpp" line="304"/>
-        <location filename="smartlink/st_operations.cpp" line="373"/>
-        <location filename="smartlink/st_operations.cpp" line="418"/>
-        <location filename="smartlink/st_operations.cpp" line="424"/>
-        <location filename="smartlink/st_operations.cpp" line="449"/>
-        <location filename="smartlink/st_operations.cpp" line="541"/>
-        <location filename="smartlink/st_operations.cpp" line="583"/>
-        <location filename="smartlink/st_operations.cpp" line="665"/>
-        <location filename="smartlink/st_operations.cpp" line="724"/>
-        <location filename="smartlink/st_operations.cpp" line="796"/>
-        <location filename="smartlink/st_operations.cpp" line="877"/>
-        <location filename="smartlink/st_operations.cpp" line="1073"/>
-        <location filename="smartlink/st_operations.cpp" line="1359"/>
-        <location filename="smartlink/st_operations.cpp" line="1554"/>
-        <location filename="smartlink/st_operations.cpp" line="1585"/>
-        <location filename="smartlink/st_operations.cpp" line="1608"/>
         <source>Database is not ready.</source>
-        <translation>数据库尚未准备好.</translation>
+        <translation type="vanished">数据库尚未准备好.</translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="152"/>
         <source>Serial/ID is not valid : %1,%2</source>
-        <translation>序列号/ID 不正确: %1,%2</translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_operations.cpp" line="194"/>
-        <source>MacID %1 update a device %2 that belongs to macID %3, please remove old items from mac %1 soon.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_operations.cpp" line="290"/>
-        <source>Database Access Error : No such macid and serialnum: %1:%2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_operations.cpp" line="337"/>
-        <source>MacID %1 add a device %2 that belongs to macID %3, please remove old items from mac %1 soon.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_operations.cpp" line="343"/>
-        <source>Already exists a Device :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_operations.cpp" line="394"/>
-        <source>a Device :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_operations.cpp" line="394"/>
-        <source> is not existed in sensorlist, but reported a DAL message.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_operations.cpp" line="478"/>
-        <location filename="smartlink/st_operations.cpp" line="590"/>
-        <source>DAL EventID Error (Event ID %1 is not valid.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_operations.cpp" line="596"/>
-        <location filename="smartlink/st_operations.cpp" line="731"/>
-        <location filename="smartlink/st_operations.cpp" line="803"/>
-        <location filename="smartlink/st_operations.cpp" line="809"/>
-        <location filename="smartlink/st_operations.cpp" line="816"/>
-        <location filename="smartlink/st_operations.cpp" line="884"/>
-        <location filename="smartlink/st_operations.cpp" line="890"/>
-        <location filename="smartlink/st_operations.cpp" line="897"/>
-        <location filename="smartlink/st_operations.cpp" line="923"/>
-        <location filename="smartlink/st_operations.cpp" line="931"/>
-        <location filename="smartlink/st_operations.cpp" line="938"/>
-        <location filename="smartlink/st_operations.cpp" line="946"/>
-        <location filename="smartlink/st_operations.cpp" line="954"/>
-        <location filename="smartlink/st_operations.cpp" line="961"/>
-        <location filename="smartlink/st_operations.cpp" line="970"/>
-        <location filename="smartlink/st_operations.cpp" line="978"/>
-        <location filename="smartlink/st_operations.cpp" line="985"/>
-        <location filename="smartlink/st_operations.cpp" line="993"/>
-        <location filename="smartlink/st_operations.cpp" line="1001"/>
-        <location filename="smartlink/st_operations.cpp" line="1008"/>
-        <location filename="smartlink/st_operations.cpp" line="1014"/>
-        <location filename="smartlink/st_operations.cpp" line="1088"/>
-        <location filename="smartlink/st_operations.cpp" line="1096"/>
-        <location filename="smartlink/st_operations.cpp" line="1103"/>
-        <location filename="smartlink/st_operations.cpp" line="1110"/>
-        <location filename="smartlink/st_operations.cpp" line="1118"/>
-        <location filename="smartlink/st_operations.cpp" line="1125"/>
-        <location filename="smartlink/st_operations.cpp" line="1132"/>
-        <location filename="smartlink/st_operations.cpp" line="1140"/>
-        <location filename="smartlink/st_operations.cpp" line="1147"/>
-        <location filename="smartlink/st_operations.cpp" line="1155"/>
-        <location filename="smartlink/st_operations.cpp" line="1163"/>
-        <location filename="smartlink/st_operations.cpp" line="1170"/>
-        <location filename="smartlink/st_operations.cpp" line="1176"/>
-        <location filename="smartlink/st_operations.cpp" line="1187"/>
-        <location filename="smartlink/st_operations.cpp" line="1195"/>
-        <location filename="smartlink/st_operations.cpp" line="1204"/>
-        <location filename="smartlink/st_operations.cpp" line="1215"/>
-        <location filename="smartlink/st_operations.cpp" line="1223"/>
-        <location filename="smartlink/st_operations.cpp" line="1232"/>
-        <location filename="smartlink/st_operations.cpp" line="1243"/>
-        <location filename="smartlink/st_operations.cpp" line="1251"/>
-        <location filename="smartlink/st_operations.cpp" line="1260"/>
-        <location filename="smartlink/st_operations.cpp" line="1271"/>
-        <location filename="smartlink/st_operations.cpp" line="1279"/>
-        <location filename="smartlink/st_operations.cpp" line="1288"/>
-        <location filename="smartlink/st_operations.cpp" line="1374"/>
-        <location filename="smartlink/st_operations.cpp" line="1382"/>
-        <location filename="smartlink/st_operations.cpp" line="1389"/>
-        <location filename="smartlink/st_operations.cpp" line="1399"/>
-        <location filename="smartlink/st_operations.cpp" line="1407"/>
-        <location filename="smartlink/st_operations.cpp" line="1416"/>
-        <location filename="smartlink/st_operations.cpp" line="1427"/>
-        <location filename="smartlink/st_operations.cpp" line="1435"/>
-        <location filename="smartlink/st_operations.cpp" line="1444"/>
-        <location filename="smartlink/st_operations.cpp" line="1453"/>
-        <location filename="smartlink/st_operations.cpp" line="1461"/>
-        <location filename="smartlink/st_operations.cpp" line="1468"/>
-        <location filename="smartlink/st_operations.cpp" line="1476"/>
-        <location filename="smartlink/st_operations.cpp" line="1484"/>
-        <location filename="smartlink/st_operations.cpp" line="1491"/>
-        <source>Device </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_operations.cpp" line="596"/>
-        <location filename="smartlink/st_operations.cpp" line="731"/>
-        <source>Send a unsupported Device Type.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_operations.cpp" line="634"/>
-        <location filename="smartlink/st_operations.cpp" line="693"/>
-        <source>MacID %1 report a exception of a device %2 that not belongs to it, please remove old items from mac %1 soon.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_operations.cpp" line="803"/>
-        <location filename="smartlink/st_operations.cpp" line="884"/>
-        <location filename="smartlink/st_operations.cpp" line="938"/>
-        <location filename="smartlink/st_operations.cpp" line="961"/>
-        <location filename="smartlink/st_operations.cpp" line="985"/>
-        <location filename="smartlink/st_operations.cpp" line="1008"/>
-        <location filename="smartlink/st_operations.cpp" line="1103"/>
-        <location filename="smartlink/st_operations.cpp" line="1125"/>
-        <location filename="smartlink/st_operations.cpp" line="1147"/>
-        <location filename="smartlink/st_operations.cpp" line="1170"/>
-        <location filename="smartlink/st_operations.cpp" line="1204"/>
-        <location filename="smartlink/st_operations.cpp" line="1232"/>
-        <location filename="smartlink/st_operations.cpp" line="1260"/>
-        <location filename="smartlink/st_operations.cpp" line="1288"/>
-        <location filename="smartlink/st_operations.cpp" line="1389"/>
-        <location filename="smartlink/st_operations.cpp" line="1416"/>
-        <location filename="smartlink/st_operations.cpp" line="1444"/>
-        <location filename="smartlink/st_operations.cpp" line="1468"/>
-        <location filename="smartlink/st_operations.cpp" line="1491"/>
-        <source> Send a wrong DAL Para (%1) Value (unexpected type %2).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_operations.cpp" line="809"/>
-        <location filename="smartlink/st_operations.cpp" line="890"/>
-        <source> Send a wrong DAL Para (%1) Value (Para too short, need 2 bytes, got %2 byte(s)).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_operations.cpp" line="816"/>
-        <source> Send a wrong DAL Para (%1) Value (Para not enough, need 1 para).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_operations.cpp" line="897"/>
-        <source>Send a wrong DAL Para (%1) Value (Para not enough, need 1 para).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_operations.cpp" line="923"/>
-        <location filename="smartlink/st_operations.cpp" line="931"/>
-        <location filename="smartlink/st_operations.cpp" line="946"/>
-        <location filename="smartlink/st_operations.cpp" line="954"/>
-        <location filename="smartlink/st_operations.cpp" line="970"/>
-        <location filename="smartlink/st_operations.cpp" line="978"/>
-        <location filename="smartlink/st_operations.cpp" line="993"/>
-        <location filename="smartlink/st_operations.cpp" line="1001"/>
-        <location filename="smartlink/st_operations.cpp" line="1088"/>
-        <location filename="smartlink/st_operations.cpp" line="1096"/>
-        <location filename="smartlink/st_operations.cpp" line="1110"/>
-        <location filename="smartlink/st_operations.cpp" line="1118"/>
-        <location filename="smartlink/st_operations.cpp" line="1132"/>
-        <location filename="smartlink/st_operations.cpp" line="1140"/>
-        <location filename="smartlink/st_operations.cpp" line="1155"/>
-        <location filename="smartlink/st_operations.cpp" line="1163"/>
-        <location filename="smartlink/st_operations.cpp" line="1187"/>
-        <location filename="smartlink/st_operations.cpp" line="1195"/>
-        <location filename="smartlink/st_operations.cpp" line="1215"/>
-        <location filename="smartlink/st_operations.cpp" line="1223"/>
-        <location filename="smartlink/st_operations.cpp" line="1243"/>
-        <location filename="smartlink/st_operations.cpp" line="1251"/>
-        <location filename="smartlink/st_operations.cpp" line="1271"/>
-        <location filename="smartlink/st_operations.cpp" line="1279"/>
-        <location filename="smartlink/st_operations.cpp" line="1374"/>
-        <location filename="smartlink/st_operations.cpp" line="1382"/>
-        <location filename="smartlink/st_operations.cpp" line="1399"/>
-        <location filename="smartlink/st_operations.cpp" line="1407"/>
-        <location filename="smartlink/st_operations.cpp" line="1427"/>
-        <location filename="smartlink/st_operations.cpp" line="1435"/>
-        <location filename="smartlink/st_operations.cpp" line="1453"/>
-        <location filename="smartlink/st_operations.cpp" line="1461"/>
-        <location filename="smartlink/st_operations.cpp" line="1476"/>
-        <location filename="smartlink/st_operations.cpp" line="1484"/>
-        <source> Need more data.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_operations.cpp" line="1014"/>
-        <source> DAL Evt 0x02 has 4 paras, but WMODE = %1.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="smartlink/st_operations.cpp" line="1176"/>
-        <source> DAL Evt 0x02 more than 9 paras, but WMODE = %1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">序列号/ID 不正确: %1,%2</translation>
     </message>
 </context>
 <context>
@@ -1198,110 +786,52 @@
 <context>
     <name>ZPDatabase::DatabaseResource</name>
     <message>
-        <location filename="database/databaseresource.cpp" line="57"/>
-        <location filename="database/databaseresource.cpp" line="74"/>
-        <location filename="database/databaseresource.cpp" line="83"/>
-        <location filename="database/databaseresource.cpp" line="145"/>
-        <location filename="database/databaseresource.cpp" line="189"/>
         <source> Connection name </source>
-        <translation>数据库连接名称  </translation>
+        <translation type="vanished">数据库连接名称  </translation>
     </message>
     <message>
-        <location filename="database/databaseresource.cpp" line="57"/>
-        <location filename="database/databaseresource.cpp" line="189"/>
         <source> does not exist.</source>
-        <translation>尚未定义。</translation>
+        <translation type="vanished">尚未定义。</translation>
     </message>
     <message>
-        <location filename="database/databaseresource.cpp" line="33"/>
-        <location filename="database/databaseresource.cpp" line="181"/>
-        <location filename="database/databaseresource.cpp" line="207"/>
-        <location filename="database/databaseresource.cpp" line="267"/>
         <source> Connection removed </source>
-        <translation>数据库连接已经移除 </translation>
+        <translation type="vanished">数据库连接已经移除 </translation>
     </message>
     <message>
-        <location filename="database/databaseresource.cpp" line="33"/>
-        <location filename="database/databaseresource.cpp" line="181"/>
-        <location filename="database/databaseresource.cpp" line="207"/>
-        <location filename="database/databaseresource.cpp" line="267"/>
         <source> .</source>
-        <translation>。</translation>
+        <translation type="vanished">。</translation>
     </message>
     <message>
-        <location filename="database/databaseresource.cpp" line="75"/>
-        <location filename="database/databaseresource.cpp" line="146"/>
-        <source> Can not be cloned from database %1.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="database/databaseresource.cpp" line="76"/>
-        <location filename="database/databaseresource.cpp" line="147"/>
-        <source> Err String:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="database/databaseresource.cpp" line="84"/>
-        <source> has been cloned from database %1.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="database/databaseresource.cpp" line="108"/>
-        <location filename="database/databaseresource.cpp" line="137"/>
-        <location filename="database/databaseresource.cpp" line="282"/>
-        <location filename="database/databaseresource.cpp" line="287"/>
-        <location filename="database/databaseresource.cpp" line="325"/>
-        <location filename="database/databaseresource.cpp" line="355"/>
-        <location filename="database/databaseresource.cpp" line="361"/>
-        <location filename="database/databaseresource.cpp" line="381"/>
-        <location filename="database/databaseresource.cpp" line="386"/>
         <source> Connection  </source>
-        <translation>数据库连接 </translation>
+        <translation type="vanished">数据库连接 </translation>
     </message>
     <message>
-        <location filename="database/databaseresource.cpp" line="108"/>
-        <source> Need re-connect. MSG=</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="database/databaseresource.cpp" line="282"/>
         <source> Established.</source>
-        <translation>已经建立。</translation>
+        <translation type="vanished">已经建立。</translation>
     </message>
     <message>
-        <location filename="database/databaseresource.cpp" line="287"/>
-        <location filename="database/databaseresource.cpp" line="361"/>
-        <location filename="database/databaseresource.cpp" line="386"/>
         <source> Can&apos;t be opened. MSG=</source>
-        <translation>无法建立，错误消息=</translation>
+        <translation type="vanished">无法建立，错误消息=</translation>
     </message>
     <message>
-        <location filename="database/databaseresource.cpp" line="308"/>
-        <location filename="database/databaseresource.cpp" line="341"/>
         <source> Connection </source>
-        <translation>数据库连接</translation>
+        <translation type="vanished">数据库连接</translation>
     </message>
     <message>
-        <location filename="database/databaseresource.cpp" line="308"/>
         <source> has not been added.</source>
-        <translation>尚未建立.</translation>
+        <translation type="vanished">尚未建立.</translation>
     </message>
     <message>
-        <location filename="database/databaseresource.cpp" line="325"/>
         <source> confirm failed. MSG=</source>
-        <translation>数据库连接确认失败，出错提示=</translation>
+        <translation type="vanished">数据库连接确认失败，出错提示=</translation>
     </message>
     <message>
-        <location filename="database/databaseresource.cpp" line="341"/>
         <source> has not been opened.</source>
-        <translation>尚未建立。</translation>
+        <translation type="vanished">尚未建立。</translation>
     </message>
     <message>
-        <location filename="database/databaseresource.cpp" line="137"/>
-        <location filename="database/databaseresource.cpp" line="355"/>
-        <location filename="database/databaseresource.cpp" line="381"/>
         <source> Re-Established.</source>
-        <translation>已经恢复正常。</translation>
+        <translation type="vanished">已经恢复正常。</translation>
     </message>
 </context>
 <context>
@@ -1311,275 +841,196 @@
         <translation type="vanished">ZPMainFrame 伸缩流水线服务器框架</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="51"/>
         <source>Summary</source>
-        <translation>概况</translation>
+        <translation type="vanished">概况</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="65"/>
         <source>Settings</source>
-        <translation>设置</translation>
+        <translation type="vanished">设置</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="85"/>
         <source>Listeners</source>
-        <translation>监听器</translation>
+        <translation type="vanished">监听器</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="96"/>
-        <location filename="zpmainframe.ui" line="406"/>
-        <location filename="zpmainframe.cpp" line="153"/>
-        <location filename="zpmainframe.cpp" line="161"/>
-        <location filename="zpmainframe.cpp" line="180"/>
         <source>Name</source>
-        <translation>名称</translation>
+        <translation type="vanished">名称</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="106"/>
-        <location filename="zpmainframe.cpp" line="154"/>
         <source>Addr</source>
-        <translation>地址</translation>
+        <translation type="vanished">地址</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="116"/>
-        <location filename="zpmainframe.cpp" line="155"/>
-        <location filename="zpmainframe.cpp" line="164"/>
-        <source>Port</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="zpmainframe.ui" line="126"/>
         <source>SSL Connection</source>
-        <translation>使用SSL连接</translation>
+        <translation type="vanished">使用SSL连接</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="150"/>
-        <location filename="zpmainframe.ui" line="544"/>
         <source>Add</source>
-        <translation>添加</translation>
+        <translation type="vanished">添加</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="161"/>
         <source>Del</source>
-        <translation>删除</translation>
+        <translation type="vanished">删除</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="172"/>
-        <location filename="zpmainframe.ui" line="377"/>
-        <location filename="zpmainframe.ui" line="566"/>
         <source>Save</source>
-        <translation>保存</translation>
+        <translation type="vanished">保存</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="190"/>
         <source>Task Pools</source>
-        <translation>任务池</translation>
+        <translation type="vanished">任务池</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="233"/>
-        <location filename="zpmainframe.ui" line="278"/>
-        <location filename="zpmainframe.ui" line="320"/>
         <source>%v</source>
-        <translation>%v</translation>
+        <translation type="vanished">%v</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="285"/>
         <source>Working Task Threads</source>
-        <translation>逻辑处理线程数目</translation>
+        <translation type="vanished">逻辑处理线程数目</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="240"/>
         <source>SSL connection Trans Threads</source>
-        <translation>SSL 连接传输线程数目</translation>
+        <translation type="vanished">SSL 连接传输线程数目</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="198"/>
         <source>Plain connection Trans Threads</source>
-        <translation>普通TCP连接传输线程数目</translation>
+        <translation type="vanished">普通TCP连接传输线程数目</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="331"/>
         <source>Rabbish Can Items Size</source>
-        <translation>垃圾回收池条目大小</translation>
+        <translation type="vanished">垃圾回收池条目大小</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="395"/>
-        <location filename="zpmainframe.ui" line="1065"/>
-        <location filename="zpmainframe.cpp" line="165"/>
         <source>Database</source>
-        <translation>数据库资源</translation>
+        <translation type="vanished">数据库资源</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="416"/>
-        <location filename="zpmainframe.cpp" line="162"/>
         <source>Type</source>
-        <translation>类型</translation>
+        <translation type="vanished">类型</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="443"/>
         <source>Host Address</source>
-        <translation>主机地址</translation>
+        <translation type="vanished">主机地址</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="453"/>
         <source>Host Port</source>
-        <translation>主机端口</translation>
+        <translation type="vanished">主机端口</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="463"/>
         <source>Database Name</source>
-        <translation>数据库实例</translation>
+        <translation type="vanished">数据库实例</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="490"/>
         <source>User</source>
-        <translation>用户名</translation>
+        <translation type="vanished">用户名</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="500"/>
         <source>Password</source>
-        <translation>口令</translation>
+        <translation type="vanished">口令</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="555"/>
         <source>Remove</source>
-        <translation>移除</translation>
+        <translation type="vanished">移除</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="584"/>
-        <location filename="zpmainframe.ui" line="1079"/>
         <source>Cluster</source>
-        <translation>集群终端</translation>
+        <translation type="vanished">集群终端</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="602"/>
         <source>Terminal Listen Address</source>
-        <translation>终端本地监听地址</translation>
+        <translation type="vanished">终端本地监听地址</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="612"/>
         <source>Listen Port</source>
-        <translation>本地端口</translation>
+        <translation type="vanished">本地端口</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="652"/>
         <source>TransThreads</source>
-        <translation>传输线程数</translation>
+        <translation type="vanished">传输线程数</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="678"/>
         <source>Working Threads</source>
-        <translation>处理线程数</translation>
+        <translation type="vanished">处理线程数</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="706"/>
         <source>Active Terminals</source>
-        <translation>可用集群终端表</translation>
+        <translation type="vanished">可用集群终端表</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="724"/>
         <source>LAN Address</source>
-        <translation>服务器局域网地址</translation>
+        <translation type="vanished">服务器局域网地址</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="734"/>
         <source>LAN Port</source>
-        <translation>服务器局域网端口</translation>
+        <translation type="vanished">服务器局域网端口</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="772"/>
         <source>Publish Address</source>
-        <translation>本节点对外发布地址</translation>
+        <translation type="vanished">本节点对外发布地址</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="782"/>
         <source>Publish Port</source>
-        <translation>发布端口</translation>
+        <translation type="vanished">发布端口</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="1210"/>
-        <source>show&amp;Window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="zpmainframe.ui" line="1213"/>
-        <source>showMainWindow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="zpmainframe.ui" line="592"/>
         <source>Publish Name</source>
-        <translation>发布名称</translation>
+        <translation type="vanished">发布名称</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="757"/>
-        <location filename="zpmainframe.ui" line="1009"/>
         <source>&amp;Save</source>
-        <translation>保存(&amp;S)</translation>
+        <translation type="vanished">保存(&amp;S)</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="805"/>
         <source>Participate</source>
-        <translation>加入集群</translation>
+        <translation type="vanished">加入集群</translation>
     </message>
     <message>
         <source>Example Server</source>
         <translation type="vanished">范例服务器</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="905"/>
         <source>Cluster balance max payload</source>
-        <translation>本服务器承担客户端超过门限后触发集群均衡</translation>
+        <translation type="vanished">本服务器承担客户端超过门限后触发集群均衡</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="939"/>
         <source>Log Level</source>
-        <translation>日志等级</translation>
+        <translation type="vanished">日志等级</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="949"/>
         <source>Event Table Keep Last </source>
-        <translation>事件表记录最新</translation>
+        <translation type="vanished">事件表记录最新</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="959"/>
         <source>Day(s)</source>
-        <translation>天</translation>
+        <translation type="vanished">天</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="1093"/>
         <source>Smartlink</source>
-        <translation>Smartlink 专有设置</translation>
+        <translation type="vanished">Smartlink 专有设置</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="831"/>
         <source>Heart-beating</source>
-        <translation>心跳检测最大保活时延</translation>
+        <translation type="vanished">心跳检测最大保活时延</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="14"/>
         <source>ParkingLotsStatusSvr</source>
-        <translation type="unfinished">停车场状态监控分系统_后台服务</translation>
+        <translation type="obsolete">停车场状态监控分系统_后台服务</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="823"/>
         <source>Parkinglots Status Svr</source>
-        <translation>停车场状态监控分系统后台服务</translation>
+        <translation type="vanished">停车场状态监控分系统后台服务</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="870"/>
         <source>seconds</source>
-        <translation>秒</translation>
+        <translation type="vanished">秒</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="881"/>
         <source>User Account Database Name</source>
-        <translation>用户信息数据库连接资源名称</translation>
+        <translation type="vanished">用户信息数据库连接资源名称</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="891"/>
         <source>Main event db name</source>
-        <translation>关键消息缓存数据库连接资源名称</translation>
+        <translation type="vanished">关键消息缓存数据库连接资源名称</translation>
     </message>
     <message>
         <source>Large data root folder</source>
@@ -1590,144 +1041,101 @@
         <translation type="vanished">...</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="1031"/>
         <source>Messages</source>
-        <translation>运行消息</translation>
+        <translation type="vanished">运行消息</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="1051"/>
         <source>Nodes</source>
-        <translation>节点</translation>
+        <translation type="vanished">节点</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="1120"/>
         <source>&amp;Control</source>
-        <translation>控制(&amp;C)</translation>
+        <translation type="vanished">控制(&amp;C)</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="1129"/>
         <source>&amp;Help</source>
-        <translation>帮助(&amp;H)</translation>
+        <translation type="vanished">帮助(&amp;H)</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="1164"/>
         <source>E&amp;xit</source>
-        <translation>退出(&amp;x)</translation>
+        <translation type="vanished">退出(&amp;x)</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="1177"/>
         <source>&amp;Start/Stop</source>
-        <translation>开始/结束(&amp;S)</translation>
+        <translation type="vanished">开始/结束(&amp;S)</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="1180"/>
         <source>Start or stop the server</source>
-        <translation>开启或者暂停服务</translation>
+        <translation type="vanished">开启或者暂停服务</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="1189"/>
         <source>&amp;About</source>
-        <translation>关于(&amp;A)</translation>
+        <translation type="vanished">关于(&amp;A)</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="1198"/>
         <source>&amp;Reload config file</source>
-        <translation>重新加载配置文件(&amp;R)</translation>
+        <translation type="vanished">重新加载配置文件(&amp;R)</translation>
     </message>
     <message>
-        <location filename="zpmainframe.ui" line="1201"/>
         <source>Reload Config file</source>
-        <translation>重新加载配置文件并调整服务器参数</translation>
+        <translation type="vanished">重新加载配置文件并调整服务器参数</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="156"/>
         <source>SSL</source>
-        <translation>SSL</translation>
+        <translation type="vanished">SSL</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="163"/>
         <source>HostAddr</source>
-        <translation>服务地址</translation>
+        <translation type="vanished">服务地址</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="166"/>
         <source>Username</source>
-        <translation>用户名</translation>
+        <translation type="vanished">用户名</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="167"/>
         <source>Options</source>
-        <translation>附加选项</translation>
+        <translation type="vanished">附加选项</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="168"/>
         <source>TestSQL</source>
-        <translation>用于测试连接的SQL</translation>
+        <translation type="vanished">用于测试连接的SQL</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="181"/>
         <source>LAN_Address</source>
-        <translation>服务器局域网地址</translation>
+        <translation type="vanished">服务器局域网地址</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="182"/>
         <source>LAN_Port</source>
-        <translation>服务器局域网端口</translation>
+        <translation type="vanished">服务器局域网端口</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="183"/>
         <source>Clients</source>
-        <translation>拥有客户端</translation>
+        <translation type="vanished">拥有客户端</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="184"/>
         <source>Pub_Address</source>
-        <translation>本节点对外发布地址</translation>
+        <translation type="vanished">本节点对外发布地址</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="185"/>
         <source>Pub_Port</source>
-        <translation>发布端口</translation>
+        <translation type="vanished">发布端口</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="190"/>
-        <source>0: Fatal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="zpmainframe.cpp" line="191"/>
-        <source>1: Critical</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="zpmainframe.cpp" line="192"/>
-        <source>2: Warning</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="zpmainframe.cpp" line="193"/>
-        <source>3: Debug</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="zpmainframe.cpp" line="286"/>
         <source>Current Listen Threads: %1
 </source>
-        <translation>监听端口: %1
+        <translation type="vanished">监听端口: %1
 </translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="288"/>
         <source>	Listen Threads %1: %2
 </source>
-        <translation>	线程%1 监听 %2 
+        <translation type="vanished">	线程%1 监听 %2 
 </translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="291"/>
         <source>Current Trans Threads: %1
 </source>
-        <translation>传输线程: %1
+        <translation type="vanished">传输线程: %1
 </translation>
     </message>
     <message>
@@ -1737,65 +1145,48 @@
 </translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="99"/>
         <source>Confire Exit</source>
-        <translation>确认退出</translation>
+        <translation type="vanished">确认退出</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="100"/>
         <source>There are still some clients alive in the server. continue waiting?</source>
-        <translation>有尚未主动退出的节点套接字，是否继续等待?</translation>
+        <translation type="vanished">有尚未主动退出的节点套接字，是否继续等待?</translation>
     </message>
     <message>
         <source>Address</source>
         <translation type="vanished">发布地址</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="201"/>
-        <location filename="zpmainframe.cpp" line="213"/>
-        <location filename="zpmainframe.cpp" line="225"/>
-        <location filename="zpmainframe.cpp" line="253"/>
         <source>,Source=%1</source>
-        <translation>,来源:%1</translation>
+        <translation type="vanished">,来源:%1</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="295"/>
-        <location filename="zpmainframe.cpp" line="338"/>
-        <source>	%1:%2</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="zpmainframe.cpp" line="306"/>
         <source>Current Task Threads: %1
 </source>
-        <translation>逻辑处理线程: %1
+        <translation type="vanished">逻辑处理线程: %1
 </translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="307"/>
         <source>Current Task Payload: %1
 </source>
-        <translation>逻辑处理负荷: %1
+        <translation type="vanished">逻辑处理负荷: %1
 </translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="308"/>
         <source>Current Task Idle Threads: %1
 </source>
-        <translation>空闲逻辑处理线程:%1
+        <translation type="vanished">空闲逻辑处理线程:%1
 </translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="312"/>
         <source>Database Connections: %1
 </source>
-        <translation>数据库连接: %1
+        <translation type="vanished">数据库连接: %1
 </translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="316"/>
         <source>	%1 status = %2</source>
-        <translation>	连接 %1 状态 %2</translation>
+        <translation type="vanished">	连接 %1 状态 %2</translation>
     </message>
     <message>
         <source>Cluster Group Paras:
@@ -1810,182 +1201,131 @@
 </translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="125"/>
-        <location filename="zpmainframe.cpp" line="1027"/>
-        <source>Server still running</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="zpmainframe.cpp" line="126"/>
-        <location filename="zpmainframe.cpp" line="1028"/>
-        <source>If you want to terminate server, just using exit Toolbar button.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="zpmainframe.cpp" line="323"/>
         <source>Cluster Paras:
 </source>
-        <translation>集群参数:
+        <translation type="vanished">集群参数:
 </translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="324"/>
         <source>	Terminal %1 : %2
 		LAN Address: %3:%4
 		 Publish: %5:%6
 		balance max clients=%7
 </source>
-        <translation>	集群终端 %1:%2
+        <translation type="vanished">	集群终端 %1:%2
 		高速集群网地址 %3:%4
 		发布公网地址  %5:%6
 		集群均衡门限 %7
 </translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="335"/>
         <source>Trans Threads: %1
 </source>
-        <translation>传输线程: %1
+        <translation type="vanished">传输线程: %1
 </translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="343"/>
         <source>	Shift Threads: %1
 </source>
-        <translation>	处理线程: %1
+        <translation type="vanished">	处理线程: %1
 </translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="344"/>
         <source>	Shift Payload: %1
 </source>
-        <translation>	处理线程负荷: %1
+        <translation type="vanished">	处理线程负荷: %1
 </translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="345"/>
         <source>	Shift Idle Threads: %1
 </source>
-        <translation>	处理线程空闲: %1
+        <translation type="vanished">	处理线程空闲: %1
 </translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="348"/>
         <source>Smartlink Function Server Paras:
 </source>
-        <translation>Smartlink 功能服务器专有参数:
+        <translation type="vanished">Smartlink 功能服务器专有参数:
 </translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="349"/>
         <source>	User Account Database is : %1
 </source>
-        <translation>	用户信息数据库: %1
+        <translation type="vanished">	用户信息数据库: %1
 </translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="350"/>
         <source>	Event Database is : %1
 </source>
-        <translation>	重要事件数据库: %1
+        <translation type="vanished">	重要事件数据库: %1
 </translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="351"/>
         <source>	Local folder for large file is : %1
 </source>
-        <translation>	磁盘仓库根路径: %1
+        <translation type="vanished">	磁盘仓库根路径: %1
 </translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="352"/>
         <source>	Heart beating Threadhold is : %1
 </source>
-        <translation>	心跳保活门限 %1 秒
+        <translation type="vanished">	心跳保活门限 %1 秒
 </translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="382"/>
         <source> Rec %1B(%3 kbps)  Sent %2B(%4 kbps)</source>
-        <translation>收 %1 字节(%3 kbps) 发 %2 字节(%4 kbps)</translation>
+        <translation type="vanished">收 %1 字节(%3 kbps) 发 %2 字节(%4 kbps)</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="432"/>
-        <source>Trying to establish cluster connection from node </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="zpmainframe.cpp" line="863"/>
         <source>Name Already Used.</source>
-        <translation>名称已经存在.</translation>
+        <translation type="vanished">名称已经存在.</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="863"/>
         <source>The listener name has been used.</source>
-        <translation>监听器的名称已经被使用了。</translation>
+        <translation type="vanished">监听器的名称已经被使用了。</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="868"/>
         <source>Invalid Paraments.</source>
-        <translation>无效的参数.</translation>
+        <translation type="vanished">无效的参数.</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="868"/>
         <source>Address must be valid, Port between 1024 to 32767.</source>
-        <translation>监听端口需要介于 1024 到 32767之间。</translation>
+        <translation type="vanished">监听端口需要介于 1024 到 32767之间。</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="914"/>
         <source>Open Conf file</source>
-        <translation>打开配置文件</translation>
+        <translation type="vanished">打开配置文件</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="915"/>
         <source>Ini files(*.ini)</source>
-        <translation>Ini文件(*.ini)</translation>
+        <translation type="vanished">Ini文件(*.ini)</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="931"/>
         <source>Name can&apos;t be empty.</source>
-        <translation>名称不能为空.</translation>
+        <translation type="vanished">名称不能为空.</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="931"/>
         <source>Database name can not be empty.</source>
-        <translation>数据库资源名称不能为空。</translation>
+        <translation type="vanished">数据库资源名称不能为空。</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="936"/>
         <source>Name already exist.</source>
-        <translation>名称已经被使用了。</translation>
+        <translation type="vanished">名称已经被使用了。</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="936"/>
         <source>Database name already exist.</source>
-        <translation>名称已经被使用了。</translation>
-    </message>
-    <message>
-        <location filename="zpmainframe.cpp" line="1034"/>
-        <source>Server is  going to closed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="zpmainframe.cpp" line="1035"/>
-        <source>Waiting for all unfinished progress...</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">名称已经被使用了。</translation>
     </message>
 </context>
 <context>
     <name>ZPNetwork::zp_netListenThread</name>
     <message>
-        <location filename="network/zp_netlistenthread.cpp" line="40"/>
         <source>Can not start listen!</source>
-        <translation>无法启动监听！</translation>
+        <translation type="vanished">无法启动监听！</translation>
     </message>
     <message>
-        <location filename="network/zp_netlistenthread.cpp" line="66"/>
         <source>Listen Closed!</source>
-        <translation>监听结束！</translation>
+        <translation type="vanished">监听结束！</translation>
     </message>
 </context>
 <context>
@@ -1995,202 +1335,324 @@
         <translation type="vanished">接受节点的接入请求.</translation>
     </message>
     <message>
-        <location filename="network/zp_nettransthread.cpp" line="248"/>
         <source>Client connected.</source>
-        <translation>节点已成功连接.</translation>
+        <translation type="vanished">节点已成功连接.</translation>
     </message>
     <message>
         <source>Client Encrypted.</source>
         <translation type="vanished">节点已成功建立加密连接.</translation>
     </message>
     <message>
-        <location filename="network/zp_nettransthread.cpp" line="179"/>
-        <source>(%1)..Accepted.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="network/zp_nettransthread.cpp" line="250"/>
-        <source>(%1)..connected.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="network/zp_nettransthread.cpp" line="259"/>
-        <source>(%1)..Encrypted.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="network/zp_nettransthread.cpp" line="287"/>
-        <source>(%1)..Closed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="network/zp_nettransthread.cpp" line="348"/>
-        <source>(%1)..Error :%2.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="network/zp_nettransthread.cpp" line="370"/>
-        <source>Client Error, Closed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="network/zp_nettransthread.cpp" line="286"/>
         <source>Client Closed.</source>
-        <translation>节点已成功关闭.</translation>
+        <translation type="vanished">节点已成功关闭.</translation>
     </message>
 </context>
 <context>
     <name>ZPNetwork::zp_net_Engine</name>
     <message>
-        <location filename="network/zp_net_threadpool.cpp" line="117"/>
         <source>This ID has been used.</source>
-        <translation>这个ID已经被使用了。</translation>
+        <translation type="vanished">这个ID已经被使用了。</translation>
     </message>
     <message>
-        <location filename="network/zp_net_threadpool.cpp" line="157"/>
         <source>Non-zp_netListenThread type detected.</source>
-        <translation>非标准线程被检测到，服务器可能受到攻击.</translation>
+        <translation type="vanished">非标准线程被检测到，服务器可能受到攻击.</translation>
     </message>
     <message>
-        <location filename="network/zp_net_threadpool.cpp" line="162"/>
         <source>Incomming client arriverd.</source>
-        <translation>收到一个节点接入申请.</translation>
+        <translation type="vanished">收到一个节点接入申请.</translation>
     </message>
     <message>
         <source>New Client Arriverd.</source>
         <translation type="vanished">新的节点接入。</translation>
     </message>
     <message>
-        <location filename="network/zp_net_threadpool.cpp" line="192"/>
-        <location filename="network/zp_net_threadpool.cpp" line="193"/>
-        <location filename="network/zp_net_threadpool.cpp" line="460"/>
         <source>Need Trans Thread Object for clients.</source>
-        <translation>需要一些逻辑处理线程来处理具体的事件。</translation>
+        <translation type="vanished">需要一些逻辑处理线程来处理具体的事件。</translation>
     </message>
 </context>
 <context>
     <name>ZP_Cluster::zp_ClusterNode</name>
     <message>
-        <location filename="cluster/zp_clusternode.cpp" line="229"/>
         <source>Client Send a unknown start Header %1 %2. Close client immediately.</source>
-        <translation>客户发出了一个未知的开始头 %1 %2. 立刻关闭连接.</translation>
+        <translation type="vanished">客户发出了一个未知的开始头 %1 %2. 立刻关闭连接.</translation>
     </message>
     <message>
-        <location filename="cluster/zp_clusternode.cpp" line="274"/>
         <source>Info: New Svr already regisited. Ignored.</source>
-        <translation>Info: 这个节点已经注册过了,忽略请求.</translation>
+        <translation type="vanished">Info: 这个节点已经注册过了,忽略请求.</translation>
     </message>
     <message>
-        <location filename="cluster/zp_clusternode.cpp" line="285"/>
         <source>Can not connect to it-self, Loopback connections is forbidden.</source>
-        <translation>请不要连接到自己的服务器节点. 回环连接是不被支持的.</translation>
+        <translation type="vanished">请不要连接到自己的服务器节点. 回环连接是不被支持的.</translation>
     </message>
     <message>
-        <location filename="cluster/zp_clusternode.cpp" line="312"/>
         <source>Name %1 &lt;= %2, omitted.</source>
-        <translation>服务器 %1 优先级低于 %2，不发起连接。</translation>
+        <translation type="vanished">服务器 %1 优先级低于 %2，不发起连接。</translation>
     </message>
     <message>
-        <location filename="cluster/zp_clusternode.cpp" line="338"/>
         <source>Info:Unknown Msg Type got.</source>
-        <translation>Info: 未知的消息类型。</translation>
+        <translation type="vanished">Info: 未知的消息类型。</translation>
     </message>
     <message>
-        <location filename="cluster/zp_clusternode.cpp" line="359"/>
         <source>Client </source>
-        <translation>节点 </translation>
+        <translation type="vanished">节点 </translation>
     </message>
     <message>
-        <location filename="cluster/zp_clusternode.cpp" line="359"/>
         <source> is dead, kick out.</source>
-        <translation>丢失心跳，终止该节点的连接。</translation>
+        <translation type="vanished">丢失心跳，终止该节点的连接。</translation>
     </message>
 </context>
 <context>
     <name>ZP_Cluster::zp_ClusterTerm</name>
     <message>
-        <location filename="cluster/zp_clusterterm.cpp" line="206"/>
         <source>Name is empty!</source>
-        <translation>注册的服务器名称为空！</translation>
+        <translation type="vanished">注册的服务器名称为空！</translation>
     </message>
 </context>
 <context>
     <name>mainwndCtrlPannel</name>
     <message>
+        <location filename="mainwndctrlpannel.ui" line="14"/>
         <source>mainwndCtrlPannel</source>
-        <translation type="vanished">停车场管理监视系统控制台</translation>
+        <translation>停车场管理监视系统控制台</translation>
     </message>
     <message>
+        <location filename="mainwndctrlpannel.ui" line="41"/>
         <source>Summary</source>
-        <translation type="vanished">概况</translation>
+        <translation>概况</translation>
     </message>
     <message>
+        <location filename="mainwndctrlpannel.ui" line="51"/>
         <source>Parkinglots</source>
-        <translation type="vanished">停车场</translation>
+        <translation>停车场</translation>
     </message>
     <message>
+        <location filename="mainwndctrlpannel.ui" line="58"/>
+        <location filename="mainwndctrlpannel.ui" line="82"/>
+        <location filename="mainwndctrlpannel.ui" line="108"/>
+        <location filename="mainwndctrlpannel.ui" line="146"/>
         <source>Double click item to see details.</source>
-        <translation type="vanished">双击条目以查看更多信息</translation>
+        <translation>双击条目以查看更多信息</translation>
     </message>
     <message>
+        <location filename="mainwndctrlpannel.ui" line="75"/>
         <source>MACs</source>
-        <translation type="vanished">网关</translation>
+        <translation>网关</translation>
     </message>
     <message>
+        <location filename="mainwndctrlpannel.ui" line="101"/>
         <source>Devices</source>
-        <translation type="vanished">设备</translation>
+        <translation>设备</translation>
     </message>
     <message>
+        <location filename="mainwndctrlpannel.ui" line="134"/>
         <source>Detail</source>
-        <translation type="vanished">详细事件</translation>
+        <translation>详细事件</translation>
     </message>
     <message>
+        <location filename="mainwndctrlpannel.ui" line="140"/>
         <source>Detailed View</source>
-        <translation type="vanished">详细事件视图</translation>
+        <translation>详细事件视图</translation>
     </message>
     <message>
+        <location filename="mainwndctrlpannel.ui" line="165"/>
         <source>Events History</source>
-        <translation type="vanished">历史事件</translation>
+        <translation>历史事件</translation>
     </message>
     <message>
+        <location filename="mainwndctrlpannel.ui" line="185"/>
         <source>MAC Events</source>
-        <translation type="vanished">网关历史事件</translation>
+        <translation>网关历史事件</translation>
     </message>
     <message>
+        <location filename="mainwndctrlpannel.ui" line="203"/>
         <source>Control</source>
-        <translation type="vanished">控制</translation>
+        <translation>控制</translation>
     </message>
     <message>
+        <location filename="mainwndctrlpannel.ui" line="219"/>
+        <source>Target Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="227"/>
+        <source>Server IP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="237"/>
+        <source>Server Port</source>
+        <translation type="unfinished">主机端口</translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="251"/>
+        <source>Target Mac ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="261"/>
+        <source>Get Mac Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="268"/>
+        <source>Get Dev List</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="279"/>
+        <source>Target Dev ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="289"/>
+        <source>Get Dev Para</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="299"/>
+        <source>Remote Config</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="307"/>
+        <source>HostName</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="317"/>
+        <source>HostInfo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="327"/>
+        <source>&amp;Set MAC Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="338"/>
+        <source>Device Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="348"/>
+        <source>Device Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="358"/>
+        <source>&amp;Set Dev Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="365"/>
+        <source>&amp;Remove Device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="376"/>
+        <source>Firmware File:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="386"/>
+        <source>...</source>
+        <translation type="unfinished">...</translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="393"/>
+        <source>&amp;Run Batch Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="403"/>
+        <source>DAL Ctrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="409"/>
+        <source>DAL Hex string:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="434"/>
+        <source>PushButton</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="447"/>
+        <source>Return message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="469"/>
+        <source>Express</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="514"/>
         <source>&amp;Service</source>
-        <translation type="vanished">服务(&amp;S)</translation>
+        <translation>服务(&amp;S)</translation>
     </message>
     <message>
+        <location filename="mainwndctrlpannel.ui" line="523"/>
         <source>&amp;Help</source>
-        <translation type="vanished">帮助(&amp;H)</translation>
+        <translation>帮助(&amp;H)</translation>
     </message>
     <message>
+        <location filename="mainwndctrlpannel.ui" line="529"/>
         <source>&amp;View</source>
-        <translation type="vanished">视图(&amp;V)</translation>
+        <translation>视图(&amp;V)</translation>
     </message>
     <message>
+        <location filename="mainwndctrlpannel.ui" line="566"/>
         <source>&amp;Connect</source>
-        <translation type="vanished">连接(&amp;C)</translation>
+        <translation>连接(&amp;C)</translation>
     </message>
     <message>
+        <location filename="mainwndctrlpannel.ui" line="575"/>
         <source>Con&amp;fig</source>
-        <translation type="vanished">配置(&amp;f)</translation>
+        <translation>配置(&amp;f)</translation>
     </message>
     <message>
+        <location filename="mainwndctrlpannel.ui" line="580"/>
         <source>E&amp;xit</source>
-        <translation type="vanished">退出(&amp;x)</translation>
+        <translation>退出(&amp;x)</translation>
     </message>
     <message>
+        <location filename="mainwndctrlpannel.ui" line="589"/>
         <source>&amp;About</source>
-        <translation type="vanished">关于(&amp;A)</translation>
+        <translation>关于(&amp;A)</translation>
     </message>
     <message>
+        <location filename="mainwndctrlpannel.ui" line="598"/>
         <source>&amp;Refresh</source>
-        <translation type="vanished">刷新(&amp;R)</translation>
+        <translation>刷新(&amp;R)</translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.cpp" line="90"/>
+        <location filename="mainwndctrlpannel.cpp" line="110"/>
+        <source>DB Connect Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.cpp" line="126"/>
+        <source>DB Query Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.cpp" line="134"/>
+        <source>Username or password is not correct</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.cpp" line="134"/>
+        <source>The username you given is not exist, or password is not correct.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.cpp" line="466"/>
+        <source>Open firmware update cab</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
