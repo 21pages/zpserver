@@ -13,7 +13,7 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwndctrlpannel.cpp \
+	mainwndctrlpannel.cpp \
     dialoglogin.cpp \
     dialogsettings.cpp \
     qcoloriconsqlmodel.cpp \
@@ -32,3 +32,6 @@ FORMS    += mainwndctrlpannel.ui \
 
 RESOURCES += \
     resources.qrc
+OTHER_FILES += \
+	pkCtrlPannel_zh_CN.ts
+TRANSLATIONS +=pkCtrlPannel_zh_CN.ts

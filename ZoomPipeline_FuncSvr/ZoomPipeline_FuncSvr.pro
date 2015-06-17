@@ -65,4 +65,4 @@ RESOURCES += \
 
 OTHER_FILES += \
 	ZoomPipeline_FuncSvr_zh_CN.ts
-
+TRANSLATIONS += ZoomPipeline_FuncSvr_zh_CN.ts

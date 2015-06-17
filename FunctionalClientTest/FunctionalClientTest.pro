@@ -13,10 +13,14 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        maindialog.cpp \
+	maindialog.cpp \
     qghtcpclient.cpp
 
 HEADERS  += maindialog.h \
     qghtcpclient.h
 
 FORMS    += maindialog.ui
+
+OTHER_FILES += \
+	FunctionalClientTest_zh_CN.ts
+TRANSLATIONS += FunctionalClientTest_zh_CN.ts
