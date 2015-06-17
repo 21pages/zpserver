@@ -1044,4 +1044,35 @@ namespace ParkinglotsSvr{
 		}
 		return nRes;
 	}
+	/**
+	 * @brief This function convert ASCII HEX string to uint8 bytearray
+	 *
+	 * @fn devidStr2Array
+	 * @param strDevid			the device ID, 48 byte string, like 0123456789ABCDEF...
+	 * @param array[]			24 byte array
+	 * @param arrayMaxSize		this parament confirm the array [] has acturally more than 24 items
+	 * @return bool				if all succeeded, return true, otherwise return false.
+	 */
+	bool devidStr2Array(const std::string & strDevid, unsigned char array[/*24*/], int arrayMaxSize)
+	{
+		if (strDevid.size()<48 || arrayMaxSize<24)
+			return false;
+		char buf[256];
+		strncpy(buf,strDevid.c_str(),49);
+		for (int i=0;i<24;++i)
+		{
+			quint8 cv = 0;
+			if (buf[i*2] >='0' &&  buf[i*2] <='9')	cv += buf[i*2]-'0';
+			else if (buf[i*2] >='a' &&  buf[i*2] <='f') cv += buf[i*2]-'a' + 10;
+			else if (buf[i*2] >='A' &&  buf[i*2] <='F') cv += buf[i*2]-'A' + 10;
+			else { return false;};
+			cv <<= 4;
+			if (buf[i*2+1] >='0' &&  buf[i*2+1] <='9')	cv += buf[i*2+1]-'0';
+			else if (buf[i*2+1] >='a' &&  buf[i*2+1] <='f') cv += buf[i*2+1]-'a' + 10;
+			else if (buf[i*2+1] >='A' &&  buf[i*2+1] <='F') cv += buf[i*2+1]-'A' + 10;
+			else { return false;};
+			array[i] = cv;
+		}
+		return true;
+	}
 }

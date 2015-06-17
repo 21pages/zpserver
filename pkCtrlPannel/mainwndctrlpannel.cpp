@@ -7,7 +7,7 @@
 #include <QFileInfo>
 #include "mainwndctrlpannel.h"
 #include "ui_mainwndctrlpannel.h"
-#include "./pklts_ctrl/st_ctrl.h"
+#include "./pklts_ctrl/pklts_methods.h"
 #define PKLTS_VIEW ("PKLTS_VIEW")
 
 using namespace ParkinglotsSvr;
@@ -421,22 +421,12 @@ void mainwndCtrlPannel::on_pushButton_getDevPara_clicked()
 	stMsg_GetDeviceParamReq req;
 	//Get Device ID
 	std::string strDevID = ui->lineEdit_tarID_Dev->text().toStdString();
-	char buf[256];
-	strncpy(buf,strDevID.c_str(),49);
-	for (int i=0;i<24;++i)
+	if (false==devidStr2Array(strDevID,req.DeviceID,sizeof(req.DeviceID)))
 	{
-		quint8 cv = 0;
-		if (buf[i*2] >='0' &&  buf[i*2] <='9')	cv += buf[i*2]-'0';
-		else if (buf[i*2] >='a' &&  buf[i*2] <='f') cv += buf[i*2]-'a' + 10;
-		else if (buf[i*2] >='A' &&  buf[i*2] <='F') cv += buf[i*2]-'A' + 10;
-		else {ui_pntf ("Error Reading Hex Data! "); return;};
-		cv <<= 4;
-		if (buf[i*2+1] >='0' &&  buf[i*2+1] <='9')	cv += buf[i*2+1]-'0';
-		else if (buf[i*2+1] >='a' &&  buf[i*2+1] <='f') cv += buf[i*2+1]-'a' + 10;
-		else if (buf[i*2+1] >='A' &&  buf[i*2+1] <='F') cv += buf[i*2+1]-'A' + 10;
-		else {ui_pntf ("Error Reading Hex Data! "); return;};
-		req.DeviceID[i] = cv;
+		ui_pntf ("Error Reading Hex Data! ");
+		return;
 	}
+
 	req.Opt_DALStatus = 1;
 	req.Opt_DeviceInfo = 1;
 	req.Opt_DeviceName = 1;
@@ -486,8 +476,116 @@ void mainwndCtrlPannel::on_toolButton_brff_clicked()
 	ui->lineEdit_firmwarePath->setText(info.absoluteFilePath());
 
 }
+void mainwndCtrlPannel::on_pushButton_setMacInfo_clicked()
+{
+	ui->plainTextEdit_result->clear();
+	//First, Get The Mac ID you want to ask.
+	//Then, define a structure, to hold result.
+	stMsg_SetHostDetailsRsp rsp;
+	stMsg_SetHostDetailsReq req;
+
+	quint32 nMacID = ui->lineEdit_tarID_Mac->text().toUInt();
+	std::string strAddr = ui->lineEdit_SvrIP->text().toStdString();
+	const char * address = strAddr.c_str();
+	quint16 port = ui->lineEdit_Svr_Port->text().toShort();
+
+
+	std::string strName = ui->lineEdit_hostName->text().toStdString();
+	std::string strInfo = ui->lineEdit_hostInfo->text().toStdString();
+
+	strncpy(req.HostName,strName.c_str(),sizeof(req.HostName)-1);
+	strncpy(req.HostInfo,strInfo.c_str(),sizeof(req.HostInfo)-1);
+	//And then, Call the method directly, just like a native method.
+	//Inside the function, a remote call will be executed.
+	int res = st_setHostDetails(address,port,nMacID,&req, &rsp);
+
+	//Check the result, and print the result.
+	ui_pntf ("Res = %d\n",res);
+	if (res == ALL_SUCCEED)
+	{
+		ui_pntf ("rsp.DoneCode = %d\n",(unsigned int)rsp.DoneCode);
+	}
+}
+
+void mainwndCtrlPannel::on_pushButton_setDevInfo_clicked()
+{
+	ui->plainTextEdit_result->clear();
+	//First, Get The Mac ID you want to ask.
+	//Then, define a structure, to hold result.
+	stMsg_setDeviceParamRsp rsp;
+	stMsg_setDeviceParamReq req;
+
+	quint32 nMacID = ui->lineEdit_tarID_Mac->text().toUInt();
+	std::string strAddr = ui->lineEdit_SvrIP->text().toStdString();
+	const char * address = strAddr.c_str();
+	quint16 port = ui->lineEdit_Svr_Port->text().toShort();
+
+	//Get Device ID
+	std::string strDevID = ui->lineEdit_tarID_Dev->text().toStdString();
+	if (false==devidStr2Array(strDevID,req.DeviceID,sizeof(req.DeviceID)))
+	{
+		ui_pntf ("Error Reading Hex Data! ");
+		return;
+	}
+	req.Opt_DeviceInfo = 1;
+	req.Opt_DeviceName = 1;
+
+
+	std::string strName = ui->lineEdit_devName->text().toStdString();
+	std::string strInfo = ui->lineEdit_devInfo->text().toStdString();
+
+	strncpy(req.DeviceName,strName.c_str(),sizeof(req.DeviceName)-1);
+	strncpy(req.DeviceInfo,strInfo.c_str(),sizeof(req.DeviceInfo)-1);
+	//And then, Call the method directly, just like a native method.
+	//Inside the function, a remote call will be executed.
+	int res = st_setDeviceParam(address,port,nMacID,&req, &rsp);
+
+	//Check the result, and print the result.
+	ui_pntf ("Res = %d\n",res);
+	if (res == ALL_SUCCEED)
+	{
+		ui_pntf ("rsp.DoneCode = %d\n",(unsigned int)rsp.DoneCode);
+	}
+}
+
+void mainwndCtrlPannel::on_pushButton_removeDev_clicked()
+{
+	ui->plainTextEdit_result->clear();
+	//First, Get The Mac ID you want to ask.
+	//Then, define a structure, to hold result.
+	stMsg_RemoveDeviceRsp rsp;
+	stMsg_RemoveDeviceReq req;
+
+	quint32 nMacID = ui->lineEdit_tarID_Mac->text().toUInt();
+	std::string strAddr = ui->lineEdit_SvrIP->text().toStdString();
+	const char * address = strAddr.c_str();
+	quint16 port = ui->lineEdit_Svr_Port->text().toShort();
+
+	//Get Device ID
+	std::string strDevID = ui->lineEdit_tarID_Dev->text().toStdString();
+	if (false==devidStr2Array(strDevID,req.DeviceID,sizeof(req.DeviceID)))
+	{
+		ui_pntf ("Error Reading Hex Data! ");
+		return;
+	}
+
+	//And then, Call the method directly, just like a native method.
+	//Inside the function, a remote call will be executed.
+	int res = st_removeDevice(address,port,nMacID,&req, &rsp);
+
+	//Check the result, and print the result.
+	ui_pntf ("Res = %d\n",res);
+	if (res == ALL_SUCCEED)
+	{
+		ui_pntf ("rsp.DoneCode = %d\n",(unsigned int)rsp.DoneCode);
+	}
+}
 
 void mainwndCtrlPannel::on_pushButton_runfu_clicked()
+{
+
+}
+void mainwndCtrlPannel::on_pushButton_dalctrl_clicked()
 {
 
 }

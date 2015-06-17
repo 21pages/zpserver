@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>691</width>
-    <height>504</height>
+    <width>680</width>
+    <height>447</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,7 +24,7 @@
        <enum>QTabWidget::Triangular</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>4</number>
       </property>
       <property name="iconSize">
        <size>
@@ -205,12 +205,18 @@
        <layout class="QVBoxLayout" name="verticalLayout_8">
         <item>
          <widget class="QTabWidget" name="tabWidget_ctrl">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="currentIndex">
            <number>0</number>
           </property>
           <widget class="QWidget" name="tab_target">
            <attribute name="title">
-            <string>Target</string>
+            <string>Target Info</string>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_7">
             <item>
@@ -338,15 +344,84 @@
           </widget>
           <widget class="QWidget" name="tab_2">
            <attribute name="title">
-            <string>Firmware Update</string>
+            <string>Remote Config</string>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_9">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_11">
+              <item>
+               <widget class="QLabel" name="label_12">
+                <property name="text">
+                 <string>HostName</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="lineEdit_hostName"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_13">
+                <property name="text">
+                 <string>HostInfo</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="lineEdit_hostInfo"/>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_setMacInfo">
+                <property name="text">
+                 <string>&amp;Set MAC Info</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_12">
+              <item>
+               <widget class="QLabel" name="label_15">
+                <property name="text">
+                 <string>Device Name</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="lineEdit_devName"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_14">
+                <property name="text">
+                 <string>Device Info</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="lineEdit_devInfo"/>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_setDevInfo">
+                <property name="text">
+                 <string>&amp;Set Dev Info</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_removeDev">
+                <property name="text">
+                 <string>&amp;Remove Device</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_10">
               <item>
                <widget class="QLabel" name="label_10">
                 <property name="text">
-                 <string>File:</string>
+                 <string>Firmware File:</string>
                 </property>
                </widget>
               </item>
@@ -360,30 +435,17 @@
                 </property>
                </widget>
               </item>
-             </layout>
-            </item>
-            <item>
-             <spacer name="verticalSpacer">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>48</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_9">
               <item>
                <widget class="QPushButton" name="pushButton_runfu">
                 <property name="text">
-                 <string>&amp;Run</string>
+                 <string>&amp;Run Batch Update</string>
                 </property>
                </widget>
               </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_9">
               <item>
                <widget class="QLabel" name="label_11">
                 <property name="text">
@@ -402,6 +464,47 @@
             </item>
            </layout>
           </widget>
+          <widget class="QWidget" name="tab">
+           <attribute name="title">
+            <string>DAL Ctrl</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_10">
+            <item>
+             <widget class="QLabel" name="label_16">
+              <property name="text">
+               <string>DAL Hex string:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPlainTextEdit" name="plainTextEdit_DAL"/>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_13">
+              <item>
+               <spacer name="horizontalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_dalctrl">
+                <property name="text">
+                 <string>PushButton</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
          </widget>
         </item>
         <item>
@@ -412,7 +515,14 @@
          </widget>
         </item>
         <item>
-         <widget class="QPlainTextEdit" name="plainTextEdit_result"/>
+         <widget class="QPlainTextEdit" name="plainTextEdit_result">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -436,11 +546,14 @@
           <property name="movement">
            <enum>QListView::Snap</enum>
           </property>
+          <property name="resizeMode">
+           <enum>QListView::Fixed</enum>
+          </property>
           <property name="spacing">
            <number>16</number>
           </property>
           <property name="viewMode">
-           <enum>QListView::ListMode</enum>
+           <enum>QListView::IconMode</enum>
           </property>
           <property name="wordWrap">
            <bool>true</bool>
@@ -458,7 +571,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>691</width>
+     <width>680</width>
      <height>23</height>
     </rect>
    </property>

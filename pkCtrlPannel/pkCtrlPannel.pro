@@ -24,7 +24,7 @@ HEADERS  += mainwndctrlpannel.h \
     dialogsettings.h \
     qcoloriconsqlmodel.h \
     pklts_ctrl/st_ctrlmsg.h \
-    pklts_ctrl/st_ctrl.h
+    pklts_ctrl/pklts_methods.h
 
 FORMS    += mainwndctrlpannel.ui \
     dialoglogin.ui \
