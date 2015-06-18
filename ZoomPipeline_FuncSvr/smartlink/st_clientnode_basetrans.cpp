@@ -310,7 +310,7 @@ namespace ParkinglotsSvr{
 					QByteArray arrayClean;
 					arrayClean.append(0xca);
 					arrayClean.append(0xca);
-					qDebug()<<tr("Watching Dog Checker cross svr  macid failed, force reboot remote mac:")<<macid;
+					qWarning()<<tr("Watching Dog Checker cross svr  macid failed, force reboot remote mac:")<<macid;
 					emit evt_SendDataToClient(this->sock(),arrayClean);
 					m_last_Watching = QDateTime::currentDateTime();
 				}

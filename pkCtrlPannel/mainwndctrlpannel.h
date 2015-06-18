@@ -38,6 +38,9 @@ private:
 	void UpdateIconAndColors();
 	void ui_pntf(const char * pFmt,...);
 
+	void LoadSettings();
+	void SaveSettings();
+
 public slots:
 	void on_actionExit_triggered();
 	void on_actionConfig_triggered();
