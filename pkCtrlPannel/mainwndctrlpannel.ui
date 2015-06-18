@@ -219,8 +219,8 @@
           </property>
           <widget class="QWidget" name="tab_target">
            <attribute name="icon">
-            <iconset resource="../ZoomPipeline_FuncSvr/resource.qrc">
-             <normaloff>:/icons/Resources/Alienware (27).png</normaloff>:/icons/Resources/Alienware (27).png</iconset>
+            <iconset resource="resources.qrc">
+             <normaloff>:/pkCtrlPannel/resources/Color, Blueberry.png</normaloff>:/pkCtrlPannel/resources/Color, Blueberry.png</iconset>
            </attribute>
            <attribute name="title">
             <string>Target Info</string>
@@ -268,8 +268,8 @@
                  <string>Get Mac Info</string>
                 </property>
                 <property name="icon">
-                 <iconset resource="../ZoomPipeline_FuncSvr/resource.qrc">
-                  <normaloff>:/icons/Resources/Alienware (13).png</normaloff>:/icons/Resources/Alienware (13).png</iconset>
+                 <iconset resource="resources.qrc">
+                  <normaloff>:/pkCtrlPannel/resources/AquaBubble 037.png</normaloff>:/pkCtrlPannel/resources/AquaBubble 037.png</iconset>
                 </property>
                </widget>
               </item>
@@ -279,8 +279,8 @@
                  <string>Get Dev List</string>
                 </property>
                 <property name="icon">
-                 <iconset resource="../ZoomPipeline_FuncSvr/resource.qrc">
-                  <normaloff>:/icons/Resources/019-1.png</normaloff>:/icons/Resources/019-1.png</iconset>
+                 <iconset resource="resources.qrc">
+                  <normaloff>:/pkCtrlPannel/resources/Color, Bondi-1.png</normaloff>:/pkCtrlPannel/resources/Color, Bondi-1.png</iconset>
                 </property>
                </widget>
               </item>
@@ -305,7 +305,7 @@
                 </property>
                 <property name="icon">
                  <iconset resource="../ZoomPipeline_FuncSvr/resource.qrc">
-                  <normaloff>:/icons/Resources/Color, Graphite.png</normaloff>:/icons/Resources/Color, Graphite.png</iconset>
+                  <normaloff>:/icons/Resources/Color, Bondi.png</normaloff>:/icons/Resources/Color, Bondi.png</iconset>
                 </property>
                </widget>
               </item>
@@ -315,8 +315,8 @@
           </widget>
           <widget class="QWidget" name="tab_2">
            <attribute name="icon">
-            <iconset resource="../ZoomPipeline_FuncSvr/resource.qrc">
-             <normaloff>:/icons/Resources/Backup drive.png</normaloff>:/icons/Resources/Backup drive.png</iconset>
+            <iconset resource="resources.qrc">
+             <normaloff>:/pkCtrlPannel/resources/Color, Ruby.png</normaloff>:/pkCtrlPannel/resources/Color, Ruby.png</iconset>
            </attribute>
            <attribute name="title">
             <string>Remote Config</string>
@@ -350,8 +350,8 @@
                  <string>Set MAC Info</string>
                 </property>
                 <property name="icon">
-                 <iconset resource="../ZoomPipeline_FuncSvr/resource.qrc">
-                  <normaloff>:/icons/Resources/cn1.png</normaloff>:/icons/Resources/cn1.png</iconset>
+                 <iconset resource="resources.qrc">
+                  <normaloff>:/pkCtrlPannel/resources/Color, Grape.png</normaloff>:/pkCtrlPannel/resources/Color, Grape.png</iconset>
                 </property>
                </widget>
               </item>
@@ -382,18 +382,18 @@
               <item>
                <widget class="QPushButton" name="pushButton_setDevInfo">
                 <property name="text">
-                 <string>&amp;Set Dev Info</string>
+                 <string>Set Dev Info</string>
                 </property>
                 <property name="icon">
-                 <iconset resource="../ZoomPipeline_FuncSvr/resource.qrc">
-                  <normaloff>:/icons/Resources/cn10.png</normaloff>:/icons/Resources/cn10.png</iconset>
+                 <iconset resource="resources.qrc">
+                  <normaloff>:/pkCtrlPannel/resources/Color, Lemon.png</normaloff>:/pkCtrlPannel/resources/Color, Lemon.png</iconset>
                 </property>
                </widget>
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_removeDev">
                 <property name="text">
-                 <string>&amp;Remove Device</string>
+                 <string>Remove Device</string>
                 </property>
                 <property name="icon">
                  <iconset resource="resources.qrc">
@@ -425,11 +425,11 @@
               <item>
                <widget class="QPushButton" name="pushButton_runfu">
                 <property name="text">
-                 <string>&amp;Run Batch Update</string>
+                 <string>Run Batch Update</string>
                 </property>
                 <property name="icon">
-                 <iconset resource="../ZoomPipeline_FuncSvr/resource.qrc">
-                  <normaloff>:/icons/Resources/terminalserver.png</normaloff>:/icons/Resources/terminalserver.png</iconset>
+                 <iconset resource="resources.qrc">
+                  <normaloff>:/pkCtrlPannel/resources/Alert_04.png</normaloff>:/pkCtrlPannel/resources/Alert_04.png</iconset>
                 </property>
                </widget>
               </item>
@@ -475,6 +475,10 @@
                <widget class="QPushButton" name="pushButton_dalctrl">
                 <property name="text">
                  <string>Send</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resources.qrc">
+                  <normaloff>:/pkCtrlPannel/resources/Alert_04.png</normaloff>:/pkCtrlPannel/resources/Alert_04.png</iconset>
                 </property>
                </widget>
               </item>
