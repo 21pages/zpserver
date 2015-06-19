@@ -679,7 +679,7 @@ void mainwndCtrlPannel::on_pushButton_runfu_clicked()
 			ui_pntf ("Update Failed!\n");
 			break;
 		}
-
+		++gp;
 	}
 
 	file.close();
