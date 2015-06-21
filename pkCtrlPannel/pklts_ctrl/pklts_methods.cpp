@@ -985,7 +985,8 @@ namespace ParkinglotsCtrl{
 			stMsg_DeviceCtrlRsp * pOutputBuf)
 	{
 		//Calc the string length
-		int nSendLen = sizeof(PKLTS_Trans_Header) + sizeof(PKLTS_App_Header)+ sizeof (pInData->DeviceID) + pInData->DALArrayLength;
+		int nSendLen = sizeof(PKLTS_Trans_Header) + sizeof(PKLTS_App_Header)
+				+ sizeof (pInData->DeviceID)+ sizeof (pInData->DALArrayLength) + pInData->DALArrayLength;
 		unsigned char * messageSend = new unsigned char [nSendLen];
 		PKLTS_Message * pMessageSend = (PKLTS_Message *) messageSend;
 		pMessageSend->trans_header.Mark = 0x55AA;
@@ -994,9 +995,10 @@ namespace ParkinglotsCtrl{
 		pMessageSend->trans_header.DataLen =  sizeof(PKLTS_App_Header) + sizeof(stMsg_DeviceCtrlReq) + pInData->DALArrayLength ;
 		pMessageSend->trans_payload.app_layer.app_header.MsgType = 0x200E;
 		for (int i=0;i<24;++i)
-			pMessageSend->trans_payload.app_layer.app_data.msg[i] = pInData->DeviceID[i];
+			pMessageSend->trans_payload.app_layer.app_data.msg_DeviceCtrlReq.DeviceID[i] = pInData->DeviceID[i];
 		for (int i=0;i<pInData->DALArrayLength;++i)
-			pMessageSend->trans_payload.app_layer.app_data.msg[i+24] = pDAL[i];
+			pMessageSend->trans_payload.app_layer.app_data.msg[i+24+sizeof (pInData->DALArrayLength)] = pDAL[i];
+		pMessageSend->trans_payload.app_layer.app_data.msg_DeviceCtrlReq.DALArrayLength = pInData->DALArrayLength;
 
 		std::vector<quint8> vec_response;
 		int nRes = RemoteFunctionCall(address,port,
