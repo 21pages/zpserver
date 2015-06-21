@@ -491,7 +491,7 @@ int MainDialog::deal_current_message_block()
 
 		QByteArray array((char *)messageSend,nSendLen);
 		client->SendData(array);
-		displayMessage(tr("Recieved ctral msg 0x2000") );
+		displayMessage(tr("Recieved ctrl msg 0x2000") );
 		delete [] messageSend;
 
 	}
@@ -722,7 +722,7 @@ int MainDialog::deal_current_message_block()
 		pMessageSend->trans_header.DstID = (quint32)(msg_in->trans_header.SrcID);
 		pMessageSend->trans_header.DataLen =  sizeof(ParkinglotsCtrl::PKLTS_App_Header)
 				+ sizeof(ParkinglotsCtrl::stMsg_DeviceCtrlRsp);
-		pMessageSend->trans_payload.app_layer.app_header.MsgType = 0x280D;
+		pMessageSend->trans_payload.app_layer.app_header.MsgType = 0x280E;
 		pMessageSend->trans_payload.app_layer.app_data.msg_DeviceCtrlRsp.DoneCode = 0;
 
 		displayMessage(tr("Recieved ctral msg 0x200E") );
