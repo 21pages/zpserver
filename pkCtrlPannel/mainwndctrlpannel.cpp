@@ -27,6 +27,8 @@ mainwndCtrlPannel::mainwndCtrlPannel(QWidget *parent) :
 	m_pModel_EvtHis = new QColorIconSqlModel(this);      ui->tableView_events->setModel(m_pModel_EvtHis);
 	m_pModel_MacHis = new QColorIconSqlModel(this);      ui->tableView_macevt->setModel(m_pModel_MacHis);
 	m_pModel_Express_DEV = new QColorIconSqlModel(this); ui->listView_express->setModel(m_pModel_Express_DEV);
+
+	LoadSettings();
 }
 
 mainwndCtrlPannel::~mainwndCtrlPannel()
@@ -193,7 +195,7 @@ void mainwndCtrlPannel::on_listView_sum_pklts_doubleClicked(const QModelIndex & 
 		strSQL = QString("select * from view_summary_mac_park_user where parkid = %1 and username = '%2' ").arg(ID).arg(strUserName);
 		m_pModel_Summary_MAC->setQueryPrefix(strSQL,m_db);
 		//strSQL = QString("select CONCAT(IFNULL(devicename,deviceid),'-',IF(occupied=0,'-IDLE','-BUSY')) as currstatus from view_dev_mac_park_user  where parkid = %1 and username = '%2' and deviceid like '0100%' and (status = 0 or status = 1) order by devicename,deviceid asc ").arg(ID).arg(strUserName);
-		strSQL = QString("select CONCAT(CONCAT(IFNULL(devicename,'NONAME'), ':',mid(deviceid,17,6)),'-',IF(occupied=0,'-IDLE','-BUSY')) as currstatus from view_dev_mac_park_user  where parkid = %1 and username = '%2' and deviceid like '0100%' and (status = 0 or status = 1) order by devicename,deviceid asc ").arg(ID).arg(strUserName);
+		strSQL = QString("select CONCAT(CONCAT(IFNULL(devicename,'NONAME'), ':',mid(deviceid,21,2)),mid(deviceid,19,2)),mid(deviceid,17,2)),'-',IF(occupied=0,'-IDLE','-BUSY')) as currstatus from view_dev_mac_park_user  where parkid = %1 and username = '%2' and deviceid like '0100%' and (status = 0 or status = 1) order by devicename,deviceid asc ").arg(ID).arg(strUserName);
 		m_pModel_Express_DEV->setQueryPrefix(strSQL,m_db,-1);
 	}
 }
@@ -324,6 +326,33 @@ void mainwndCtrlPannel::UpdateIconAndColors()
 		}
 	}
 }
+void mainwndCtrlPannel::LoadSettings()
+{
+	QSettings settings(QCoreApplication::applicationFilePath()+".ini",QSettings::IniFormat);
+	ui->lineEdit_devInfo->setText(settings.value("settings/lineEdit_devInfo","DEV001").toString());
+	ui->lineEdit_devName->setText(settings.value("settings/lineEdit_devName","DEV NAME").toString());
+	ui->lineEdit_firmwarePath->setText(settings.value("settings/lineEdit_firmwarePath","./default.dat").toString());
+	ui->lineEdit_hostInfo->setText(settings.value("settings/lineEdit_hostInfo","MAC TEST 001").toString());
+	ui->lineEdit_hostName->setText(settings.value("settings/lineEdit_hostName","MAC001").toString());
+	ui->lineEdit_SvrIP->setText(settings.value("settings/lineEdit_SvrIP","127.0.0.1").toString());
+	ui->lineEdit_Svr_Port->setText(settings.value("settings/lineEdit_Svr_Port","23457").toString());
+	ui->lineEdit_tarID_Dev->setText(settings.value("settings/lineEdit_tarID_Dev","01FEFF000000000001234567890ABCDEF0000000").toString());
+	ui->lineEdit_tarID_Mac->setText(settings.value("settings/lineEdit_tarID_Mac","65536").toString());
+}
+
+void mainwndCtrlPannel::SaveSettings()
+{
+	QSettings settings(QCoreApplication::applicationFilePath()+".ini",QSettings::IniFormat);
+	settings.setValue("settings/lineEdit_devInfo",ui->lineEdit_devInfo->text());
+	settings.setValue("settings/lineEdit_devName",ui->lineEdit_devName->text());
+	settings.setValue("settings/lineEdit_firmwarePath",ui->lineEdit_firmwarePath->text());
+	settings.setValue("settings/lineEdit_hostInfo",ui->lineEdit_hostInfo->text());
+	settings.setValue("settings/lineEdit_hostName",ui->lineEdit_hostName->text());
+	settings.setValue("settings/lineEdit_SvrIP",ui->lineEdit_SvrIP->text());
+	settings.setValue("settings/lineEdit_Svr_Port",ui->lineEdit_Svr_Port->text());
+	settings.setValue("settings/lineEdit_tarID_Dev",ui->lineEdit_tarID_Dev->text());
+	settings.setValue("settings/lineEdit_tarID_Mac",ui->lineEdit_tarID_Mac->text());
+}
 
 void  mainwndCtrlPannel::ui_pntf(const char * pFmt , ...)
 {
@@ -348,6 +377,7 @@ void  mainwndCtrlPannel::ui_pntf(const char * pFmt , ...)
 
 void mainwndCtrlPannel::on_pushButton_getMacInfo_clicked()
 {
+	SaveSettings();
 	ui->plainTextEdit_result->clear();
 	//First, Get The Mac ID you want to ask.
 	//Then, define a structure, to hold result.
@@ -381,6 +411,7 @@ void mainwndCtrlPannel::on_pushButton_getMacInfo_clicked()
 
 void mainwndCtrlPannel::on_pushButton_getDevList_clicked()
 {
+	SaveSettings();
 	ui->plainTextEdit_result->clear();
 	//First, Get The Mac ID you want to ask.
 	quint32 nMacID = ui->lineEdit_tarID_Mac->text().toUInt();
@@ -414,6 +445,7 @@ void mainwndCtrlPannel::on_pushButton_getDevList_clicked()
 
 void mainwndCtrlPannel::on_pushButton_getDevPara_clicked()
 {
+	SaveSettings();
 	ui->plainTextEdit_result->clear();
 	//First, Get The Mac ID you want to ask.
 	quint32 nMacID = ui->lineEdit_tarID_Mac->text().toUInt();
@@ -459,6 +491,7 @@ void mainwndCtrlPannel::on_pushButton_getDevPara_clicked()
 }
 void mainwndCtrlPannel::on_toolButton_brff_clicked()
 {
+	SaveSettings();
 	QSettings settings(QCoreApplication::applicationFilePath()+".ini",QSettings::IniFormat);
 	QString lastOpenDir = settings.value("history/lastfudir","./").toString();
 	QString fm = QFileDialog::getOpenFileName(
@@ -481,6 +514,7 @@ void mainwndCtrlPannel::on_toolButton_brff_clicked()
 }
 void mainwndCtrlPannel::on_pushButton_setMacInfo_clicked()
 {
+	SaveSettings();
 	ui->plainTextEdit_result->clear();
 	//First, Get The Mac ID you want to ask.
 	//Then, define a structure, to hold result.
@@ -512,6 +546,7 @@ void mainwndCtrlPannel::on_pushButton_setMacInfo_clicked()
 
 void mainwndCtrlPannel::on_pushButton_setDevInfo_clicked()
 {
+	SaveSettings();
 	ui->plainTextEdit_result->clear();
 	//First, Get The Mac ID you want to ask.
 	//Then, define a structure, to hold result.
@@ -553,6 +588,7 @@ void mainwndCtrlPannel::on_pushButton_setDevInfo_clicked()
 
 void mainwndCtrlPannel::on_pushButton_removeDev_clicked()
 {
+	SaveSettings();
 	ui->plainTextEdit_result->clear();
 	//First, Get The Mac ID you want to ask.
 	//Then, define a structure, to hold result.
@@ -586,6 +622,7 @@ void mainwndCtrlPannel::on_pushButton_removeDev_clicked()
 
 void mainwndCtrlPannel::on_pushButton_runfu_clicked()
 {
+	SaveSettings();
 	QFile file (ui->lineEdit_firmwarePath->text());
 	if (file.open(QIODevice::ReadOnly)==false)
 		return;
@@ -642,13 +679,14 @@ void mainwndCtrlPannel::on_pushButton_runfu_clicked()
 			ui_pntf ("Update Failed!\n");
 			break;
 		}
-
+		++gp;
 	}
 
 	file.close();
 }
 void mainwndCtrlPannel::on_pushButton_dalctrl_clicked()
 {
+	SaveSettings();
 	ui->plainTextEdit_result->clear();
 	//First, Get The Mac ID you want to ask.
 	//Then, define a structure, to hold result.

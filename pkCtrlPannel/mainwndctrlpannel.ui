@@ -24,7 +24,7 @@
        <enum>QTabWidget::Triangular</enum>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -211,10 +211,17 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="tabShape">
+           <enum>QTabWidget::Triangular</enum>
+          </property>
           <property name="currentIndex">
            <number>0</number>
           </property>
           <widget class="QWidget" name="tab_target">
+           <attribute name="icon">
+            <iconset resource="resources.qrc">
+             <normaloff>:/pkCtrlPannel/resources/Color, Blueberry.png</normaloff>:/pkCtrlPannel/resources/Color, Blueberry.png</iconset>
+           </attribute>
            <attribute name="title">
             <string>Target Info</string>
            </attribute>
@@ -260,12 +267,20 @@
                 <property name="text">
                  <string>Get Mac Info</string>
                 </property>
+                <property name="icon">
+                 <iconset resource="resources.qrc">
+                  <normaloff>:/pkCtrlPannel/resources/AquaBubble 037.png</normaloff>:/pkCtrlPannel/resources/AquaBubble 037.png</iconset>
+                </property>
                </widget>
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_getDevList">
                 <property name="text">
                  <string>Get Dev List</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resources.qrc">
+                  <normaloff>:/pkCtrlPannel/resources/Color, Bondi-1.png</normaloff>:/pkCtrlPannel/resources/Color, Bondi-1.png</iconset>
                 </property>
                </widget>
               </item>
@@ -288,6 +303,10 @@
                 <property name="text">
                  <string>Get Dev Para</string>
                 </property>
+                <property name="icon">
+                 <iconset resource="../ZoomPipeline_FuncSvr/resource.qrc">
+                  <normaloff>:/icons/Resources/Color, Bondi.png</normaloff>:/icons/Resources/Color, Bondi.png</iconset>
+                </property>
                </widget>
               </item>
              </layout>
@@ -295,6 +314,10 @@
            </layout>
           </widget>
           <widget class="QWidget" name="tab_2">
+           <attribute name="icon">
+            <iconset resource="resources.qrc">
+             <normaloff>:/pkCtrlPannel/resources/Color, Ruby.png</normaloff>:/pkCtrlPannel/resources/Color, Ruby.png</iconset>
+           </attribute>
            <attribute name="title">
             <string>Remote Config</string>
            </attribute>
@@ -324,7 +347,11 @@
               <item>
                <widget class="QPushButton" name="pushButton_setMacInfo">
                 <property name="text">
-                 <string>&amp;Set MAC Info</string>
+                 <string>Set MAC Info</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resources.qrc">
+                  <normaloff>:/pkCtrlPannel/resources/Color, Grape.png</normaloff>:/pkCtrlPannel/resources/Color, Grape.png</iconset>
                 </property>
                </widget>
               </item>
@@ -355,14 +382,22 @@
               <item>
                <widget class="QPushButton" name="pushButton_setDevInfo">
                 <property name="text">
-                 <string>&amp;Set Dev Info</string>
+                 <string>Set Dev Info</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resources.qrc">
+                  <normaloff>:/pkCtrlPannel/resources/Color, Lemon.png</normaloff>:/pkCtrlPannel/resources/Color, Lemon.png</iconset>
                 </property>
                </widget>
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_removeDev">
                 <property name="text">
-                 <string>&amp;Remove Device</string>
+                 <string>Remove Device</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resources.qrc">
+                  <normaloff>:/pkCtrlPannel/resources/No Battery.png</normaloff>:/pkCtrlPannel/resources/No Battery.png</iconset>
                 </property>
                </widget>
               </item>
@@ -390,7 +425,11 @@
               <item>
                <widget class="QPushButton" name="pushButton_runfu">
                 <property name="text">
-                 <string>&amp;Run Batch Update</string>
+                 <string>Run Batch Update</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resources.qrc">
+                  <normaloff>:/pkCtrlPannel/resources/Alert_04.png</normaloff>:/pkCtrlPannel/resources/Alert_04.png</iconset>
                 </property>
                </widget>
               </item>
@@ -399,6 +438,10 @@
            </layout>
           </widget>
           <widget class="QWidget" name="tab">
+           <attribute name="icon">
+            <iconset resource="resources.qrc">
+             <normaloff>:/pkCtrlPannel/resources/Documents-12.png</normaloff>:/pkCtrlPannel/resources/Documents-12.png</iconset>
+           </attribute>
            <attribute name="title">
             <string>DAL Ctrl</string>
            </attribute>
@@ -431,7 +474,11 @@
               <item>
                <widget class="QPushButton" name="pushButton_dalctrl">
                 <property name="text">
-                 <string>PushButton</string>
+                 <string>Send</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resources.qrc">
+                  <normaloff>:/pkCtrlPannel/resources/Alert_04.png</normaloff>:/pkCtrlPannel/resources/Alert_04.png</iconset>
                 </property>
                </widget>
               </item>
@@ -506,7 +553,7 @@
      <x>0</x>
      <y>0</y>
      <width>587</width>
-     <height>23</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_Service">
@@ -601,6 +648,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
+  <include location="../ZoomPipeline_FuncSvr/resource.qrc"/>
   <include location="resources.qrc"/>
  </resources>
  <connections/>

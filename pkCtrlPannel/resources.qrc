@@ -11,5 +11,16 @@
         <file>resources/services-2.png</file>
         <file>resources/No Battery.png</file>
         <file>resources/good.png</file>
+        <file>resources/Color, Blueberry.png</file>
+        <file>resources/Color, Bondi-1.png</file>
+        <file>resources/Color, Bondi.png</file>
+        <file>resources/Color, Grape.png</file>
+        <file>resources/Color, Graphite.png</file>
+        <file>resources/Color, Indigo.png</file>
+        <file>resources/Color, Lemon.png</file>
+        <file>resources/Color, Lime.png</file>
+        <file>resources/Color, Ruby.png</file>
+        <file>resources/Color, Sage.png</file>
+        <file>resources/Color, Strawberry.png</file>
     </qresource>
 </RCC>
