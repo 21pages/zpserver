@@ -1174,7 +1174,7 @@ namespace ParkinglotsSvr{
 		if (para_dal_WMODE!=1)
 		{
 			qWarning()<< tr("Device ") << hex2ascii(pEvent->DeviceID,24) << tr(" DAL Evt 0x02 more than 9 paras, but WMODE = %1.").arg((unsigned int)para_dal_WMODE);
-			return 1;
+			//return 1; //Attation!! this will be removed.
 		}
 
 

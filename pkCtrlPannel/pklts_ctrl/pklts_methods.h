@@ -4,7 +4,7 @@
 #include <string>
 #include <QByteArray>
 #include "st_ctrlmsg.h"
-namespace ParkinglotsSvr{
+namespace ParkinglotsCtrl{
 
 	quint32  st_getMACInfo(
 			const char * address,

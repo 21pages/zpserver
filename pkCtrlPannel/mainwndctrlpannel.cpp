@@ -10,7 +10,7 @@
 #include "./pklts_ctrl/pklts_methods.h"
 #define PKLTS_VIEW ("PKLTS_VIEW")
 
-using namespace ParkinglotsSvr;
+using namespace ParkinglotsCtrl;
 
 mainwndCtrlPannel::mainwndCtrlPannel(QWidget *parent) :
 	QMainWindow(parent),
@@ -369,7 +369,11 @@ void  mainwndCtrlPannel::ui_pntf(const char * pFmt , ...)
 		va_end (args);
 
 		if (ret >=0 || len >=65536)
-			ui->plainTextEdit_result->appendPlainText(QString::fromLocal8Bit(buffer));
+		{
+			QString strText = ui->plainTextEdit_result->toPlainText();
+			strText += QString::fromLocal8Bit(buffer);
+			ui->plainTextEdit_result->setPlainText(strText);
+		}
 
 		free( buffer );
 	} while (ret <0 && len < 65536);
@@ -629,7 +633,7 @@ void mainwndCtrlPannel::on_pushButton_runfu_clicked()
 
 	//file total size
 	int totalsz = file.size();
-	int groups = totalsz / 4096 + totalsz % 4096==0?0:1;
+	int groups = totalsz / 4096 + (totalsz % 4096==0?0:1);
 
 	ui->plainTextEdit_result->clear();
 	//First, Get The Mac ID you want to ask.
@@ -669,7 +673,7 @@ void mainwndCtrlPannel::on_pushButton_runfu_clicked()
 			}
 			else
 			{
-				ui_pntf ("Block %d%d succeeded...!\n",gp,groups);
+				ui_pntf ("Block %d:%d succeeded...!\n",gp,groups);
 				break;
 			}
 			++retry;
