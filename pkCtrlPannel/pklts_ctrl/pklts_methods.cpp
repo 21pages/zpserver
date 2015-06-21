@@ -8,7 +8,7 @@
 #include <QDebug>
 #include <assert.h>
 #include "st_ctrlmsg.h"
-namespace ParkinglotsSvr{
+namespace ParkinglotsCtrl{
 #ifndef memcpy_s
 	void memcpy_s(void * tar, size_t szTar, const void * src, size_t szSrc)
 	{
@@ -27,7 +27,7 @@ namespace ParkinglotsSvr{
 			std::vector<quint8> & vec_result
 			)
 	{
-		int res = ParkinglotsSvr::ALL_SUCCEED;
+		int res = ParkinglotsCtrl::ALL_SUCCEED;
 
 		QTcpSocket * socket = new QTcpSocket;
 		socket->connectToHost(QHostAddress(address),port);
@@ -41,12 +41,12 @@ namespace ParkinglotsSvr{
 				qint64 iResult = socket->write((const char *) sendbuf + totalSent, (qint64)len -totalSent);
 				if (iResult ==-1) {
 					qDebug()<<"send failed with error: "<<socket->errorString();
-					res =  ParkinglotsSvr::ERRNET_SendDataFailed;
+					res =  ParkinglotsCtrl::ERRNET_SendDataFailed;
 					break;
 				}
 				totalSent += iResult;
 			}while (totalSent < len );
-			if (res ==  ParkinglotsSvr::ALL_SUCCEED)
+			if (res ==  ParkinglotsCtrl::ALL_SUCCEED)
 			{
 				qDebug("Bytes Sent: %ld", totalSent);
 
@@ -63,17 +63,17 @@ namespace ParkinglotsSvr{
 						foreach (quint8 d, dt)
 							vec_result.push_back(d);
 						totalRecieved += dt.size();
-						if (totalRecieved >= sizeof(ParkinglotsSvr::PKLTS_Trans_Header))
+						if (totalRecieved >= sizeof(ParkinglotsCtrl::PKLTS_Trans_Header))
 						{
-							ParkinglotsSvr::PKLTS_Trans_Header * pHeader = (ParkinglotsSvr::PKLTS_Trans_Header *)vec_result.data();
+							ParkinglotsCtrl::PKLTS_Trans_Header * pHeader = (ParkinglotsCtrl::PKLTS_Trans_Header *)vec_result.data();
 							if (pHeader->Mark==0x55AA)
-								totalWant = pHeader->DataLen + sizeof(ParkinglotsSvr::PKLTS_Trans_Header);
+								totalWant = pHeader->DataLen + sizeof(ParkinglotsCtrl::PKLTS_Trans_Header);
 							else
 							{
 								//Send End Message
 								char bufferEnd[] = {0,0,0,0};
 								socket->write((const char *) bufferEnd, (int)sizeof(bufferEnd));
-								res = ParkinglotsSvr::ERRNET_RecvDataFailed;
+								res = ParkinglotsCtrl::ERRNET_RecvDataFailed;
 								break;
 							}
 						}
@@ -86,10 +86,10 @@ namespace ParkinglotsSvr{
 						}
 					}
 				}
-				if (res ==  ParkinglotsSvr::ALL_SUCCEED)
+				if (res ==  ParkinglotsCtrl::ALL_SUCCEED)
 				{
 					if (totalRecieved <  totalWant)
-						res = ParkinglotsSvr::ERRNET_RecvDataFailed;
+						res = ParkinglotsCtrl::ERRNET_RecvDataFailed;
 				}
 			}
 
@@ -98,7 +98,7 @@ namespace ParkinglotsSvr{
 		}
 		else
 		{
-			res = ParkinglotsSvr::ERRNET_ConnectionFailed;
+			res = ParkinglotsCtrl::ERRNET_ConnectionFailed;
 			socket->abort();
 		}
 
@@ -985,7 +985,8 @@ namespace ParkinglotsSvr{
 			stMsg_DeviceCtrlRsp * pOutputBuf)
 	{
 		//Calc the string length
-		int nSendLen = sizeof(PKLTS_Trans_Header) + sizeof(PKLTS_App_Header)+ sizeof (pInData->DeviceID) + pInData->DALArrayLength;
+		int nSendLen = sizeof(PKLTS_Trans_Header) + sizeof(PKLTS_App_Header)
+				+ sizeof (pInData->DeviceID)+ sizeof (pInData->DALArrayLength) + pInData->DALArrayLength;
 		unsigned char * messageSend = new unsigned char [nSendLen];
 		PKLTS_Message * pMessageSend = (PKLTS_Message *) messageSend;
 		pMessageSend->trans_header.Mark = 0x55AA;
@@ -994,9 +995,10 @@ namespace ParkinglotsSvr{
 		pMessageSend->trans_header.DataLen =  sizeof(PKLTS_App_Header) + sizeof(stMsg_DeviceCtrlReq) + pInData->DALArrayLength ;
 		pMessageSend->trans_payload.app_layer.app_header.MsgType = 0x200E;
 		for (int i=0;i<24;++i)
-			pMessageSend->trans_payload.app_layer.app_data.msg[i] = pInData->DeviceID[i];
+			pMessageSend->trans_payload.app_layer.app_data.msg_DeviceCtrlReq.DeviceID[i] = pInData->DeviceID[i];
 		for (int i=0;i<pInData->DALArrayLength;++i)
-			pMessageSend->trans_payload.app_layer.app_data.msg[i+24] = pDAL[i];
+			pMessageSend->trans_payload.app_layer.app_data.msg[i+24+sizeof (pInData->DALArrayLength)] = pDAL[i];
+		pMessageSend->trans_payload.app_layer.app_data.msg_DeviceCtrlReq.DALArrayLength = pInData->DALArrayLength;
 
 		std::vector<quint8> vec_response;
 		int nRes = RemoteFunctionCall(address,port,

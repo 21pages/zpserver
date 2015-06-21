@@ -13,8 +13,9 @@ namespace ParkinglotsSvr{
 		m_uuid = 0xffffffff;//Not Valid
 		m_pClientTable = pClientTable;
 		bTermSet = false;
-		m_last_Report = QDateTime::currentDateTime();
+		m_last_Report = m_last_Watching = QDateTime::currentDateTime();
 		m_remotePort = 0;
+		m_bWatchingDog = false;
 	}
 	void st_clientNode_baseTrans::setRemoteInfo(QString addr, quint16 port)
 	{
@@ -155,13 +156,8 @@ namespace ParkinglotsSvr{
 
 
 			//Heart Beating
-			if (m_currentHeader.Mark == 0xBEBE)
+			if (m_currentHeader.Mark == 0xBEBE && m_bWatchingDog==false)
 			{
-				//while (m_currentMessageSize< sizeof(PKLTS_HEARTBEATING) && blocklen>offset )
-				//{
-				//	m_currentBlock.push_back(dataptr[offset++]);
-				//	m_currentMessageSize++;
-				//}
 				if (m_currentMessageSize< sizeof(PKLTS_Heartbeating) && blocklen>offset )
 				{
 					int nCpy = offset - blocklen;
@@ -176,26 +172,13 @@ namespace ParkinglotsSvr{
 
 				//Send back
 				emit evt_SendDataToClient(this->sock(),m_currentBlock);
-				//qDebug() << "Send Back Heart Beating Msg to " << peerInfo() << ":"<< QString(m_currentBlock.toHex()) ;
-				//Try to Get UUID Immediately
-//				if (m_bUUIDRecieved==false)
-//				{
-//					PKLTS_Heartbeating * pHbMsg = (PKLTS_Heartbeating *)( m_currentBlock.constData());
-//					if (bIsValidUserId(pHbMsg->source_id))
-//					{
-//						m_bUUIDRecieved = true;
-//						m_uuid =  pHbMsg->source_id;
-//						//regisit client node to hash-table;
-//						m_pClientTable->regisitClientUUID(this);
-//					}
-//				}
 
 				//This Message is Over. Start a new one.
 				m_currentMessageSize = 0;
 				m_currentBlock = QByteArray();
 				continue;
 			}
-			else if (m_currentHeader.Mark == 0x55AA)
+			else if (m_currentHeader.Mark == 0x55AA && m_bWatchingDog==false)
 				//Trans Message
 			{
 				//while (m_currentMessageSize< sizeof(PKLTS_TRANS_HEADER) && blocklen>offset)
@@ -284,6 +267,56 @@ namespace ParkinglotsSvr{
 				} // end if there is more bytes to append
 			} //end deal trans message
 			//The client want server close its connection from remote.
+			else if (m_currentHeader.Mark == 0xDFDF)
+			{
+				m_bWatchingDog = true;
+				if (m_currentMessageSize< sizeof(PKLTS_Watchdog) && blocklen>offset )
+				{
+					int nCpy = offset - blocklen;
+					if (nCpy > sizeof(PKLTS_Watchdog) - m_currentMessageSize)
+						nCpy =  sizeof(PKLTS_Watchdog) - m_currentMessageSize;
+					m_currentBlock.push_back(QByteArray(dataptr+offset,nCpy));
+					offset += nCpy;
+					m_currentMessageSize+=nCpy;
+				}
+				if (m_currentMessageSize < sizeof(PKLTS_Watchdog)) //Header not completed.
+					continue;
+
+				//Send back
+				emit evt_SendDataToClient(this->sock(),m_currentBlock);
+				qDebug()<<tr("Client Send Watching Dog 0xDFDF.");
+				//Check macid
+				const PKLTS_Watchdog * dog = (PKLTS_Watchdog *)m_currentBlock.constData();
+				quint32 macid = dog->macid;
+				//This Message is Over. Start a new one.
+				m_currentMessageSize = 0;
+				m_currentBlock = QByteArray();
+				dog = NULL;
+				//Check
+				if (m_pClientTable->clientNodeFromUUID(macid))
+				{
+					m_last_Watching = QDateTime::currentDateTime();
+					qDebug()<<tr("Watching Dog Checker macid ok:")<<macid;
+					continue;
+				}
+				if (m_pClientTable->cross_svr_find_uuid(macid).length())
+				{
+					m_last_Watching = QDateTime::currentDateTime();
+					qDebug()<<tr("Watching Dog Checker cross svr  macid ok:")<<macid;
+					continue;
+				}
+				if (m_last_Watching.secsTo(QDateTime::currentDateTime())>=60)
+				{
+					QByteArray arrayClean;
+					arrayClean.append(0xca);
+					arrayClean.append(0xca);
+					qWarning()<<tr("Watching Dog Checker cross svr  macid failed, force reboot remote mac:")<<macid;
+					emit evt_SendDataToClient(this->sock(),arrayClean);
+					m_last_Watching = QDateTime::currentDateTime();
+				}
+
+				continue;
+			}
 			else if (m_currentHeader.Mark == 0x0000)
 			{
 				qDebug()<<tr("Client Send Immediatlly Disconnection Cmd Header 0x0000.");

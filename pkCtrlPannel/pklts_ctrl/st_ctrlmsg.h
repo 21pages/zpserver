@@ -1,7 +1,7 @@
 ﻿#ifndef ST_CTRLMESSAGE_H
 #define ST_CTRLMESSAGE_H
 
-namespace ParkinglotsSvr{
+namespace ParkinglotsCtrl{
 #define MAXPARAMDATALEN 256
 #define MAXPARAMNUM 8
 
@@ -198,8 +198,12 @@ namespace ParkinglotsSvr{
 					stMsg_GetHostDetailsRsp msg_GetHostDetailsRsp;
 					stMsg_SetHostDetailsReq msg_SetHostDetailsReq;
 					stMsg_SetHostDetailsRsp msg_SetHostDetailsRsp;
+					stMsg_PushFirmUpPackReq msg_PushFirmUpPackReq;
+					stMsg_PushFirmUpPackRsp msg_PushFirmUpPackRsp;
 					stMsg_RemoveDeviceReq   msg_RemoveDeviceReq;
 					stMsg_RemoveDeviceRsp   msg_RemoveDeviceRsp;
+					stMsg_GetDeviceListReq msg_GetDeviceListReq;
+					stMsg_GetDeviceListRsp msg_GetDeviceListRsp;
 					stMsg_GetDeviceParamReq	msg_GetDeviceParamReq;
 					stMsg_GetDeviceParamRsp	msg_GetDeviceParamRsp;
 					stMsg_setDeviceParamReq msg_setDeviceParamReq;

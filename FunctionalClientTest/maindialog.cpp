@@ -1,6 +1,7 @@
 ﻿#include "maindialog.h"
 #include "ui_maindialog.h"
 #include "../ZoomPipeline_FuncSvr/smartlink/st_message.h"
+#include "../pkCtrlPannel/pklts_ctrl/st_ctrlmsg.h"
 #include <QSettings>
 #include <time.h>
 #include <QMessageBox>
@@ -153,7 +154,7 @@ void MainDialog::timerEvent(QTimerEvent * evt)
 		{
 
 			quint16 nMsgLen = sizeof(PKLTS_App_Header);
-					/*+sizeof(stMsg_HostTimeCorrectReq)*/ ;
+			/*+sizeof(stMsg_HostTimeCorrectReq)*/ ;
 			QByteArray array(sizeof(PKLTS_Trans_Header) + nMsgLen,0);
 			char * ptr = array.data();
 			PKLTS_Message * pMsg = (PKLTS_Message *)ptr;
@@ -378,33 +379,36 @@ int MainDialog::deal_current_message_block()
 
 	PKLTS_Message * pMsg = (PKLTS_Message *)((unsigned char *)ptr);
 	PKLTS_Message::uni_trans_payload::tag_pklts_app_layer * pApp = &pMsg->trans_payload.app_layer;
-	if (pApp->app_header.MsgType==0x1800)
+
+	switch (pApp->app_header.MsgType) {
+	case 0x1800:
 	{
 		if (pApp->app_data.msg_HostRegistRsp.DoneCode<2 && pApp->app_data.msg_HostRegistRsp.DoneCode>=0)
 		{
 			m_bLogedIn = true;
 			displayMessage(tr("Regisit Succeed, Res = %1")
-					   .arg(pApp->app_data.msg_HostRegistRsp.DoneCode)
-					   );
+						   .arg(pApp->app_data.msg_HostRegistRsp.DoneCode)
+						   );
 			ui->pushButton_clientLogin->setEnabled(true);
 			ui->pushButton_clientRegisit->setEnabled(false);
 			ui->lineEdit_user_id->setText(QString("%1").arg(pApp->app_data.msg_HostRegistRsp.ID));
 		}
 		else
 			displayMessage(tr("Regisit Failed, Res = %1")
-					   .arg(pApp->app_data.msg_HostRegistRsp.DoneCode)
-					   );
+						   .arg(pApp->app_data.msg_HostRegistRsp.DoneCode)
+						   );
 
 
 	}
-	else if (pApp->app_header.MsgType==0x1801)
+		break;
+	case 0x1801:
 	{
 		if (pApp->app_data.msg_HostLogonRsp.DoneCode==0)
 		{
 			m_bLogedIn = true;
 			displayMessage(tr("Login Succeed, Res = %1")
-					   .arg(pApp->app_data.msg_HostLogonRsp.DoneCode)
-					   );
+						   .arg(pApp->app_data.msg_HostLogonRsp.DoneCode)
+						   );
 			ui->pushButton_clientLogin->setEnabled(false);
 			ui->pushButton_devlist_upload->setEnabled(true);
 			ui->pushButton_UMI_Upload->setEnabled(true);
@@ -412,34 +416,323 @@ int MainDialog::deal_current_message_block()
 		else if (pApp->app_data.msg_HostLogonRsp.DoneCode==1)
 		{
 			displayMessage(tr("Login Failed, Res = %1")
-					   .arg(pApp->app_data.msg_HostLogonRsp.DoneCode)
-					   );
+						   .arg(pApp->app_data.msg_HostLogonRsp.DoneCode)
+						   );
 		}
 		else
 			displayMessage(tr("Login Failed,, Res = %1")
-					   .arg(pApp->app_data.msg_HostLogonRsp.DoneCode)
-					   );
+						   .arg(pApp->app_data.msg_HostLogonRsp.DoneCode)
+						   );
 	}
-	else if (pApp->app_header.MsgType==0x1802)
+	case 0x1802:
 	{
 		if (pApp->app_data.msg_HostTimeCorrectRsp.DoneCode==0)
 		{
 			m_bLogedIn = true;
 			displayMessage(tr("Host Time is %1-%2-%3 %4:%5:%6.")
-					   .arg(pApp->app_data.msg_HostTimeCorrectRsp.DateTime.Year)
-							.arg(pApp->app_data.msg_HostTimeCorrectRsp.DateTime.Month)
-							.arg(pApp->app_data.msg_HostTimeCorrectRsp.DateTime.Day)
-							.arg(pApp->app_data.msg_HostTimeCorrectRsp.DateTime.Hour)
-							.arg(pApp->app_data.msg_HostTimeCorrectRsp.DateTime.Minute)
-							.arg(pApp->app_data.msg_HostTimeCorrectRsp.DateTime.Second)
-					   );
+						   .arg(pApp->app_data.msg_HostTimeCorrectRsp.DateTime.Year)
+						   .arg(pApp->app_data.msg_HostTimeCorrectRsp.DateTime.Month)
+						   .arg(pApp->app_data.msg_HostTimeCorrectRsp.DateTime.Day)
+						   .arg(pApp->app_data.msg_HostTimeCorrectRsp.DateTime.Hour)
+						   .arg(pApp->app_data.msg_HostTimeCorrectRsp.DateTime.Minute)
+						   .arg(pApp->app_data.msg_HostTimeCorrectRsp.DateTime.Second)
+						   );
 		}
 		else
 			displayMessage(tr("Time Crooecting Failed,, Res = %1")
-					   .arg(pApp->app_data.msg_HostTimeCorrectRsp.DoneCode)
-					   );
+						   .arg(pApp->app_data.msg_HostTimeCorrectRsp.DoneCode)
+						   );
 	}
-	else
+		break;
+	case 0x2000:
+	{
+		const ParkinglotsCtrl::PKLTS_Message * msg_in = (const ParkinglotsCtrl::PKLTS_Message * )
+				m_currentBlock.constData();
+		int nSendLen = sizeof(ParkinglotsCtrl::PKLTS_Trans_Header) +
+				sizeof(ParkinglotsCtrl::PKLTS_App_Header) + sizeof(ParkinglotsCtrl::stMsg_GetHostDetailsRsp);
+		unsigned char * messageSend = new unsigned char [nSendLen];
+
+		quint32 userID = ui->lineEdit_user_id->text().toUInt();
+		//QString strSerialNum = ui->lineEdit_serial_num->text();
+
+		ParkinglotsCtrl::PKLTS_Message * pMessageSend = (ParkinglotsCtrl::PKLTS_Message *) messageSend;
+		pMessageSend->trans_header.Mark = 0x55AA;
+		pMessageSend->trans_header.SrcID = (quint32)(userID );
+		pMessageSend->trans_header.DstID = (quint32)(msg_in->trans_header.SrcID);
+		pMessageSend->trans_header.DataLen =  sizeof(ParkinglotsCtrl::PKLTS_App_Header)
+				+ sizeof(ParkinglotsCtrl::stMsg_GetHostDetailsRsp);
+		pMessageSend->trans_payload.app_layer.app_header.MsgType = 0x2800;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetHostDetailsRsp.DoneCode = 0;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetHostDetailsRsp.HostType = 1;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetHostDetailsRsp.FirmwareVersion = 2;
+		//Must be 63+1, or you will using dynamic mem join instead of directly structure pointers
+		for (int i=0;i<63;++i)
+			pMessageSend->trans_payload.app_layer.app_data.msg_GetHostDetailsRsp.HostName[i] = 'A'+i%26;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetHostDetailsRsp.HostName[63] = 0;
+		//Must be 63+1, or you will using dynamic mem join instead of directly structure pointers
+		for (int i=0;i<63;++i)
+			pMessageSend->trans_payload.app_layer.app_data.msg_GetHostDetailsRsp.HostInfo[i] = '0'+i%10;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetHostDetailsRsp.HostInfo[63] = 0;
+
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetHostDetailsRsp.ConnetType = 1;
+		for (int i=0;i<8;++i)
+			pMessageSend->trans_payload.app_layer.app_data.msg_GetHostDetailsRsp.IEEEAdd[i] = i+0x0f;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetHostDetailsRsp.IEEEAdd_Flag = 1;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetHostDetailsRsp.PANID[0] = 1;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetHostDetailsRsp.PANID[1] = 2;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetHostDetailsRsp.PANID_Flag = 1;
+		for (int i=0;i<8;++i)
+			pMessageSend->trans_payload.app_layer.app_data.msg_GetHostDetailsRsp.EPANID[i] = i+0x0f;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetHostDetailsRsp.EPANID_Flag = 1;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetHostDetailsRsp.SensorNum = 1;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetHostDetailsRsp.RelayNum = 1;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetHostDetailsRsp.ANSensorNum = 1;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetHostDetailsRsp.ANRelayNum = 1;
+
+		QByteArray array((char *)messageSend,nSendLen);
+		client->SendData(array);
+		displayMessage(tr("Recieved ctrl msg 0x2000") );
+		delete [] messageSend;
+
+	}
+		break;
+	case 0x2001:
+	{
+		const ParkinglotsCtrl::PKLTS_Message * msg_in = (const ParkinglotsCtrl::PKLTS_Message * )
+				m_currentBlock.constData();
+		int nSendLen = sizeof(ParkinglotsCtrl::PKLTS_Trans_Header) +
+				sizeof(ParkinglotsCtrl::PKLTS_App_Header) + sizeof(ParkinglotsCtrl::stMsg_SetHostDetailsRsp);
+		unsigned char * messageSend = new unsigned char [nSendLen];
+
+		quint32 userID = ui->lineEdit_user_id->text().toUInt();
+		//QString strSerialNum = ui->lineEdit_serial_num->text();
+
+		ParkinglotsCtrl::PKLTS_Message * pMessageSend = (ParkinglotsCtrl::PKLTS_Message *) messageSend;
+		pMessageSend->trans_header.Mark = 0x55AA;
+		pMessageSend->trans_header.SrcID = (quint32)(userID );
+		pMessageSend->trans_header.DstID = (quint32)(msg_in->trans_header.SrcID);
+		pMessageSend->trans_header.DataLen =  sizeof(ParkinglotsCtrl::PKLTS_App_Header)
+				+ sizeof(ParkinglotsCtrl::stMsg_SetHostDetailsRsp);
+		pMessageSend->trans_payload.app_layer.app_header.MsgType = 0x2801;
+		pMessageSend->trans_payload.app_layer.app_data.msg_SetHostDetailsRsp.DoneCode = 0;
+
+		displayMessage(tr("Recieved ctral msg 0x2001") );
+
+		QByteArray array((char *)messageSend,nSendLen);
+		client->SendData(array);
+		delete [] messageSend;
+	}
+		break;
+	case 0x2002:
+	{
+		const ParkinglotsCtrl::PKLTS_Message * msg_in = (const ParkinglotsCtrl::PKLTS_Message * )
+				m_currentBlock.constData();
+		int nSendLen = sizeof(ParkinglotsCtrl::PKLTS_Trans_Header) +
+				sizeof(ParkinglotsCtrl::PKLTS_App_Header)
+				+ sizeof(ParkinglotsCtrl::stMsg_PushFirmUpPackRsp);
+		unsigned char * messageSend = new unsigned char [nSendLen];
+
+		quint32 userID = ui->lineEdit_user_id->text().toUInt();
+		//QString strSerialNum = ui->lineEdit_serial_num->text();
+
+		ParkinglotsCtrl::PKLTS_Message * pMessageSend = (ParkinglotsCtrl::PKLTS_Message *) messageSend;
+		pMessageSend->trans_header.Mark = 0x55AA;
+		pMessageSend->trans_header.SrcID = (quint32)(userID );
+		pMessageSend->trans_header.DstID = (quint32)(msg_in->trans_header.SrcID);
+		pMessageSend->trans_header.DataLen =  sizeof(ParkinglotsCtrl::PKLTS_App_Header)
+				+ sizeof(ParkinglotsCtrl::stMsg_PushFirmUpPackRsp);
+		pMessageSend->trans_payload.app_layer.app_header.MsgType = 0x2802;
+		pMessageSend->trans_payload.app_layer.app_data.msg_PushFirmUpPackRsp.DoneCode = 0;
+		pMessageSend->trans_payload.app_layer.app_data.msg_PushFirmUpPackRsp.SectionNum =
+				msg_in->trans_payload.app_layer.app_data.msg_PushFirmUpPackReq.SectionNum;
+
+		QByteArray array((char *)messageSend,nSendLen);
+		client->SendData(array);
+		displayMessage(tr("Recieved ctrl msg 0x2002 block %1:%2(%3 bytes)")
+					   .arg(msg_in->trans_payload.app_layer.app_data.msg_PushFirmUpPackReq.SectionIndex)
+					   .arg(msg_in->trans_payload.app_layer.app_data.msg_PushFirmUpPackReq.SectionNum)
+					   .arg(msg_in->trans_payload.app_layer.app_data.msg_PushFirmUpPackReq.SectionLen)
+					   );
+		delete [] messageSend;
+	}
+		break;
+	case 0x200A:
+	{
+		const ParkinglotsCtrl::PKLTS_Message * msg_in = (const ParkinglotsCtrl::PKLTS_Message * )
+				m_currentBlock.constData();
+		int nSendLen = sizeof(ParkinglotsCtrl::PKLTS_Trans_Header) +
+				sizeof(ParkinglotsCtrl::PKLTS_App_Header)
+				+ sizeof(ParkinglotsCtrl::stMsg_RemoveDeviceRsp);
+		unsigned char * messageSend = new unsigned char [nSendLen];
+
+		quint32 userID = ui->lineEdit_user_id->text().toUInt();
+		//QString strSerialNum = ui->lineEdit_serial_num->text();
+
+		ParkinglotsCtrl::PKLTS_Message * pMessageSend = (ParkinglotsCtrl::PKLTS_Message *) messageSend;
+		pMessageSend->trans_header.Mark = 0x55AA;
+		pMessageSend->trans_header.SrcID = (quint32)(userID );
+		pMessageSend->trans_header.DstID = (quint32)(msg_in->trans_header.SrcID);
+		pMessageSend->trans_header.DataLen =  sizeof(ParkinglotsCtrl::PKLTS_App_Header)
+				+ sizeof(ParkinglotsCtrl::stMsg_RemoveDeviceRsp);
+		pMessageSend->trans_payload.app_layer.app_header.MsgType = 0x280A;
+		pMessageSend->trans_payload.app_layer.app_data.msg_RemoveDeviceRsp.DoneCode = 0;
+
+		QByteArray array((char *)messageSend,nSendLen);
+		client->SendData(array);
+		displayMessage(tr("Recieved ctrl msg 0x200A block ")  );
+		delete [] messageSend;
+	}
+		break;
+
+	case 0x200B:
+	{
+		const ParkinglotsCtrl::PKLTS_Message * msg_in = (const ParkinglotsCtrl::PKLTS_Message * )
+				m_currentBlock.constData();
+		int nSendLen = sizeof(ParkinglotsCtrl::PKLTS_Trans_Header) +
+				sizeof(ParkinglotsCtrl::PKLTS_App_Header) + sizeof(quint8)*3;
+		unsigned char * messageSend = new unsigned char [nSendLen];
+
+		quint32 userID = ui->lineEdit_user_id->text().toUInt();
+
+		ParkinglotsCtrl::PKLTS_Message * pMessageSend = (ParkinglotsCtrl::PKLTS_Message *) messageSend;
+		pMessageSend->trans_header.Mark = 0x55AA;
+		pMessageSend->trans_header.SrcID = (quint32)(userID );
+		pMessageSend->trans_header.DstID = (quint32)(msg_in->trans_header.SrcID);
+		pMessageSend->trans_header.DataLen =  sizeof(ParkinglotsCtrl::PKLTS_App_Header) + sizeof(quint8)*3;
+		pMessageSend->trans_payload.app_layer.app_header.MsgType = 0x280B;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetDeviceListRsp.DoneCode = 0;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetDeviceListRsp.nDevCount = 3;
+
+		QByteArray array_Back;
+		array_Back.push_back('A');array_Back.push_back('B');array_Back.push_back('C');array_Back.push_back('\0');
+		pMessageSend->trans_header.DataLen += 4;
+		array_Back.push_back('D');array_Back.push_back('E');array_Back.push_back('F');array_Back.push_back('\0');
+		pMessageSend->trans_header.DataLen += 4;
+		array_Back.push_back('G');array_Back.push_back('H');array_Back.push_back('\0');
+		pMessageSend->trans_header.DataLen += 3;
+		array_Back.push_back('1');array_Back.push_back('2');array_Back.push_back('3');array_Back.push_back('\0');
+		pMessageSend->trans_header.DataLen += 4;
+		array_Back.push_back('4');array_Back.push_back('5');array_Back.push_back('6');array_Back.push_back('\0');
+		pMessageSend->trans_header.DataLen += 4;
+		array_Back.push_back('7');array_Back.push_back('8');array_Back.push_back('\0');
+		pMessageSend->trans_header.DataLen += 3;
+
+		for (int i=0;i<24;++i)	array_Back.push_back((char)i+12);
+		pMessageSend->trans_header.DataLen += 24;
+		for (int i=0;i<24;++i)	array_Back.push_back((char)i+44);
+		pMessageSend->trans_header.DataLen += 24;
+		for (int i=0;i<24;++i)	array_Back.push_back((char)i+37);
+		pMessageSend->trans_header.DataLen += 24;
+		QByteArray array((char *)messageSend,nSendLen);
+		array.push_back(array_Back);
+		client->SendData(array);
+		displayMessage(tr("Recieved ctrl msg 0x200B block ")  );
+		delete [] messageSend;
+	}
+		break;
+	case 0x200C:
+	{
+		int DALBYTEs = 8;
+		int DevNameLn = 32;//Must be 32, or you will using dynamic mem join instead of directly structure pointers
+		int DevInfoLn = 64;//Must be 64, or you will using dynamic mem join instead of directly structure pointers
+		const ParkinglotsCtrl::PKLTS_Message * msg_in = (const ParkinglotsCtrl::PKLTS_Message * )
+				m_currentBlock.constData();
+		int nSendLen = sizeof(ParkinglotsCtrl::PKLTS_Trans_Header) +
+				sizeof(ParkinglotsCtrl::PKLTS_App_Header) + sizeof(ParkinglotsCtrl::stMsg_GetDeviceParamRsp)
+				-1 + DALBYTEs;
+		unsigned char * messageSend = new unsigned char [nSendLen];
+
+		quint32 userID = ui->lineEdit_user_id->text().toUInt();
+		//QString strSerialNum = ui->lineEdit_serial_num->text();
+
+		ParkinglotsCtrl::PKLTS_Message * pMessageSend = (ParkinglotsCtrl::PKLTS_Message *) messageSend;
+		pMessageSend->trans_header.Mark = 0x55AA;
+		pMessageSend->trans_header.SrcID = (quint32)(userID );
+		pMessageSend->trans_header.DstID = (quint32)(msg_in->trans_header.SrcID);
+		pMessageSend->trans_header.DataLen =  sizeof(ParkinglotsCtrl::PKLTS_App_Header)+
+				 sizeof(ParkinglotsCtrl::stMsg_GetDeviceParamRsp)
+				-1 + DALBYTEs;
+		pMessageSend->trans_payload.app_layer.app_header.MsgType = 0x280C;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetDeviceParamRsp.DoneCode = 0;
+		for (int i=0;i<24;++i)
+			pMessageSend->trans_payload.app_layer.app_data.msg_GetDeviceParamRsp.DeviceID[i] = i+48;
+		for (int i=0;i<DevNameLn-1;++i)
+			pMessageSend->trans_payload.app_layer.app_data.msg_GetDeviceParamRsp.DeviceName[i] = 'A'+i % 48;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetDeviceParamRsp.DeviceName[DevNameLn-1] = 0;
+		for (int i=0;i<DevInfoLn-1;++i)
+			pMessageSend->trans_payload.app_layer.app_data.msg_GetDeviceParamRsp.DeviceInfo[i] = '0'+i % 16;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetDeviceParamRsp.DeviceInfo[DevInfoLn-1] = 0;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetDeviceParamRsp.Opt_DeviceName = 1;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetDeviceParamRsp.Opt_DeviceInfo = 1;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetDeviceParamRsp.Opt_DALStatus = 1;
+		pMessageSend->trans_payload.app_layer.app_data.msg_GetDeviceParamRsp.DALStatusBytesLen = DALBYTEs;
+
+		for (int i = 0; i< DALBYTEs;++i)
+			pMessageSend->trans_payload.app_layer.app_data.msg_GetDeviceParamRsp.DALStatusBytes[i] = i;
+
+
+		displayMessage(tr("Recieved ctral msg 0x200C") );
+
+		QByteArray array((char *)messageSend,nSendLen);
+		client->SendData(array);
+		delete [] messageSend;
+	}
+		break;
+	case 0x200D:
+	{
+		const ParkinglotsCtrl::PKLTS_Message * msg_in = (const ParkinglotsCtrl::PKLTS_Message * )
+				m_currentBlock.constData();
+		int nSendLen = sizeof(ParkinglotsCtrl::PKLTS_Trans_Header) +
+				sizeof(ParkinglotsCtrl::PKLTS_App_Header) + sizeof(ParkinglotsCtrl::stMsg_setDeviceParamRsp);
+		unsigned char * messageSend = new unsigned char [nSendLen];
+
+		quint32 userID = ui->lineEdit_user_id->text().toUInt();
+		//QString strSerialNum = ui->lineEdit_serial_num->text();
+
+		ParkinglotsCtrl::PKLTS_Message * pMessageSend = (ParkinglotsCtrl::PKLTS_Message *) messageSend;
+		pMessageSend->trans_header.Mark = 0x55AA;
+		pMessageSend->trans_header.SrcID = (quint32)(userID );
+		pMessageSend->trans_header.DstID = (quint32)(msg_in->trans_header.SrcID);
+		pMessageSend->trans_header.DataLen =  sizeof(ParkinglotsCtrl::PKLTS_App_Header)
+				+ sizeof(ParkinglotsCtrl::stMsg_setDeviceParamRsp);
+		pMessageSend->trans_payload.app_layer.app_header.MsgType = 0x280D;
+		pMessageSend->trans_payload.app_layer.app_data.msg_setDeviceParamRsp.DoneCode = 0;
+
+		displayMessage(tr("Recieved ctral msg 0x200D") );
+
+		QByteArray array((char *)messageSend,nSendLen);
+		client->SendData(array);
+		delete [] messageSend;
+	}
+		break;
+	case 0x200E:
+	{
+		const ParkinglotsCtrl::PKLTS_Message * msg_in = (const ParkinglotsCtrl::PKLTS_Message * )
+				m_currentBlock.constData();
+		int nSendLen = sizeof(ParkinglotsCtrl::PKLTS_Trans_Header) +
+				sizeof(ParkinglotsCtrl::PKLTS_App_Header) + sizeof(ParkinglotsCtrl::stMsg_DeviceCtrlRsp);
+		unsigned char * messageSend = new unsigned char [nSendLen];
+
+		quint32 userID = ui->lineEdit_user_id->text().toUInt();
+		//QString strSerialNum = ui->lineEdit_serial_num->text();
+
+		ParkinglotsCtrl::PKLTS_Message * pMessageSend = (ParkinglotsCtrl::PKLTS_Message *) messageSend;
+		pMessageSend->trans_header.Mark = 0x55AA;
+		pMessageSend->trans_header.SrcID = (quint32)(userID );
+		pMessageSend->trans_header.DstID = (quint32)(msg_in->trans_header.SrcID);
+		pMessageSend->trans_header.DataLen =  sizeof(ParkinglotsCtrl::PKLTS_App_Header)
+				+ sizeof(ParkinglotsCtrl::stMsg_DeviceCtrlRsp);
+		pMessageSend->trans_payload.app_layer.app_header.MsgType = 0x280E;
+		pMessageSend->trans_payload.app_layer.app_data.msg_DeviceCtrlRsp.DoneCode = 0;
+
+		displayMessage(tr("Recieved ctral msg 0x200E") );
+
+		QByteArray array((char *)messageSend,nSendLen);
+		client->SendData(array);
+		delete [] messageSend;
+	}
+		break;
+	default:
 	{
 		QString str;
 		int nLen =  m_currentHeader.DataLen;
@@ -450,6 +743,11 @@ int MainDialog::deal_current_message_block()
 		displayMessage(str);
 
 	}
+		break;
+	}
+
+
+
 	m_currentBlock = QByteArray();
 
 
