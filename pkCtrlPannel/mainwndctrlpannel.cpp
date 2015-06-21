@@ -195,7 +195,7 @@ void mainwndCtrlPannel::on_listView_sum_pklts_doubleClicked(const QModelIndex & 
 		strSQL = QString("select * from view_summary_mac_park_user where parkid = %1 and username = '%2' ").arg(ID).arg(strUserName);
 		m_pModel_Summary_MAC->setQueryPrefix(strSQL,m_db);
 		//strSQL = QString("select CONCAT(IFNULL(devicename,deviceid),'-',IF(occupied=0,'-IDLE','-BUSY')) as currstatus from view_dev_mac_park_user  where parkid = %1 and username = '%2' and deviceid like '0100%' and (status = 0 or status = 1) order by devicename,deviceid asc ").arg(ID).arg(strUserName);
-		strSQL = QString("select CONCAT(CONCAT(IFNULL(devicename,'NONAME'), ':',mid(deviceid,21,2)),mid(deviceid,19,2)),mid(deviceid,17,2)),'-',IF(occupied=0,'-IDLE','-BUSY')) as currstatus from view_dev_mac_park_user  where parkid = %1 and username = '%2' and deviceid like '0100%' and (status = 0 or status = 1) order by devicename,deviceid asc ").arg(ID).arg(strUserName);
+		strSQL = QString("select CONCAT(CONCAT(IFNULL(devicename,'NONAME'), ':',mid(deviceid,21,2),mid(deviceid,19,2),mid(deviceid,17,2)),'-',IF(occupied=0,'-IDLE','-BUSY')) as currstatus from view_dev_mac_park_user  where parkid = %1 and username = '%2' and deviceid like '0100%' and (status = 0 or status = 1) order by devicename,deviceid asc ").arg(ID).arg(strUserName);
 		m_pModel_Express_DEV->setQueryPrefix(strSQL,m_db,-1);
 	}
 }
