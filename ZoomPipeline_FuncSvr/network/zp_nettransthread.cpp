@@ -245,7 +245,7 @@ namespace ZPNetwork{
 	{
 		QTcpSocket * pSock = qobject_cast<QTcpSocket*>(sender());
 		emit evt_NewClientConnected(pSock);
-		emit evt_Message(pSock,"Info>" +  QString(tr("Client connected.")));
+		//emit evt_Message(pSock,"Info>" +  QString(tr("Client connected.")));
 		qDebug()<<pSock->peerAddress().toString()<<
 				  pSock->peerPort()  <<tr("(%1)..connected.").arg((quint64)pSock);
 	}
@@ -283,7 +283,7 @@ namespace ZPNetwork{
 			m_mutex_protect.unlock();
 			//pSock->abort();
 			emit evt_ClientDisconnected(pSock);
-			emit evt_Message(pSock,"Info>" +  QString(tr("Client Closed.")));
+			//emit evt_Message(pSock,"Info>" +  QString(tr("Client Closed.")));
 			qDebug()<<tr("(%1)..Closed.").arg((quint64)pSock);
 			push_to_rabish_can(pSock);
 		}
@@ -367,7 +367,7 @@ namespace ZPNetwork{
 			m_mutex_protect.unlock();
 			pSock->abort();
 			emit evt_ClientDisconnected(pSock);
-			emit evt_Message(pSock,"Info>" +  QString(tr("Client Error, Closed.")));
+			//emit evt_Message(pSock,"Info>" +  QString(tr("Client Error, Closed.")));
 			//pSock->disconnectFromHost();
 			push_to_rabish_can(pSock);
 		}
