@@ -4,7 +4,7 @@
 #include <vector>
 #include "st_ctrloader.h"
 
-using namespace ParkinglotsSvr;
+using namespace ParkinglotsCtrl;
 void printMenu();
 
 void test_st_getMACInfo(pklts_ctrl * ctrl,const char * address, unsigned __int16 port);

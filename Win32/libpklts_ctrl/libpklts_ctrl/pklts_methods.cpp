@@ -16,12 +16,11 @@ int __cdecl RemoteFunctionCall(
 
 unsigned __int32 getUniqueSrcID();
 
-using namespace ParkinglotsSvr;
-
-extern "C"  unsigned __int32 __stdcall st_getMACInfo(
-	const char * address, 
+using namespace ParkinglotsCtrl;
+unsigned __int32  st_getMACInfo(
+	const char * address,
 	unsigned __int16 port,
-	unsigned __int32 macID, 
+	unsigned __int32 macID,
 	stMsg_GetHostDetailsRsp * pOutputBuf)
 {
 	int nSendLen = sizeof(PKLTS_Trans_Header) + sizeof(PKLTS_App_Header) /* + sizeof (msg_GetHostDetailsRsp)*/;
@@ -33,7 +32,7 @@ extern "C"  unsigned __int32 __stdcall st_getMACInfo(
 	pMessageSend->trans_header.DstID = (unsigned __int32)((unsigned __int64)(macID) & 0xffffffff );;
 	pMessageSend->trans_header.DataLen =  sizeof(PKLTS_App_Header);
 	pMessageSend->trans_payload.app_layer.app_header.MsgType = 0x2000;
-	
+
 	std::vector<unsigned __int8> vec_response;
 	int nRes = RemoteFunctionCall(address,port,
 		messageSend,nSendLen,
@@ -252,15 +251,15 @@ extern "C"  unsigned __int32 __stdcall st_getMACInfo(
 			}
 		}
 		else
-			nRes = ERRTRANS_LESS_DATA;			
+			nRes = ERRTRANS_LESS_DATA;
 	}
 	return nRes;
 }
 
-extern "C"  unsigned __int32 __stdcall st_setHostDetails(
-	const char * address, 
+unsigned __int32  st_setHostDetails(
+	const char * address,
 	unsigned __int16 port,
-	unsigned __int32 macID, 
+	unsigned __int32 macID,
 	const stMsg_SetHostDetailsReq * pInData,
 	stMsg_SetHostDetailsRsp * pOutputBuf)
 {
@@ -323,7 +322,7 @@ extern "C"  unsigned __int32 __stdcall st_setHostDetails(
 						}
 						else
 							nRes = ERRTRANS_LESS_DATA;
-					}			
+					}
 
 				}
 				else if (pMessageSend->trans_payload.app_layer.app_header.MsgType == 0x0000)
@@ -333,15 +332,15 @@ extern "C"  unsigned __int32 __stdcall st_setHostDetails(
 			}
 		}
 		else
-			nRes = ERRTRANS_LESS_DATA;			
+			nRes = ERRTRANS_LESS_DATA;
 	}
 	return nRes;
 }
 
-extern "C"  unsigned __int32 __stdcall st_removeDevice(
-	const char * address, 
+unsigned __int32  st_removeDevice(
+	const char * address,
 	unsigned __int16 port,
-	unsigned __int32 macID, 
+	unsigned __int32 macID,
 	const stMsg_RemoveDeviceReq * pInData,
 	stMsg_RemoveDeviceRsp * pOutputBuf)
 {
@@ -362,7 +361,7 @@ extern "C"  unsigned __int32 __stdcall st_removeDevice(
 		pInData,
 		sizeof(pMessageSend->trans_payload.app_layer.app_data.msg_RemoveDeviceReq)
 		);
-	
+
 	std::vector<unsigned __int8> vec_response;
 	int nRes = RemoteFunctionCall(address,port,
 		messageSend,nSendLen,
@@ -395,7 +394,7 @@ extern "C"  unsigned __int32 __stdcall st_removeDevice(
 						}
 						else
 							nRes = ERRTRANS_LESS_DATA;
-					}			
+					}
 
 				}
 				else if (pMessageSend->trans_payload.app_layer.app_header.MsgType == 0x0000)
@@ -405,15 +404,15 @@ extern "C"  unsigned __int32 __stdcall st_removeDevice(
 			}
 		}
 		else
-			nRes = ERRTRANS_LESS_DATA;			
+			nRes = ERRTRANS_LESS_DATA;
 	}
 	return nRes;
 }
 
-extern "C"  unsigned __int32 __stdcall st_getDeviceList(
-	const char * address, 
+unsigned __int32  st_getDeviceList(
+	const char * address,
 	unsigned __int16 port,
-	unsigned __int32 macID, 
+	unsigned __int32 macID,
 	stMsg_GetDeviceListRsp ** ppOutputBuf)
 {
 	int nSendLen = sizeof(PKLTS_Trans_Header) + sizeof(PKLTS_App_Header);
@@ -425,7 +424,7 @@ extern "C"  unsigned __int32 __stdcall st_getDeviceList(
 	pMessageSend->trans_header.DstID = (unsigned __int32)((unsigned __int64)(macID) & 0xffffffff );;
 	pMessageSend->trans_header.DataLen =  sizeof(PKLTS_App_Header);
 	pMessageSend->trans_payload.app_layer.app_header.MsgType = 0x200B;
-	
+
 	std::vector<unsigned __int8> vec_response;
 	int nRes = RemoteFunctionCall(address,port,
 		messageSend,nSendLen,
@@ -480,14 +479,14 @@ extern "C"  unsigned __int32 __stdcall st_getDeviceList(
 					if (nRes == ALL_SUCCEED)
 					{
 						size_t AllocLen = sizeof(stMsg_GetDeviceListRsp) + sizeof (stMsg_GetDeviceListRsp::stCall_DeviceNode) * (nCount - 1);
-						resu = (stMsg_GetDeviceListRsp * ) new char [AllocLen]; 
+						resu = (stMsg_GetDeviceListRsp * ) new char [AllocLen];
 						memset(resu,0,AllocLen);
 						resu->DoneCode = DoneCode;
 						resu->nDevCount = nCount;
 						int nCheck[3] = {0,0,0};
 						for (unsigned __int16 i=0;
-							i<nCount 
-							&& nCurrStart < nTotalLen 
+							i<nCount
+							&& nCurrStart < nTotalLen
 							;++i,++nCheck[0])
 						{
 							int currSp = 0;
@@ -501,8 +500,8 @@ extern "C"  unsigned __int32 __stdcall st_getDeviceList(
 							++nCurrStart;
 						}
 						for (unsigned __int16 i=0;
-							i<nCount 
-							&& nCurrStart < nTotalLen 
+							i<nCount
+							&& nCurrStart < nTotalLen
 							;++i,++nCheck[1])
 						{
 							int currSp = 0;
@@ -516,8 +515,8 @@ extern "C"  unsigned __int32 __stdcall st_getDeviceList(
 							++nCurrStart;
 						}
 						for (unsigned __int16 i=0;
-							i<nCount 
-							&& nCurrStart < nTotalLen 
+							i<nCount
+							&& nCurrStart < nTotalLen
 							;++i,++nCheck[2])
 						{
 							for (size_t j = 0;j<sizeof(resu->devicetable[0].DeviceID)&& nCurrStart < nTotalLen ;++j)
@@ -528,7 +527,7 @@ extern "C"  unsigned __int32 __stdcall st_getDeviceList(
 						if (nCheck[0] < nCount || nCheck[1] < nCount ||nCheck[2] < nCount )
 							nRes = ERRTRANS_LESS_DATA;
 					}
-					
+
 
 				}
 				else if (pMessageSend->trans_payload.app_layer.app_header.MsgType == 0x0000)
@@ -538,7 +537,7 @@ extern "C"  unsigned __int32 __stdcall st_getDeviceList(
 			}
 		}
 		else
-			nRes = ERRTRANS_LESS_DATA;			
+			nRes = ERRTRANS_LESS_DATA;
 	}
 	if (nRes == ALL_SUCCEED)
 		*ppOutputBuf = resu;
@@ -550,17 +549,17 @@ extern "C"  unsigned __int32 __stdcall st_getDeviceList(
 	return nRes;
 }
 
-extern "C"  void __stdcall st_freeDeviceList(
+void  st_freeDeviceList(
 	stMsg_GetDeviceListRsp * pOutputBuf)
 {
-		char * ptr = (char *) pOutputBuf;
-		delete [] ptr;	
+	char * ptr = (char *) pOutputBuf;
+	delete [] ptr;
 }
 
-extern "C"  unsigned __int32 __stdcall st_getDeviceParam(
-	const char * address, 
+unsigned __int32  st_getDeviceParam(
+	const char * address,
 	unsigned __int16 port,
-	unsigned __int32 macID, 
+	unsigned __int32 macID,
 	const stMsg_GetDeviceParamReq * pInBuf,
 	stMsg_GetDeviceParamRsp ** ppOutputBuf)
 {
@@ -577,7 +576,7 @@ extern "C"  unsigned __int32 __stdcall st_getDeviceParam(
 		sizeof(stMsg_GetDeviceParamReq),
 		pInBuf,
 		sizeof(stMsg_GetDeviceParamReq));
-	
+
 	std::vector<unsigned __int8> vec_response;
 	int nRes = RemoteFunctionCall(address,port,
 		messageSend,nSendLen,
@@ -725,13 +724,13 @@ extern "C"  unsigned __int32 __stdcall st_getDeviceParam(
 					if (nRes == ALL_SUCCEED)
 					{
 						size_t AllocLen = sizeof(stMsg_GetDeviceParamRsp) + nDALBytes - 1;
-						resu = (stMsg_GetDeviceParamRsp * ) new char [AllocLen]; 
+						resu = (stMsg_GetDeviceParamRsp * ) new char [AllocLen];
 						memset(resu,0,AllocLen);
 						resu->DoneCode = DoneCode;
 						resu->Opt_DeviceName = Opt_DeviceName;
 						resu->Opt_DeviceInfo = Opt_DeviceInfo;
 						resu->Opt_DALStatus = Opt_DALStatus;
-						memcpy_s(resu->DeviceName,sizeof(resu->DeviceName),DeviceName,sizeof(	DeviceName));			
+						memcpy_s(resu->DeviceName,sizeof(resu->DeviceName),DeviceName,sizeof(	DeviceName));
 						memcpy_s(resu->DeviceInfo,sizeof(resu->DeviceInfo),DeviceInfo,sizeof(	DeviceInfo));
 						if (DALBuf)
 						{
@@ -741,12 +740,12 @@ extern "C"  unsigned __int32 __stdcall st_getDeviceParam(
 							DALBuf = 0;
 						}
 						else
-							resu->DALStatusBytesLen = 0;						
+							resu->DALStatusBytesLen = 0;
 					}
 					if (DALBuf)
 					{
 						delete [] DALBuf;
-							DALBuf = 0;
+						DALBuf = 0;
 					}
 
 				}
@@ -757,7 +756,7 @@ extern "C"  unsigned __int32 __stdcall st_getDeviceParam(
 			}
 		}
 		else
-			nRes = ERRTRANS_LESS_DATA;			
+			nRes = ERRTRANS_LESS_DATA;
 	}
 	if (nRes == ALL_SUCCEED)
 		*ppOutputBuf = resu;
@@ -768,17 +767,17 @@ extern "C"  unsigned __int32 __stdcall st_getDeviceParam(
 	}
 	return nRes;
 }
-extern "C"  void __stdcall st_freeDeviceParam(
+void  st_freeDeviceParam(
 	stMsg_GetDeviceParamRsp * pOutputBuf)
 {
-		char * ptr = (char *) pOutputBuf;
-		delete [] ptr;	
+	char * ptr = (char *) pOutputBuf;
+	delete [] ptr;
 }
 
-extern "C"  unsigned __int32 __stdcall st_setDeviceParam(
-	const char * address, 
+unsigned __int32  st_setDeviceParam(
+	const char * address,
 	unsigned __int16 port,
-	unsigned __int32 macID, 
+	unsigned __int32 macID,
 	const stMsg_setDeviceParamReq * pInData,
 	stMsg_setDeviceParamRsp * pOutputBuf)
 {
@@ -809,7 +808,7 @@ extern "C"  unsigned __int32 __stdcall st_setDeviceParam(
 		messageSend[nSendLen++] = 0;
 		++pMessageSend->trans_header.DataLen;
 	}
-	
+
 	if (pInData->Opt_DeviceInfo)
 	{
 		for (int i=0;i<sizeof(pInData->DeviceInfo) && pInData->DeviceInfo[i]!=0;++i)
@@ -853,7 +852,7 @@ extern "C"  unsigned __int32 __stdcall st_setDeviceParam(
 						}
 						else
 							nRes = ERRTRANS_LESS_DATA;
-					}			
+					}
 
 				}
 				else if (pMessageSend->trans_payload.app_layer.app_header.MsgType == 0x0000)
@@ -863,33 +862,35 @@ extern "C"  unsigned __int32 __stdcall st_setDeviceParam(
 			}
 		}
 		else
-			nRes = ERRTRANS_LESS_DATA;			
+			nRes = ERRTRANS_LESS_DATA;
 	}
 	return nRes;
 }
 
 
-extern "C"  unsigned __int32 __stdcall st_deviceCtrl(
-	const char * address, 
+unsigned __int32  st_deviceCtrl(
+	const char * address,
 	unsigned __int16 port,
-	unsigned __int32 macID, 
+	unsigned __int32 macID,
 	const stMsg_DeviceCtrlReq * pInData,
 	const unsigned __int8 * pDAL,
 	stMsg_DeviceCtrlRsp * pOutputBuf)
 {
 	//Calc the string length
-	int nSendLen = sizeof(PKLTS_Trans_Header) + sizeof(PKLTS_App_Header)+ sizeof (pInData->DeviceID) + pInData->DALArrayLength;
+	int nSendLen = sizeof(PKLTS_Trans_Header) + sizeof(PKLTS_App_Header)
+		+ sizeof (pInData->DeviceID)+ sizeof (pInData->DALArrayLength) + pInData->DALArrayLength;
 	unsigned char * messageSend = new unsigned char [nSendLen];
 	PKLTS_Message * pMessageSend = (PKLTS_Message *) messageSend;
 	pMessageSend->trans_header.Mark = 0x55AA;
 	pMessageSend->trans_header.SrcID = (unsigned __int32)((unsigned __int64)(getUniqueSrcID()) & 0xffffffff );
 	pMessageSend->trans_header.DstID = (unsigned __int32)((unsigned __int64)(macID) & 0xffffffff );;
-	pMessageSend->trans_header.DataLen =  sizeof(PKLTS_App_Header);
+	pMessageSend->trans_header.DataLen =  sizeof(PKLTS_App_Header) + sizeof(stMsg_DeviceCtrlReq) + pInData->DALArrayLength ;
 	pMessageSend->trans_payload.app_layer.app_header.MsgType = 0x200E;
 	for (int i=0;i<24;++i)
-		pMessageSend->trans_payload.app_layer.app_data.msg[i] = pInData->DeviceID[i];
+		pMessageSend->trans_payload.app_layer.app_data.msg_DeviceCtrlReq.DeviceID[i] = pInData->DeviceID[i];
 	for (int i=0;i<pInData->DALArrayLength;++i)
-		pMessageSend->trans_payload.app_layer.app_data.msg[i+24] = pDAL[i];
+		pMessageSend->trans_payload.app_layer.app_data.msg[i+24+sizeof (pInData->DALArrayLength)] = pDAL[i];
+	pMessageSend->trans_payload.app_layer.app_data.msg_DeviceCtrlReq.DALArrayLength = pInData->DALArrayLength;
 
 	std::vector<unsigned __int8> vec_response;
 	int nRes = RemoteFunctionCall(address,port,
@@ -923,7 +924,7 @@ extern "C"  unsigned __int32 __stdcall st_deviceCtrl(
 						}
 						else
 							nRes = ERRTRANS_LESS_DATA;
-					}			
+					}
 
 				}
 				else if (pMessageSend->trans_payload.app_layer.app_header.MsgType == 0x0000)
@@ -933,7 +934,147 @@ extern "C"  unsigned __int32 __stdcall st_deviceCtrl(
 			}
 		}
 		else
-			nRes = ERRTRANS_LESS_DATA;			
+			nRes = ERRTRANS_LESS_DATA;
 	}
 	return nRes;
+}
+
+
+unsigned __int32 st_updateFirmware(
+	const char * address,
+	unsigned __int16 port,
+	unsigned __int32 macID,
+	const stMsg_PushFirmUpPackReq * pInData,
+	const unsigned __int8 * pblock,
+	stMsg_PushFirmUpPackRsp *pOutputBuf
+	)
+{
+	//Calc the string length
+	int nSendLen = sizeof(PKLTS_Trans_Header) + sizeof(PKLTS_App_Header)+ sizeof (stMsg_PushFirmUpPackReq)  + pInData->SectionLen;
+	unsigned char * messageSend = new unsigned char [nSendLen];
+	PKLTS_Message * pMessageSend = (PKLTS_Message *) messageSend;
+	pMessageSend->trans_header.Mark = 0x55AA;
+	pMessageSend->trans_header.SrcID = (unsigned __int32)((unsigned __int64)(getUniqueSrcID()) & 0xffffffff );
+	pMessageSend->trans_header.DstID = (unsigned __int32)((unsigned __int64)(macID) & 0xffffffff );;
+	pMessageSend->trans_header.DataLen =  sizeof(PKLTS_App_Header) +  sizeof (stMsg_PushFirmUpPackReq)  + pInData->SectionLen;
+	pMessageSend->trans_payload.app_layer.app_header.MsgType = 0x2002;
+
+	memcpy(pMessageSend->trans_payload.app_layer.app_data.msg, pInData, sizeof(stMsg_PushFirmUpPackReq));
+
+	for (int i=0;i<pInData->SectionLen;++i)
+		pMessageSend->trans_payload.app_layer.app_data.msg[i+ sizeof(stMsg_PushFirmUpPackReq)] = pblock[i];
+
+	std::vector<unsigned __int8> vec_response;
+	int nRes = RemoteFunctionCall(address,port,
+		messageSend,nSendLen,
+		vec_response
+		);
+	delete [] messageSend;
+	messageSend = 0;
+	//Dealing with result
+	if (nRes==ALL_SUCCEED )
+	{
+		if ( vec_response.size()>=sizeof(PKLTS_Trans_Header) + sizeof(PKLTS_App_Header))
+		{
+			PKLTS_Message * pMessageSend = (PKLTS_Message *) vec_response.data();
+			if (pMessageSend->trans_header.Mark!=0x55AA)
+				nRes = ERRTRANS_ERROR_MARK;
+			else
+			{
+				if (pMessageSend->trans_payload.app_layer.app_header.MsgType == 0x2802)
+				{
+					unsigned char * pSwim =(unsigned char *) &(pMessageSend->trans_payload.app_layer.app_data);
+					size_t nTotalLen = vec_response.size() - sizeof(PKLTS_Trans_Header) - sizeof(PKLTS_App_Header);
+					size_t nCurrStart = 0;
+					//Done Code
+					if (nRes == ALL_SUCCEED)
+					{
+						if ( nCurrStart - 1 + sizeof(pOutputBuf->DoneCode) < nTotalLen)
+						{
+							memcpy_s(&(pOutputBuf->DoneCode),sizeof(pOutputBuf->DoneCode),pSwim+nCurrStart,sizeof(pOutputBuf->DoneCode));
+							nCurrStart += sizeof(pOutputBuf->DoneCode);
+						}
+						else
+							nRes = ERRTRANS_LESS_DATA;
+					}
+					//serial num
+					if (nRes == ALL_SUCCEED)
+					{
+						if ( nCurrStart - 1 + sizeof(pOutputBuf->SectionNum) < nTotalLen)
+						{
+							memcpy_s(&(pOutputBuf->SectionNum),sizeof(pOutputBuf->SectionNum),pSwim+nCurrStart,sizeof(pOutputBuf->SectionNum));
+							nCurrStart += sizeof(pOutputBuf->SectionNum);
+						}
+						else
+							nRes = ERRTRANS_LESS_DATA;
+					}
+
+				}
+				else if (pMessageSend->trans_payload.app_layer.app_header.MsgType == 0x0000)
+					nRes = ERRTRANS_DST_NOT_REACHABLE;
+				else
+					nRes = ERRTRANS_ERROR_MSG_TYPE;
+			}
+		}
+		else
+			nRes = ERRTRANS_LESS_DATA;
+	}
+	return nRes;
+}
+
+/**
+* @brief This function convert ASCII HEX string to uint8 bytearray
+*
+* @fn devidStr2Array
+* @param strDevid			the device ID, 48 byte string, like 0123456789ABCDEF...
+* @param array[]			24 byte array
+* @param arrayMaxSize		this parament confirm the array [] has acturally more than 24 items
+* @return bool				if all succeeded, return true, otherwise return false.
+*/
+bool devidStr2Array(const std::string & strDevid, unsigned char array[/*24*/], int arrayMaxSize)
+{
+	if (strDevid.size()<48 || arrayMaxSize<24)
+		return false;
+	char buf[256];
+	strncpy(buf,strDevid.c_str(),49);
+	for (int i=0;i<24;++i)
+	{
+		unsigned __int8 cv = 0;
+		if (buf[i*2] >='0' &&  buf[i*2] <='9')	cv += buf[i*2]-'0';
+		else if (buf[i*2] >='a' &&  buf[i*2] <='f') cv += buf[i*2]-'a' + 10;
+		else if (buf[i*2] >='A' &&  buf[i*2] <='F') cv += buf[i*2]-'A' + 10;
+		else { return false;};
+		cv <<= 4;
+		if (buf[i*2+1] >='0' &&  buf[i*2+1] <='9')	cv += buf[i*2+1]-'0';
+		else if (buf[i*2+1] >='a' &&  buf[i*2+1] <='f') cv += buf[i*2+1]-'a' + 10;
+		else if (buf[i*2+1] >='A' &&  buf[i*2+1] <='F') cv += buf[i*2+1]-'A' + 10;
+		else { return false;};
+		array[i] = cv;
+	}
+	return true;
+}
+
+
+bool HexStr2Array(const std::string & hexstring,std::vector<unsigned __int8> * array)
+{
+	if (!array)
+		return false;
+	int nBytes = hexstring.length()/2;
+	const char * buf = hexstring.c_str();
+	for (int i=0;i<nBytes;++i)
+	{
+		unsigned __int8 cv = 0;
+		if (buf[i*2] >='0' &&  buf[i*2] <='9')	cv += buf[i*2]-'0';
+		else if (buf[i*2] >='a' &&  buf[i*2] <='f') cv += buf[i*2]-'a' + 10;
+		else if (buf[i*2] >='A' &&  buf[i*2] <='F') cv += buf[i*2]-'A' + 10;
+		else { return false;};
+		cv <<= 4;
+		if (buf[i*2+1] >='0' &&  buf[i*2+1] <='9')	cv += buf[i*2+1]-'0';
+		else if (buf[i*2+1] >='a' &&  buf[i*2+1] <='f') cv += buf[i*2+1]-'a' + 10;
+		else if (buf[i*2+1] >='A' &&  buf[i*2+1] <='F') cv += buf[i*2+1]-'A' + 10;
+		else { return false;};
+		array->push_back(cv);
+	}
+	return true;
+
 }

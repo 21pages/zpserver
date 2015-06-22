@@ -29,7 +29,7 @@ int __cdecl RemoteFunctionCall(
 	std::vector<unsigned __int8> & vec_result
 	) 
 {
-	int res = ParkinglotsSvr::ALL_SUCCEED;
+	int res = ParkinglotsCtrl::ALL_SUCCEED;
     WSADATA wsaData;
     SOCKET ConnectSocket = INVALID_SOCKET;
     struct addrinfo *result = NULL,
@@ -43,7 +43,7 @@ int __cdecl RemoteFunctionCall(
     iResult = WSAStartup(MAKEWORD(2,2), &wsaData);
     if (iResult != 0) {
         printf("WSAStartup failed with error: %d\n", iResult);
-        return ParkinglotsSvr::ERRNET_WSAStartupFailed;
+        return ParkinglotsCtrl::ERRNET_WSAStartupFailed;
     }
 
     ZeroMemory( &hints, sizeof(hints) );
@@ -57,7 +57,7 @@ int __cdecl RemoteFunctionCall(
     if ( iResult != 0 ) {
         printf("getaddrinfo failed with error: %d\n", iResult);
         WSACleanup();
-        return ParkinglotsSvr::ERRNET_GetAddrInfoError;
+        return ParkinglotsCtrl::ERRNET_GetAddrInfoError;
     }
 
     // Attempt to connect to an address until one succeeds
@@ -69,7 +69,7 @@ int __cdecl RemoteFunctionCall(
         if (ConnectSocket == INVALID_SOCKET) {
             printf("socket failed with error: %ld\n", WSAGetLastError());
             WSACleanup();
-            return ParkinglotsSvr::ERRNET_SocketFailedErr;
+            return ParkinglotsCtrl::ERRNET_SocketFailedErr;
         }
 
         // Connect to server.
@@ -87,7 +87,7 @@ int __cdecl RemoteFunctionCall(
     if (ConnectSocket == INVALID_SOCKET) {
         printf("Unable to connect to server!\n");
         WSACleanup();
-        return ParkinglotsSvr::ERRNET_ConnectionFailed;
+        return ParkinglotsCtrl::ERRNET_ConnectionFailed;
     }
 	int totalSent= 0;
     // Send an initial buffer
@@ -98,7 +98,7 @@ int __cdecl RemoteFunctionCall(
 			printf("send failed with error: %d\n", WSAGetLastError());
 			closesocket(ConnectSocket);
 			WSACleanup();
-			return ParkinglotsSvr::ERRNET_SendDataFailed;
+			return ParkinglotsCtrl::ERRNET_SendDataFailed;
 		}
 		totalSent += iResult;
 	}while (totalSent < len );
@@ -114,11 +114,11 @@ int __cdecl RemoteFunctionCall(
 		{
 			for (int i=0;i<iResult;++i) vec_result.push_back(recvbuf[i]);
 			totalRecieved += iResult;
-			if (totalRecieved >= sizeof(ParkinglotsSvr::PKLTS_Trans_Header))
+			if (totalRecieved >= sizeof(ParkinglotsCtrl::PKLTS_Trans_Header))
 			{
-				ParkinglotsSvr::PKLTS_Trans_Header * pHeader = (ParkinglotsSvr::PKLTS_Trans_Header *)vec_result.data();
+				ParkinglotsCtrl::PKLTS_Trans_Header * pHeader = (ParkinglotsCtrl::PKLTS_Trans_Header *)vec_result.data();
 				if (pHeader->Mark==0x55AA)
-					totalWant = pHeader->DataLen + sizeof(ParkinglotsSvr::PKLTS_Trans_Header);
+					totalWant = pHeader->DataLen + sizeof(ParkinglotsCtrl::PKLTS_Trans_Header);
 				else
 				{
 					//Send End Message
@@ -127,7 +127,7 @@ int __cdecl RemoteFunctionCall(
 						printf("send failed with error: %d\n", WSAGetLastError());
 						closesocket(ConnectSocket);
 						WSACleanup();
-						return ParkinglotsSvr::ERRNET_SendDataFailed;
+						return ParkinglotsCtrl::ERRNET_SendDataFailed;
 					}
 				}
 			}
@@ -139,7 +139,7 @@ int __cdecl RemoteFunctionCall(
 					printf("send failed with error: %d\n", WSAGetLastError());
 					closesocket(ConnectSocket);
 					WSACleanup();
-					return ParkinglotsSvr::ERRNET_SendDataFailed;
+					return ParkinglotsCtrl::ERRNET_SendDataFailed;
 				}
 				totalWant = 0x7fffffff;
 			}
@@ -149,7 +149,7 @@ int __cdecl RemoteFunctionCall(
         else
         {
 			printf("recv failed with error: %d\n", WSAGetLastError());
-			res = ParkinglotsSvr::ERRNET_RecvDataFailed;
+			res = ParkinglotsCtrl::ERRNET_RecvDataFailed;
 		}
 
     } while( iResult > 0 );
@@ -160,7 +160,7 @@ int __cdecl RemoteFunctionCall(
         printf("shutdown failed with error: %d\n", WSAGetLastError());
         closesocket(ConnectSocket);
         WSACleanup();
-        return  ParkinglotsSvr::ERRNET_ShutDownFailed;
+        return  ParkinglotsCtrl::ERRNET_ShutDownFailed;
     }
     // cleanup
     closesocket(ConnectSocket);

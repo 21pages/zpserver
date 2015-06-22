@@ -1,5 +1,6 @@
-﻿#include "../libpklts_ctrl/st_ctrl.h"
-using namespace ParkinglotsSvr;
+﻿#include "../libpklts_ctrl/st_ctrlmsg.h"
+#include <tchar.h>
+using namespace ParkinglotsCtrl;
 typedef unsigned __int32 (__stdcall * fp_st_getMACInfo)(const char * address, unsigned __int16 port,unsigned __int32 macID,stMsg_GetHostDetailsRsp * pOutputBuf);
 typedef unsigned __int32 (__stdcall * fp_st_setHostDetails)(const char * address, unsigned __int16 port,unsigned __int32 macID, const stMsg_SetHostDetailsReq * pInData,stMsg_SetHostDetailsRsp * pOutputBuf);
 typedef unsigned __int32 (__stdcall * fp_st_removeDevice)(const char * address, unsigned __int16 port,unsigned __int32 macID, const stMsg_RemoveDeviceReq * pInData,stMsg_RemoveDeviceRsp * pOutputBuf);
@@ -9,7 +10,7 @@ typedef unsigned __int32 (__stdcall * fp_st_getDeviceParam)(const char * address
 typedef void (__stdcall * fp_st_freeDeviceParam)(stMsg_GetDeviceParamRsp * pOutputBuf);
 typedef unsigned __int32 (__stdcall * fp_st_setDeviceParam)(const char * address,unsigned __int16 port,unsigned __int32 macID,const stMsg_setDeviceParamReq * pInData,stMsg_setDeviceParamRsp * pOutputBuf);
 typedef unsigned __int32 (__stdcall * fp_st_deviceCtrl)(const char * address, unsigned __int16 port,unsigned __int32 macID, const stMsg_DeviceCtrlReq * pInData,const unsigned __int8 * pDAL,stMsg_DeviceCtrlRsp * pOutputBuf);
-
+typedef	unsigned __int32 (__stdcall * fp_st_updateFirmware)(const char * address,unsigned __int16 port,	unsigned __int32 macID,	const stMsg_PushFirmUpPackReq * pInData,const unsigned __int8 * pblock,	stMsg_PushFirmUpPackRsp *pOutputBuf	);
 //This class help client app to get dll method easily
 class pklts_ctrl{
 private:
@@ -23,6 +24,7 @@ private:
 	fp_st_freeDeviceParam	m_fn_st_freeDeviceParam;
 	fp_st_setDeviceParam	m_fn_st_setDeviceParam;
 	fp_st_deviceCtrl		m_fn_st_deviceCtrl;
+	fp_st_updateFirmware    m_fn_st_updateFirmware;
 public:
 	inline pklts_ctrl(const _TCHAR * dllFilePath)
 	{
@@ -38,6 +40,7 @@ public:
 			m_fn_st_freeDeviceParam = (fp_st_freeDeviceParam )::GetProcAddress(m_dllMod,"st_freeDeviceParam");
 			m_fn_st_setDeviceParam = (fp_st_setDeviceParam )::GetProcAddress(m_dllMod,"st_setDeviceParam");
 			m_fn_st_deviceCtrl = (fp_st_deviceCtrl )::GetProcAddress(m_dllMod,"st_deviceCtrl");
+			m_fn_st_updateFirmware = (fp_st_updateFirmware )::GetProcAddress(m_dllMod,"st_updateFirmware");
 		}
 		else
 		{
@@ -50,6 +53,7 @@ public:
 			m_fn_st_freeDeviceParam = NULL;
 			m_fn_st_setDeviceParam = NULL;
 			m_fn_st_deviceCtrl = NULL;
+			m_fn_st_updateFirmware = NULL;
 		}
 	}
 
@@ -74,6 +78,7 @@ public:
 		if (m_fn_st_freeDeviceParam == 0) return false;
 		if (m_fn_st_setDeviceParam == 0) return false;
 		if (m_fn_st_deviceCtrl == 0) return false;
+		if (m_fn_st_updateFirmware == 0) return false;
 		return true;
 	}
 
@@ -118,5 +123,12 @@ public:
 			address,port,macID,pInData,pDAL,pOutputBuf
 			);
 	}
+	inline unsigned __int32 st_updateFirmware(const char * address,unsigned __int16 port,	unsigned __int32 macID,	const stMsg_PushFirmUpPackReq * pInData,const unsigned __int8 * pblock,	stMsg_PushFirmUpPackRsp *pOutputBuf	)
+	{
+		return m_fn_st_updateFirmware(
+			address,port,macID,pInData,pblock,pOutputBuf
+			);
+	}
+
 
 };

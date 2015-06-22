@@ -9,3 +9,4 @@ st_getDeviceParam @6
 st_freeDeviceParam @7
 st_setDeviceParam @8
 st_deviceCtrl @9
+st_updateFirmware @10

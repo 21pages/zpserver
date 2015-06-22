@@ -29,7 +29,7 @@
     <ClInclude Include="st_ctrlmsg.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="st_ctrl.h">
+    <ClInclude Include="pklts_methods.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
