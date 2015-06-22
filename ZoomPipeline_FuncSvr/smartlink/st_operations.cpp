@@ -764,7 +764,7 @@ namespace ParkinglotsSvr{
 							res = 1;
 							db.close();
 						}
-						sql = "update sensorlist set status = 0 where deviceid = ? and status > 1;";
+						sql = "update sensorlist set status = 0 where deviceid = ? and status != 1;";
 						query.prepare(sql);
 						query.addBindValue(devID);
 						if (false==query.exec())
@@ -1042,7 +1042,7 @@ namespace ParkinglotsSvr{
 				db.close();
 			}
 
-			sql = "update sensorlist set status = 0 where deviceid = ? and status > 1;";
+			sql = "update sensorlist set status = 0 where deviceid = ? and status != 1;";
 			query.prepare(sql);
 			query.addBindValue(devID);
 			if (false==query.exec())
@@ -1327,7 +1327,7 @@ namespace ParkinglotsSvr{
 				db.close();
 			}
 
-			sql = "update sensorlist set status = 0 where deviceid = ? and status > 1;";
+			sql = "update sensorlist set status = 0 where deviceid = ? and status != 1;";
 			query.prepare(sql);
 			query.addBindValue(devID);
 			if (false==query.exec())
@@ -1523,7 +1523,7 @@ namespace ParkinglotsSvr{
 				db.close();
 			}
 
-			sql = "update sensorlist set status = 0 where deviceid = ? and status > 1;";
+			sql = "update sensorlist set status = 0 where deviceid = ? and status != 1;";
 			query.prepare(sql);
 			query.addBindValue(devID);
 			if (false==query.exec())
