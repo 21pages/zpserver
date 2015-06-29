@@ -196,7 +196,7 @@
     <message>
         <location filename="maindialog.ui" line="14"/>
         <source>Parkinglots Functional Client</source>
-        <translation>停车场功能测试客户端</translation>
+        <translation>停车场桩网关(供调试与参考)</translation>
     </message>
     <message>
         <location filename="maindialog.ui" line="24"/>
@@ -235,55 +235,55 @@
     </message>
     <message>
         <location filename="maindialog.ui" line="173"/>
-        <location filename="maindialog.cpp" line="37"/>
+        <location filename="maindialog.cpp" line="38"/>
         <source>Device Name</source>
-        <translation type="unfinished"></translation>
+        <translation>设备名称</translation>
     </message>
     <message>
         <location filename="maindialog.ui" line="183"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>添加(&amp;D)</translation>
     </message>
     <message>
         <location filename="maindialog.ui" line="190"/>
         <source>&amp;Del</source>
-        <translation type="unfinished"></translation>
+        <translation>移除(&amp;E)</translation>
     </message>
     <message>
         <location filename="maindialog.ui" line="200"/>
         <location filename="maindialog.ui" line="325"/>
         <source>&amp;Upload</source>
-        <translation type="unfinished"></translation>
+        <translation>上传(&amp;U)</translation>
     </message>
     <message>
         <location filename="maindialog.ui" line="211"/>
         <source>Device NO</source>
-        <translation type="unfinished"></translation>
+        <translation>设备序号(NO)</translation>
     </message>
     <message>
         <location filename="maindialog.ui" line="225"/>
         <source>Device ID (48 bytes HEX)</source>
-        <translation type="unfinished"></translation>
+        <translation>设备ID (48字节HEX字符串)</translation>
     </message>
     <message>
         <location filename="maindialog.ui" line="246"/>
         <source>Upload Mac Info</source>
-        <translation type="unfinished"></translation>
+        <translation>上传网关信息</translation>
     </message>
     <message>
         <location filename="maindialog.ui" line="254"/>
         <source>Host Name</source>
-        <translation type="unfinished"></translation>
+        <translation>网关名称</translation>
     </message>
     <message>
         <location filename="maindialog.ui" line="268"/>
         <source>Host Info</source>
-        <translation type="unfinished"></translation>
+        <translation>网关备注</translation>
     </message>
     <message>
         <location filename="maindialog.ui" line="282"/>
         <source>Firmware Verson</source>
-        <translation type="unfinished"></translation>
+        <translation>固件版本</translation>
     </message>
     <message>
         <source>BoxToServer</source>
@@ -398,59 +398,99 @@
         <translation>记录</translation>
     </message>
     <message>
-        <location filename="maindialog.cpp" line="38"/>
-        <source>Device No</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="maindialog.cpp" line="39"/>
-        <source>Device ID(24BIN,48HEXASC)</source>
-        <translation type="unfinished"></translation>
+        <source>Device No</source>
+        <translation></translation>
     </message>
     <message>
-        <location filename="maindialog.cpp" line="284"/>
+        <location filename="maindialog.cpp" line="40"/>
+        <source>Device ID(24BIN,48HEXASC)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="maindialog.cpp" line="285"/>
         <source>Recieved Heart-beating msg sended %1 sec(s) ago.</source>
         <translation>收到了 %1 秒前发出的心跳测试.</translation>
     </message>
     <message>
-        <location filename="maindialog.cpp" line="355"/>
+        <location filename="maindialog.cpp" line="356"/>
         <source>Client Send a unknown start Header %1 %2. Close client immediately.</source>
         <translation>客户发出了一个未知的开始头 %1 %2. 立刻关闭连接.</translation>
     </message>
     <message>
-        <location filename="maindialog.cpp" line="386"/>
+        <location filename="maindialog.cpp" line="389"/>
         <source>Regisit Succeed, Res = %1</source>
         <translation>注册成功, 结果 %1</translation>
     </message>
     <message>
-        <location filename="maindialog.cpp" line="394"/>
+        <location filename="maindialog.cpp" line="397"/>
         <source>Regisit Failed, Res = %1</source>
         <translation>注册失败, 结果 %1</translation>
     </message>
     <message>
-        <location filename="maindialog.cpp" line="405"/>
+        <location filename="maindialog.cpp" line="409"/>
         <source>Login Succeed, Res = %1</source>
         <translation>登入成功, 结果 %1</translation>
     </message>
     <message>
-        <location filename="maindialog.cpp" line="414"/>
+        <location filename="maindialog.cpp" line="418"/>
         <source>Login Failed, Res = %1</source>
         <translation>登入失败, 结果 %1</translation>
     </message>
     <message>
-        <location filename="maindialog.cpp" line="419"/>
+        <location filename="maindialog.cpp" line="423"/>
         <source>Login Failed,, Res = %1</source>
         <translation>登入失败, 结果 %1</translation>
     </message>
     <message>
-        <location filename="maindialog.cpp" line="428"/>
+        <location filename="maindialog.cpp" line="432"/>
         <source>Host Time is %1-%2-%3 %4:%5:%6.</source>
         <translation>服务器时刻是:%1-%2-%3 %4:%5:%6. </translation>
     </message>
     <message>
-        <location filename="maindialog.cpp" line="438"/>
+        <location filename="maindialog.cpp" line="442"/>
         <source>Time Crooecting Failed,, Res = %1</source>
         <translation>从服务器矫正时间失败, 返回值 %1</translation>
+    </message>
+    <message>
+        <location filename="maindialog.cpp" line="494"/>
+        <source>Recieved ctrl msg 0x2000</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="maindialog.cpp" line="519"/>
+        <source>Recieved ctral msg 0x2001</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="maindialog.cpp" line="551"/>
+        <source>Recieved ctrl msg 0x2002 block %1:%2(%3 bytes)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="maindialog.cpp" line="582"/>
+        <source>Recieved ctrl msg 0x200A block </source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="maindialog.cpp" line="629"/>
+        <source>Recieved ctrl msg 0x200B block </source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="maindialog.cpp" line="674"/>
+        <source>Recieved ctral msg 0x200C</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="maindialog.cpp" line="701"/>
+        <source>Recieved ctral msg 0x200D</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="maindialog.cpp" line="728"/>
+        <source>Recieved ctral msg 0x200E</source>
+        <translation></translation>
     </message>
     <message>
         <source>Res = %1, ID = %2</source>

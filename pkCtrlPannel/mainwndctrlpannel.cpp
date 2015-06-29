@@ -29,6 +29,7 @@ mainwndCtrlPannel::mainwndCtrlPannel(QWidget *parent) :
 	m_pModel_Express_DEV = new QColorIconSqlModel(this); ui->listView_express->setModel(m_pModel_Express_DEV);
 
 	LoadSettings();
+	on_actionAdvanced_Function_triggered(false);
 }
 
 mainwndCtrlPannel::~mainwndCtrlPannel()
@@ -73,6 +74,12 @@ void mainwndCtrlPannel::on_action_Connect_triggered(bool bConn)
 
 	}
 	this->on_action_Refresh_triggered();
+}
+void mainwndCtrlPannel::on_actionAdvanced_Function_triggered(bool show)
+{
+	ui->tab_detail->setEnabled(show);
+	ui->tab_ctrl->setEnabled(show);
+	ui->tab_macevt->setEnabled(show);
 }
 
 void mainwndCtrlPannel::on_action_About_triggered()

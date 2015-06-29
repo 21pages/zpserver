@@ -553,7 +553,7 @@
      <x>0</x>
      <y>0</y>
      <width>587</width>
-     <height>17</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_Service">
@@ -576,6 +576,8 @@
      <string>&amp;View</string>
     </property>
     <addaction name="action_Refresh"/>
+    <addaction name="separator"/>
+    <addaction name="actionAdvanced_Function"/>
    </widget>
    <addaction name="menu_Service"/>
    <addaction name="menu_View_2"/>
@@ -598,6 +600,8 @@
    <addaction name="action_Refresh"/>
    <addaction name="separator"/>
    <addaction name="actionConfig"/>
+   <addaction name="separator"/>
+   <addaction name="actionAdvanced_Function"/>
    <addaction name="action_About"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
@@ -645,11 +649,27 @@
     <string>&amp;Refresh</string>
    </property>
   </action>
+  <action name="actionAdvanced_Function">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/pkCtrlPannel/resources/AquaBubble 037.png</normaloff>
+     <normalon>:/pkCtrlPannel/resources/Alert_04.png</normalon>:/pkCtrlPannel/resources/AquaBubble 037.png</iconset>
+   </property>
+   <property name="text">
+    <string>A&amp;dvanced Function</string>
+   </property>
+   <property name="toolTip">
+    <string>Show advanced options, for administrator only</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="../ZoomPipeline_FuncSvr/resource.qrc"/>
   <include location="resources.qrc"/>
+  <include location="../ZoomPipeline_FuncSvr/resource.qrc"/>
  </resources>
  <connections/>
 </ui>

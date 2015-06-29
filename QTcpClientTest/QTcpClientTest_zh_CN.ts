@@ -551,7 +551,7 @@
     <message>
         <location filename="qtcpclienttest.ui" line="14"/>
         <source>QTcpClientTest</source>
-        <translation>QTcpClientTest SSL客户端测试</translation>
+        <translation>网关和控制节点压力桩客户端（测试与参考)</translation>
     </message>
     <message>
         <location filename="qtcpclienttest.ui" line="21"/>
