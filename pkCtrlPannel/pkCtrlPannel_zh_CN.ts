@@ -1431,7 +1431,7 @@
         <location filename="mainwndctrlpannel.ui" line="108"/>
         <location filename="mainwndctrlpannel.ui" line="146"/>
         <source>Double click item to see details.</source>
-        <translation>双击条目以查看更多信息</translation>
+        <translation>双击条目以查看更多信息.</translation>
     </message>
     <message>
         <location filename="mainwndctrlpannel.ui" line="75"/>
@@ -1469,190 +1469,200 @@
         <translation>控制</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="219"/>
+        <location filename="mainwndctrlpannel.ui" line="226"/>
         <source>Target Info</source>
-        <translation type="unfinished"></translation>
+        <translation>受控者信息</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="227"/>
+        <location filename="mainwndctrlpannel.ui" line="234"/>
         <source>Server IP</source>
-        <translation type="unfinished"></translation>
+        <translation>后台服务IP</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="237"/>
+        <location filename="mainwndctrlpannel.ui" line="244"/>
         <source>Server Port</source>
-        <translation type="unfinished">主机端口</translation>
+        <translation>后台服务端口</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="251"/>
+        <location filename="mainwndctrlpannel.ui" line="258"/>
         <source>Target Mac ID</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mainwndctrlpannel.ui" line="261"/>
-        <source>Get Mac Info</source>
-        <translation type="unfinished"></translation>
+        <translation>受控网关ID</translation>
     </message>
     <message>
         <location filename="mainwndctrlpannel.ui" line="268"/>
-        <source>Get Dev List</source>
-        <translation type="unfinished"></translation>
+        <source>Get Mac Info</source>
+        <translation>获取网关信息</translation>
     </message>
     <message>
         <location filename="mainwndctrlpannel.ui" line="279"/>
+        <source>Get Dev List</source>
+        <translation>获取设备列表</translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="294"/>
         <source>Target Dev ID</source>
-        <translation type="unfinished"></translation>
+        <translation>受控设备ID</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="289"/>
+        <location filename="mainwndctrlpannel.ui" line="304"/>
         <source>Get Dev Para</source>
-        <translation type="unfinished"></translation>
+        <translation>获取设备基础参数</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="299"/>
+        <location filename="mainwndctrlpannel.ui" line="322"/>
         <source>Remote Config</source>
-        <translation type="unfinished"></translation>
+        <translation>远程配置</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="307"/>
+        <location filename="mainwndctrlpannel.ui" line="330"/>
         <source>HostName</source>
-        <translation type="unfinished"></translation>
+        <translation>重设网关名称为</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="317"/>
+        <location filename="mainwndctrlpannel.ui" line="340"/>
         <source>HostInfo</source>
-        <translation type="unfinished"></translation>
+        <translation>重设网关备注为</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="327"/>
-        <source>&amp;Set MAC Info</source>
-        <translation type="unfinished"></translation>
+        <location filename="mainwndctrlpannel.ui" line="350"/>
+        <source>Set MAC Info</source>
+        <translation>重设网关信息</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="338"/>
-        <source>Device Name</source>
-        <translation type="unfinished"></translation>
+        <location filename="mainwndctrlpannel.ui" line="428"/>
+        <source>Run Batch Update</source>
+        <translation>运行固件推送升级</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="348"/>
-        <source>Device Info</source>
-        <translation type="unfinished"></translation>
+        <location filename="mainwndctrlpannel.ui" line="477"/>
+        <source>Send</source>
+        <translation>发送</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="358"/>
-        <source>&amp;Set Dev Info</source>
-        <translation type="unfinished"></translation>
+        <location filename="mainwndctrlpannel.ui" line="662"/>
+        <source>A&amp;dvanced Function</source>
+        <translation>高级功能(&amp;D)</translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="665"/>
+        <source>Show advanced options, for administrator only</source>
+        <translation>打开高级功能，请慎重使用</translation>
     </message>
     <message>
         <location filename="mainwndctrlpannel.ui" line="365"/>
-        <source>&amp;Remove Device</source>
-        <translation type="unfinished"></translation>
+        <source>Device Name</source>
+        <translation>设备名称</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="376"/>
+        <location filename="mainwndctrlpannel.ui" line="375"/>
+        <source>Device Info</source>
+        <translation>设备备注</translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="385"/>
+        <source>Set Dev Info</source>
+        <translation>设置设备基本参数</translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="396"/>
+        <source>Remove Device</source>
+        <translation>从网关移除设备</translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="411"/>
         <source>Firmware File:</source>
-        <translation type="unfinished"></translation>
+        <translation>固件包文件:</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="386"/>
+        <location filename="mainwndctrlpannel.ui" line="421"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="393"/>
-        <source>&amp;Run Batch Update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mainwndctrlpannel.ui" line="403"/>
+        <location filename="mainwndctrlpannel.ui" line="446"/>
         <source>DAL Ctrl</source>
-        <translation type="unfinished"></translation>
+        <translation>DAL控制</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="409"/>
+        <location filename="mainwndctrlpannel.ui" line="452"/>
         <source>DAL Hex string:</source>
-        <translation type="unfinished"></translation>
+        <translation>DAL十六进制字符串:</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="434"/>
-        <source>PushButton</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mainwndctrlpannel.ui" line="447"/>
+        <location filename="mainwndctrlpannel.ui" line="494"/>
         <source>Return message</source>
-        <translation type="unfinished"></translation>
+        <translation>返回信息</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="469"/>
+        <location filename="mainwndctrlpannel.ui" line="516"/>
         <source>Express</source>
-        <translation type="unfinished"></translation>
+        <translation>快捷视图</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="514"/>
+        <location filename="mainwndctrlpannel.ui" line="561"/>
         <source>&amp;Service</source>
         <translation>服务(&amp;S)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="523"/>
+        <location filename="mainwndctrlpannel.ui" line="570"/>
         <source>&amp;Help</source>
         <translation>帮助(&amp;H)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="529"/>
+        <location filename="mainwndctrlpannel.ui" line="576"/>
         <source>&amp;View</source>
         <translation>视图(&amp;V)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="566"/>
+        <location filename="mainwndctrlpannel.ui" line="617"/>
         <source>&amp;Connect</source>
         <translation>连接(&amp;C)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="575"/>
+        <location filename="mainwndctrlpannel.ui" line="626"/>
         <source>Con&amp;fig</source>
         <translation>配置(&amp;f)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="580"/>
+        <location filename="mainwndctrlpannel.ui" line="631"/>
         <source>E&amp;xit</source>
         <translation>退出(&amp;x)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="589"/>
+        <location filename="mainwndctrlpannel.ui" line="640"/>
         <source>&amp;About</source>
         <translation>关于(&amp;A)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="598"/>
+        <location filename="mainwndctrlpannel.ui" line="649"/>
         <source>&amp;Refresh</source>
         <translation>刷新(&amp;R)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.cpp" line="90"/>
-        <location filename="mainwndctrlpannel.cpp" line="110"/>
+        <location filename="mainwndctrlpannel.cpp" line="98"/>
+        <location filename="mainwndctrlpannel.cpp" line="118"/>
         <source>DB Connect Error</source>
-        <translation type="unfinished"></translation>
+        <translation>数据库连接错误</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.cpp" line="126"/>
+        <location filename="mainwndctrlpannel.cpp" line="134"/>
         <source>DB Query Error</source>
-        <translation type="unfinished"></translation>
+        <translation>数据库查询错误</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.cpp" line="134"/>
+        <location filename="mainwndctrlpannel.cpp" line="142"/>
         <source>Username or password is not correct</source>
-        <translation type="unfinished"></translation>
+        <translation>用户名或密码不正确</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.cpp" line="134"/>
+        <location filename="mainwndctrlpannel.cpp" line="142"/>
         <source>The username you given is not exist, or password is not correct.</source>
-        <translation type="unfinished"></translation>
+        <translation>用户名不存在，或者密码不正确.</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.cpp" line="466"/>
+        <location filename="mainwndctrlpannel.cpp" line="509"/>
         <source>Open firmware update cab</source>
-        <translation type="unfinished"></translation>
+        <translation>打开固件升级包</translation>
     </message>
 </context>
 </TS>

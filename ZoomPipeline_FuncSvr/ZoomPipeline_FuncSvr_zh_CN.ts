@@ -601,57 +601,77 @@
 <context>
     <name>ParkinglotsSvr::st_clientNode_baseTrans</name>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="84"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="85"/>
         <source> m_list_RawData should not be empty!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="120"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="121"/>
         <source>Task Blocked. %1 tasks in queue...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="125"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="126"/>
         <source>Task Blocked Too Badly. %1 tasks in queue, lost 1 package!!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="289"/>
-        <source>Client Send Immediatlly Disconnection Cmd Header 0x0000.</source>
-        <translation type="unfinished"></translation>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="287"/>
+        <source>Client Send Watching Dog 0xDFDF.</source>
+        <translation>客户端发送守护包 0xDFDF</translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="298"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="299"/>
+        <source>Watching Dog Checker macid ok:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="305"/>
+        <source>Watching Dog Checker cross svr  macid ok:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="313"/>
+        <source>Watching Dog Checker cross svr  macid failed, force reboot remote mac:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="322"/>
+        <source>Client Send Immediatlly Disconnection Cmd Header 0x0000.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="331"/>
         <source>Client Send a unknown start Header %1 %2. Close client immediately.</source>
         <translation>客户发出了一个未知的开始头 %1 %2. 立刻关闭连接.</translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="329"/>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="344"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="362"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="377"/>
         <source>Client ID %1 is invalid! Close client immediatly.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="330"/>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="345"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="363"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="378"/>
         <source>Client ID is invalid! Close client immediatly.</source>
         <translation>节点的ID是不合标准的，立刻关闭该节点的套接字。</translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="353"/>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="354"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="386"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="387"/>
         <source>Client ID Changed in Runtime! Close client immediatly, %1-&gt;%2.</source>
         <translation>客户端的ID在运行时发生了跳变! 立刻关闭与客户端的连接, %1-&gt;%2.</translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="371"/>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="372"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="404"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="405"/>
         <source>Client </source>
         <translation>节点 </translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="371"/>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="372"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="404"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="405"/>
         <source> is dead, kick out.</source>
         <translation>丢失心跳，终止该节点的连接。</translation>
     </message>
@@ -767,38 +787,38 @@
     <message>
         <location filename="smartlink/st_operations.cpp" line="194"/>
         <source>MacID %1 update a device %2 that belongs to macID %3, please remove old items from mac %1 soon.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="smartlink/st_operations.cpp" line="290"/>
         <source>Database Access Error : No such macid and serialnum: %1:%2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="smartlink/st_operations.cpp" line="337"/>
         <source>MacID %1 add a device %2 that belongs to macID %3, please remove old items from mac %1 soon.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="smartlink/st_operations.cpp" line="343"/>
         <source>Already exists a Device :</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="smartlink/st_operations.cpp" line="394"/>
         <source>a Device :</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="smartlink/st_operations.cpp" line="394"/>
         <source> is not existed in sensorlist, but reported a DAL message.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="smartlink/st_operations.cpp" line="478"/>
         <location filename="smartlink/st_operations.cpp" line="590"/>
         <source>DAL EventID Error (Event ID %1 is not valid.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="smartlink/st_operations.cpp" line="596"/>
@@ -863,19 +883,19 @@
         <location filename="smartlink/st_operations.cpp" line="1484"/>
         <location filename="smartlink/st_operations.cpp" line="1491"/>
         <source>Device </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="smartlink/st_operations.cpp" line="596"/>
         <location filename="smartlink/st_operations.cpp" line="731"/>
         <source>Send a unsupported Device Type.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="smartlink/st_operations.cpp" line="634"/>
         <location filename="smartlink/st_operations.cpp" line="693"/>
         <source>MacID %1 report a exception of a device %2 that not belongs to it, please remove old items from mac %1 soon.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="smartlink/st_operations.cpp" line="803"/>
@@ -898,23 +918,23 @@
         <location filename="smartlink/st_operations.cpp" line="1468"/>
         <location filename="smartlink/st_operations.cpp" line="1491"/>
         <source> Send a wrong DAL Para (%1) Value (unexpected type %2).</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="smartlink/st_operations.cpp" line="809"/>
         <location filename="smartlink/st_operations.cpp" line="890"/>
         <source> Send a wrong DAL Para (%1) Value (Para too short, need 2 bytes, got %2 byte(s)).</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="smartlink/st_operations.cpp" line="816"/>
         <source> Send a wrong DAL Para (%1) Value (Para not enough, need 1 para).</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="smartlink/st_operations.cpp" line="897"/>
         <source>Send a wrong DAL Para (%1) Value (Para not enough, need 1 para).</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="smartlink/st_operations.cpp" line="923"/>
@@ -952,17 +972,17 @@
         <location filename="smartlink/st_operations.cpp" line="1476"/>
         <location filename="smartlink/st_operations.cpp" line="1484"/>
         <source> Need more data.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="smartlink/st_operations.cpp" line="1014"/>
         <source> DAL Evt 0x02 has 4 paras, but WMODE = %1.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="smartlink/st_operations.cpp" line="1176"/>
         <source> DAL Evt 0x02 more than 9 paras, but WMODE = %1.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1232,18 +1252,18 @@
         <location filename="database/databaseresource.cpp" line="75"/>
         <location filename="database/databaseresource.cpp" line="146"/>
         <source> Can not be cloned from database %1.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="database/databaseresource.cpp" line="76"/>
         <location filename="database/databaseresource.cpp" line="147"/>
         <source> Err String:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="database/databaseresource.cpp" line="84"/>
         <source> has been cloned from database %1.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="database/databaseresource.cpp" line="108"/>
@@ -1261,7 +1281,7 @@
     <message>
         <location filename="database/databaseresource.cpp" line="108"/>
         <source> Need re-connect. MSG=</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="database/databaseresource.cpp" line="282"/>
@@ -1499,12 +1519,12 @@
     <message>
         <location filename="zpmainframe.ui" line="1210"/>
         <source>show&amp;Window</source>
-        <translation type="unfinished"></translation>
+        <translation>显示主窗口(&amp;W)</translation>
     </message>
     <message>
         <location filename="zpmainframe.ui" line="1213"/>
         <source>showMainWindow</source>
-        <translation type="unfinished"></translation>
+        <translation>显示主窗口</translation>
     </message>
     <message>
         <location filename="zpmainframe.ui" line="592"/>
@@ -1559,7 +1579,7 @@
     <message>
         <location filename="zpmainframe.ui" line="14"/>
         <source>ParkingLotsStatusSvr</source>
-        <translation type="unfinished">停车场状态监控分系统_后台服务</translation>
+        <translation>停车场状态监控分系统_后台服务</translation>
     </message>
     <message>
         <location filename="zpmainframe.ui" line="823"/>
@@ -1692,22 +1712,22 @@
     <message>
         <location filename="zpmainframe.cpp" line="190"/>
         <source>0: Fatal</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="zpmainframe.cpp" line="191"/>
         <source>1: Critical</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="zpmainframe.cpp" line="192"/>
         <source>2: Warning</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="zpmainframe.cpp" line="193"/>
         <source>3: Debug</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="zpmainframe.cpp" line="286"/>
@@ -1813,13 +1833,13 @@
         <location filename="zpmainframe.cpp" line="125"/>
         <location filename="zpmainframe.cpp" line="1027"/>
         <source>Server still running</source>
-        <translation type="unfinished"></translation>
+        <translation>服务仍然在后台保持运行</translation>
     </message>
     <message>
         <location filename="zpmainframe.cpp" line="126"/>
         <location filename="zpmainframe.cpp" line="1028"/>
         <source>If you want to terminate server, just using exit Toolbar button.</source>
-        <translation type="unfinished"></translation>
+        <translation>如果您想终止服务或者返回主窗口，请邮件单击任务栏图标</translation>
     </message>
     <message>
         <location filename="zpmainframe.cpp" line="323"/>
@@ -1912,7 +1932,7 @@
     <message>
         <location filename="zpmainframe.cpp" line="432"/>
         <source>Trying to establish cluster connection from node </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="zpmainframe.cpp" line="863"/>
@@ -1967,12 +1987,12 @@
     <message>
         <location filename="zpmainframe.cpp" line="1034"/>
         <source>Server is  going to closed</source>
-        <translation type="unfinished"></translation>
+        <translation>服务即将关闭</translation>
     </message>
     <message>
         <location filename="zpmainframe.cpp" line="1035"/>
         <source>Waiting for all unfinished progress...</source>
-        <translation type="unfinished"></translation>
+        <translation>将进行最后的清理与状态保存...</translation>
     </message>
 </context>
 <context>
@@ -1995,9 +2015,8 @@
         <translation type="vanished">接受节点的接入请求.</translation>
     </message>
     <message>
-        <location filename="network/zp_nettransthread.cpp" line="248"/>
         <source>Client connected.</source>
-        <translation>节点已成功连接.</translation>
+        <translation type="vanished">节点已成功连接.</translation>
     </message>
     <message>
         <source>Client Encrypted.</source>
@@ -2006,37 +2025,31 @@
     <message>
         <location filename="network/zp_nettransthread.cpp" line="179"/>
         <source>(%1)..Accepted.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="network/zp_nettransthread.cpp" line="250"/>
         <source>(%1)..connected.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="network/zp_nettransthread.cpp" line="259"/>
         <source>(%1)..Encrypted.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="network/zp_nettransthread.cpp" line="287"/>
         <source>(%1)..Closed.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="network/zp_nettransthread.cpp" line="348"/>
         <source>(%1)..Error :%2.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="network/zp_nettransthread.cpp" line="370"/>
-        <source>Client Error, Closed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="network/zp_nettransthread.cpp" line="286"/>
         <source>Client Closed.</source>
-        <translation>节点已成功关闭.</translation>
+        <translation type="vanished">节点已成功关闭.</translation>
     </message>
 </context>
 <context>
