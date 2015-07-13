@@ -553,7 +553,7 @@
      <x>0</x>
      <y>0</y>
      <width>587</width>
-     <height>23</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_Service">
@@ -579,8 +579,27 @@
     <addaction name="separator"/>
     <addaction name="actionAdvanced_Function"/>
    </widget>
+   <widget class="QMenu" name="menu_Modify">
+    <property name="title">
+     <string>&amp;Modify</string>
+    </property>
+    <widget class="QMenu" name="menu_Relations">
+     <property name="title">
+      <string>&amp;Relations</string>
+     </property>
+     <addaction name="actionParkinglots_and_users"/>
+     <addaction name="actionMac_and_Parkinglots"/>
+    </widget>
+    <addaction name="actionManage_Users"/>
+    <addaction name="actionManage_Parkinglots"/>
+    <addaction name="actionManage_MACs"/>
+    <addaction name="actionManage_Devices"/>
+    <addaction name="separator"/>
+    <addaction name="menu_Relations"/>
+   </widget>
    <addaction name="menu_Service"/>
    <addaction name="menu_View_2"/>
+   <addaction name="menu_Modify"/>
    <addaction name="menu_View"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
@@ -665,11 +684,41 @@
     <string>Show advanced options, for administrator only</string>
    </property>
   </action>
+  <action name="actionManage_Users">
+   <property name="text">
+    <string>Manage Users</string>
+   </property>
+  </action>
+  <action name="actionManage_Parkinglots">
+   <property name="text">
+    <string>Manage Parkinglots</string>
+   </property>
+  </action>
+  <action name="actionManage_MACs">
+   <property name="text">
+    <string>Manage MACs</string>
+   </property>
+  </action>
+  <action name="actionManage_Devices">
+   <property name="text">
+    <string>Manage Devices</string>
+   </property>
+  </action>
+  <action name="actionParkinglots_and_users">
+   <property name="text">
+    <string>Parkinglots And Users</string>
+   </property>
+  </action>
+  <action name="actionMac_and_Parkinglots">
+   <property name="text">
+    <string>Mac and Parkinglots</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="resources.qrc"/>
   <include location="../ZoomPipeline_FuncSvr/resource.qrc"/>
+  <include location="resources.qrc"/>
  </resources>
  <connections/>
 </ui>
