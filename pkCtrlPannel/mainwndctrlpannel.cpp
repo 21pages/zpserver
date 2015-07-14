@@ -5,6 +5,10 @@
 #include <QSqlQuery>
 #include <QFileDialog>
 #include <QFileInfo>
+#include <QSqlRelationalTableModel>
+#include <QSqlRelationalDelegate>
+#include <QSqlRelation>
+#include "dialogdbmodify.h"
 #include "mainwndctrlpannel.h"
 #include "ui_mainwndctrlpannel.h"
 #include "./pklts_ctrl/pklts_methods.h"
@@ -737,5 +741,96 @@ void mainwndCtrlPannel::on_pushButton_dalctrl_clicked()
 	{
 		ui_pntf ("rsp.DoneCode = %d\n",(unsigned int)rsp.DoneCode);
 	}
+
+}
+void mainwndCtrlPannel::on_actionManage_Users_triggered()
+{
+	QSqlRelationalTableModel * model = new QSqlRelationalTableModel(0,m_db);
+	model->setTable("userlist");
+	DialogDbModify * pDlg = new DialogDbModify(model,this);
+	pDlg->setWindowTitle(tr("Edit Table ") + model->tableName());
+	model->setParent(pDlg);
+	model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+	model->select();
+	pDlg->exec();
+	pDlg->deleteLater();
+}
+
+void mainwndCtrlPannel::on_actionManage_Parkinglots_triggered()
+{
+	QSqlRelationalTableModel * model = new QSqlRelationalTableModel(0,m_db);
+	model->setTable("parklist");
+
+	DialogDbModify * pDlg = new DialogDbModify(model,this);
+	pDlg->setWindowTitle(tr("Edit Table ") + model->tableName());
+	model->setParent(pDlg);
+	model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+
+	model->select();
+	pDlg->exec();
+	pDlg->deleteLater();
+}
+
+void mainwndCtrlPannel::on_actionManage_MACs_triggered()
+{
+	QSqlRelationalTableModel * model = new QSqlRelationalTableModel(0,m_db);
+	model->setTable("maclist");
+
+	DialogDbModify * pDlg = new DialogDbModify(model,this);
+	pDlg->setWindowTitle(tr("Edit Table ") + model->tableName());
+	model->setParent(pDlg);
+	model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+
+	model->select();
+	pDlg->exec();
+	pDlg->deleteLater();
+
+}
+
+void mainwndCtrlPannel::on_actionManage_Devices_triggered()
+{
+	QSqlRelationalTableModel * model = new QSqlRelationalTableModel(0,m_db);
+	model->setTable("sensorlist");
+
+	DialogDbModify * pDlg = new DialogDbModify(model,this);
+	pDlg->setWindowTitle(tr("Edit Table ") + model->tableName());
+	model->setParent(pDlg);
+	model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+	model->setRelation(1, QSqlRelation("maclist", "macid", "macid"));
+
+	model->select();
+	pDlg->exec();
+	pDlg->deleteLater();
+}
+void mainwndCtrlPannel::on_actionParkinglots_and_users_triggered()
+{
+	QSqlRelationalTableModel * model = new QSqlRelationalTableModel(0,m_db);
+	model->setTable("uprelations");
+	model->setRelation(0, QSqlRelation("userlist", "userid", "username"));
+	model->setRelation(1, QSqlRelation("parklist", "parkid", "parkname"));
+	model->select();
+	DialogDbModify * pDlg = new DialogDbModify(model,this);
+	pDlg->setWindowTitle(tr("Edit Table ") + model->tableName());
+	model->setParent(pDlg);
+	model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+
+	pDlg->exec();
+	pDlg->deleteLater();
+}
+
+void mainwndCtrlPannel::on_actionMac_and_Parkinglots_triggered()
+{
+	QSqlRelationalTableModel * model = new QSqlRelationalTableModel(0,m_db);
+	model->setTable("pmrelations");
+	model->setRelation(1, QSqlRelation("maclist", "macid", "macid"));
+	model->setRelation(0, QSqlRelation("parklist", "parkid", "parkname"));
+	model->select();
+	DialogDbModify * pDlg = new DialogDbModify(model,this);
+	pDlg->setWindowTitle(tr("Edit Table ") + model->tableName());
+	model->setParent(pDlg);
+	model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+
+	pDlg->exec();
+	pDlg->deleteLater();
 
 }

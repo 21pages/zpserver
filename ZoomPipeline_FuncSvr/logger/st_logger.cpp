@@ -7,7 +7,7 @@ namespace STMsgLogger{
 		m_pLogFile = 0;
 		m_bUseLogFile = true;
 		m_nLogLevel = 2;
-		m_nMaxFileSize = 256*1024*1024;
+		m_nMaxFileSize = 32*1024*1024;
 	}
 	void st_logger::setMaxFileSize(int nSize)
 	{

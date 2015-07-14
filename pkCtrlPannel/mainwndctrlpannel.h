@@ -48,6 +48,14 @@ public slots:
 	void on_action_About_triggered();
 	void on_action_Refresh_triggered();
 	void on_actionAdvanced_Function_triggered(bool);
+	//Modify
+	void on_actionManage_Users_triggered();
+	void on_actionManage_Parkinglots_triggered();
+	void on_actionManage_MACs_triggered();
+	void on_actionManage_Devices_triggered();
+	void on_actionParkinglots_and_users_triggered();
+	void on_actionMac_and_Parkinglots_triggered();
+
 	//User clicked
 	void on_listView_sum_pklts_doubleClicked(const QModelIndex & index);
 	void on_listView_sum_macs_doubleClicked(const QModelIndex & index);
