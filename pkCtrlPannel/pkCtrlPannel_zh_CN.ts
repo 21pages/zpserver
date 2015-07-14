@@ -21,6 +21,60 @@
     </message>
 </context>
 <context>
+    <name>DialogDbModify</name>
+    <message>
+        <location filename="dialogdbmodify.ui" line="14"/>
+        <source>Dialog</source>
+        <translation>对话框</translation>
+    </message>
+    <message>
+        <location filename="dialogdbmodify.ui" line="20"/>
+        <source>Data Table</source>
+        <translation>待修改表单</translation>
+    </message>
+    <message>
+        <location filename="dialogdbmodify.ui" line="63"/>
+        <source>&amp;Insert</source>
+        <translation>新记录(&amp;I)</translation>
+    </message>
+    <message>
+        <location filename="dialogdbmodify.ui" line="74"/>
+        <source>&amp;Delete</source>
+        <translation>删除(&amp;D)</translation>
+    </message>
+    <message>
+        <location filename="dialogdbmodify.ui" line="85"/>
+        <source>&amp;Commit</source>
+        <translation>提交(&amp;C)</translation>
+    </message>
+    <message>
+        <location filename="dialogdbmodify.ui" line="96"/>
+        <source>&amp;Revert</source>
+        <translation>撤销(&amp;R)</translation>
+    </message>
+    <message>
+        <location filename="dialogdbmodify.cpp" line="44"/>
+        <location filename="dialogdbmodify.cpp" line="61"/>
+        <source>Commit</source>
+        <translation>提交</translation>
+    </message>
+    <message>
+        <location filename="dialogdbmodify.cpp" line="45"/>
+        <source>Are you sure to commit changes?</source>
+        <translation>您确定要提交所有更改？</translation>
+    </message>
+    <message>
+        <location filename="dialogdbmodify.cpp" line="52"/>
+        <source>Failed</source>
+        <translation>失败</translation>
+    </message>
+    <message>
+        <location filename="dialogdbmodify.cpp" line="62"/>
+        <source>Are you sure to revert changes?</source>
+        <translation>您确定要取消所有更改？</translation>
+    </message>
+</context>
+<context>
     <name>DialogLogin</name>
     <message>
         <location filename="dialoglogin.ui" line="14"/>
@@ -1539,14 +1593,54 @@
         <translation>发送</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="662"/>
+        <location filename="mainwndctrlpannel.ui" line="584"/>
+        <source>&amp;Modify</source>
+        <translation>管理数据库(&amp;M)</translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="588"/>
+        <source>&amp;Relations</source>
+        <translation>关系(&amp;R)</translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="681"/>
         <source>A&amp;dvanced Function</source>
         <translation>高级功能(&amp;D)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="665"/>
+        <location filename="mainwndctrlpannel.ui" line="684"/>
         <source>Show advanced options, for administrator only</source>
         <translation>打开高级功能，请慎重使用</translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="689"/>
+        <source>Manage Users</source>
+        <translation>管理用户</translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="694"/>
+        <source>Manage Parkinglots</source>
+        <translation>管理停车场</translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="699"/>
+        <source>Manage MACs</source>
+        <translation>管理网关客户端信息</translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="704"/>
+        <source>Manage Devices</source>
+        <translation>管理传感器信息</translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="709"/>
+        <source>Parkinglots And Users</source>
+        <translation>设置用户拥有的停车场</translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="714"/>
+        <source>Mac and Parkinglots</source>
+        <translation>设置停车场拥有的网关</translation>
     </message>
     <message>
         <location filename="mainwndctrlpannel.ui" line="365"/>
@@ -1614,55 +1708,65 @@
         <translation>视图(&amp;V)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="617"/>
+        <location filename="mainwndctrlpannel.ui" line="636"/>
         <source>&amp;Connect</source>
         <translation>连接(&amp;C)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="626"/>
+        <location filename="mainwndctrlpannel.ui" line="645"/>
         <source>Con&amp;fig</source>
         <translation>配置(&amp;f)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="631"/>
+        <location filename="mainwndctrlpannel.ui" line="650"/>
         <source>E&amp;xit</source>
         <translation>退出(&amp;x)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="640"/>
+        <location filename="mainwndctrlpannel.ui" line="659"/>
         <source>&amp;About</source>
         <translation>关于(&amp;A)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="649"/>
+        <location filename="mainwndctrlpannel.ui" line="668"/>
         <source>&amp;Refresh</source>
         <translation>刷新(&amp;R)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.cpp" line="98"/>
-        <location filename="mainwndctrlpannel.cpp" line="118"/>
+        <location filename="mainwndctrlpannel.cpp" line="103"/>
+        <location filename="mainwndctrlpannel.cpp" line="123"/>
         <source>DB Connect Error</source>
         <translation>数据库连接错误</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.cpp" line="134"/>
+        <location filename="mainwndctrlpannel.cpp" line="139"/>
         <source>DB Query Error</source>
         <translation>数据库查询错误</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.cpp" line="142"/>
+        <location filename="mainwndctrlpannel.cpp" line="147"/>
         <source>Username or password is not correct</source>
         <translation>用户名或密码不正确</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.cpp" line="142"/>
+        <location filename="mainwndctrlpannel.cpp" line="147"/>
         <source>The username you given is not exist, or password is not correct.</source>
         <translation>用户名不存在，或者密码不正确.</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.cpp" line="509"/>
+        <location filename="mainwndctrlpannel.cpp" line="514"/>
         <source>Open firmware update cab</source>
         <translation>打开固件升级包</translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.cpp" line="751"/>
+        <location filename="mainwndctrlpannel.cpp" line="765"/>
+        <location filename="mainwndctrlpannel.cpp" line="780"/>
+        <location filename="mainwndctrlpannel.cpp" line="796"/>
+        <location filename="mainwndctrlpannel.cpp" line="813"/>
+        <location filename="mainwndctrlpannel.cpp" line="829"/>
+        <source>Edit Table </source>
+        <translation>编辑表格 </translation>
     </message>
 </context>
 </TS>

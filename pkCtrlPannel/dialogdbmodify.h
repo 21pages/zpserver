@@ -18,6 +18,12 @@ public:
 private:
 	Ui::DialogDbModify *ui;
 	QSqlRelationalTableModel * m_pDModel;
+
+protected slots:
+	void on_pushButton_insert_clicked();
+	void on_pushButton_delete_clicked();
+	void on_pushButton_commit_clicked();
+	void on_pushButton_revert_clicked();
 };
 
 #endif // DIALOGDBMODIFY_H
