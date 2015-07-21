@@ -292,29 +292,31 @@ namespace ParkinglotsSvr{
 				m_currentMessageSize = 0;
 				m_currentBlock = QByteArray();
 				dog = NULL;
-				//Check
-				if (m_pClientTable->clientNodeFromUUID(macid))
+				//Check whether macid is still working, ignore 0 (debug server)
+				if (macid!=0)
 				{
-					m_last_Watching = QDateTime::currentDateTime();
-					qDebug()<<tr("Watching Dog Checker macid ok:")<<macid;
-					continue;
+					if (m_pClientTable->clientNodeFromUUID(macid))
+					{
+						m_last_Watching = QDateTime::currentDateTime();
+						qDebug()<<tr("Watching Dog Checker macid ok:")<<macid;
+						continue;
+					}
+					if (m_pClientTable->cross_svr_find_uuid(macid).length())
+					{
+						m_last_Watching = QDateTime::currentDateTime();
+						qDebug()<<tr("Watching Dog Checker cross svr  macid ok:")<<macid;
+						continue;
+					}
+					if (m_last_Watching.secsTo(QDateTime::currentDateTime())>=60)
+					{
+						QByteArray arrayClean;
+						arrayClean.append(0xca);
+						arrayClean.append(0xca);
+						qWarning()<<tr("Watching Dog Checker cross svr  macid failed, force reboot remote mac:")<<macid;
+						emit evt_SendDataToClient(this->sock(),arrayClean);
+						m_last_Watching = QDateTime::currentDateTime();
+					}
 				}
-				if (m_pClientTable->cross_svr_find_uuid(macid).length())
-				{
-					m_last_Watching = QDateTime::currentDateTime();
-					qDebug()<<tr("Watching Dog Checker cross svr  macid ok:")<<macid;
-					continue;
-				}
-				if (m_last_Watching.secsTo(QDateTime::currentDateTime())>=60)
-				{
-					QByteArray arrayClean;
-					arrayClean.append(0xca);
-					arrayClean.append(0xca);
-					qWarning()<<tr("Watching Dog Checker cross svr  macid failed, force reboot remote mac:")<<macid;
-					emit evt_SendDataToClient(this->sock(),arrayClean);
-					m_last_Watching = QDateTime::currentDateTime();
-				}
-
 				continue;
 			}
 			else if (m_currentHeader.Mark == 0x0000)
