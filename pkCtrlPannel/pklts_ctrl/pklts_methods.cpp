@@ -119,7 +119,10 @@ namespace ParkinglotsCtrl{
 			quint16 seed = rand();
 			dwALLid = (quint32(seed & 0x7f00) << 16) + (quint32(seed & 0x00ff) << 8);
 			dwALLid ^= (((((quint64)(dwProcessID & 0x00ffffffff)) <<16) + (quint64)(dwThreadID)&0x00ffffffff));
-			dwALLid |= 0X80000000;
+			//dwALLid |= 0X80000000;
+			dwALLid %=15;
+			dwALLid += 0xff01;
+			break;
 		}while (dwALLid >=0xFFFFFFFC);
 		return dwALLid;
 	}
@@ -1077,6 +1080,8 @@ namespace ParkinglotsCtrl{
 									  messageSend,nSendLen,
 									  vec_response
 									  );
+		//QByteArray array ((char *)messageSend,nSendLen);
+		//qDebug()<<array.toHex().data();
 		delete [] messageSend;
 		messageSend = 0;
 		//Dealing with result

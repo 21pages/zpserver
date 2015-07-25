@@ -644,7 +644,7 @@ void mainwndCtrlPannel::on_pushButton_runfu_clicked()
 
 	//file total size
 	int totalsz = file.size();
-	int groups = totalsz / 4096 + (totalsz % 4096==0?0:1);
+	int groups = totalsz / 2048 + (totalsz % 2048==0?0:1);
 
 	ui->plainTextEdit_result->clear();
 	//First, Get The Mac ID you want to ask.
@@ -658,11 +658,11 @@ void mainwndCtrlPannel::on_pushButton_runfu_clicked()
 	quint16 port = ui->lineEdit_Svr_Port->text().toShort();
 
 
-	quint8 buf[4096];
+	quint8 buf[2048];
 
 	int nRed = 0;
 	int gp = 0;
-	while (nRed = file.read((char *)buf,4096))
+	while (nRed = file.read((char *)buf,2048))
 	{
 		req.SectionIndex = gp;
 		req.SectionNum = groups;
