@@ -180,6 +180,8 @@ unsigned __int32 getUniqueSrcID()
 		dwALLid = (unsigned __int32(seed & 0x7f00) << 16) + (unsigned __int32(seed & 0x00ff) << 8);
 		dwALLid ^=((dwProcessID <<16) + dwThreadID);
 		dwALLid |= 0X80000000;
+		dwALLid %= 15;
+		dwALLid += 0x0ff01;
 	}while (dwALLid >=0xFFFFFFFC);
 	return dwALLid;
 }	
