@@ -553,10 +553,9 @@ void ZPMainFrame::forkServer(QString  config_file)
 
 	}
 
-
 	//Smartlink settings
-	int nHeartbeatingThreadhold = settings.value("Smartlink/HeartbeatingThreadhold",180).toInt();
-	if (nHeartbeatingThreadhold>=60 && nHeartbeatingThreadhold<=300)
+	int nHeartbeatingThreadhold = settings.value("Smartlink/HeartbeatingThreadhold",900).toInt();
+	if (nHeartbeatingThreadhold>=360 && nHeartbeatingThreadhold<=1800)
 		m_clientTable->setHeartBeatingThrd(nHeartbeatingThreadhold);
 
 	QString strSLDB_useracc = settings.value("Smartlink/SLDB_useracc","EMPTY").toString();
@@ -698,11 +697,11 @@ void ZPMainFrame::LoadSettings(QString  config_file)
 	}
 
 	//Smartlink settings
-	int nHeartbeatingThreadhold = settings.value("Smartlink/HeartbeatingThreadhold",180).toInt();
-	if (nHeartbeatingThreadhold>=60 && nHeartbeatingThreadhold<=300)
+	int nHeartbeatingThreadhold = settings.value("Smartlink/HeartbeatingThreadhold",900).toInt();
+	if (nHeartbeatingThreadhold>=360 && nHeartbeatingThreadhold<=1800)
 		ui->horizontalSlider_heartbeating->setValue(nHeartbeatingThreadhold);
 	else
-		ui->horizontalSlider_heartbeating->setValue(180);
+		ui->horizontalSlider_heartbeating->setValue(900);
 
 	ui->lcdNumber_heartbeating->display(ui->horizontalSlider_heartbeating->value());
 

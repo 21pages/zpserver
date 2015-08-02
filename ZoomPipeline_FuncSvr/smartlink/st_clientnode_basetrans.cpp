@@ -332,6 +332,8 @@ namespace ParkinglotsSvr{
 				const char * ptrCurrData =  m_currentBlock.constData();
 				emit evt_Message(this,tr("Client Send a unknown start Header %1 %2. Close client immediately.")
 								 .arg((int)(ptrCurrData[0])).arg((int)(ptrCurrData[1])));
+				qWarning()<<"Client "<<peerInfo()<<"Send BAD Data :"<<m_currentBlock.left(256).toHex().data();
+				qWarning()<<"Close client Immediatly."<<peerInfo();
 				m_currentMessageSize = 0;
 				m_currentBlock = QByteArray();
 				offset = blocklen;
