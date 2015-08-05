@@ -88,6 +88,7 @@ namespace ParkinglotsSvr{
 								sql = "update maclist set ifregisted = 1 where  macid = ?;";
 								queryUpdate.prepare(sql);
 								queryUpdate.addBindValue(ncurrid);
+								qDebug()<<"Serial Num = "<<serialnum<<" Regisited as MACID="<<ncurrid;
 								if (false==queryUpdate.exec())
 								{
 									DoneCode = 2;
@@ -140,7 +141,10 @@ namespace ParkinglotsSvr{
 					if (bOk==true)
 					{
 						if (ncurrid>=0x0010000 && ncurrid <=0x0FFFFFFF)
+						{
 							DoneCode = 0;
+							qDebug()<<"Serial Num = "<<serialnum<<" Logged in as MACID="<<host_id;
+						}
 						else
 							qCritical()<<tr("ID is not valid : %1").arg(ncurrid);
 
@@ -181,6 +185,7 @@ namespace ParkinglotsSvr{
 					{
 						quint32 nDbMacId = query.value(1).toUInt();
 						int nDbStatus = query.value(2).toInt();
+						qDebug()<<"MACID="<<macid<<" Insert Device "<<vec_dev_ids[i]<< " whitch belongs to" <<nDbMacId;
 						// if this device belongs to me
 						if (nDbMacId == macid)
 							sql = "update sensorlist set devicename =  ? , sensorlist.no = ?  , macid = ? where deviceid = ?;";
@@ -324,6 +329,7 @@ namespace ParkinglotsSvr{
 				{
 					quint32 nDbMacId = query.value(1).toUInt();
 					int nDbStatus = query.value(2).toInt();
+					qDebug()<<"MACID="<<macid<<" add new Device "<<devID<< " whitch belongs to" <<nDbMacId;
 					// if this device belongs to me
 					if (nDbMacId == macid)
 						sql = "update sensorlist set  macid = ? where deviceid = ?;";
@@ -410,6 +416,7 @@ namespace ParkinglotsSvr{
 					quint32 nDbMacID = query.value(1).toUInt();
 					if (nDbMacID != macid)
 						res = false;
+					qDebug()<<"MACID="<<macid<<" Confirm Device "<<devID<< " whitch belongs to" <<nDbMacID;
 				}
 
 			}
