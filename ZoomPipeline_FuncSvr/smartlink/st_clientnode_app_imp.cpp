@@ -57,10 +57,47 @@ namespace ParkinglotsSvr{
 		reply.DoneCode = dboper.regisit_host(strSerial,&ncurrid);
 		if (reply.DoneCode<2)
 		{
-			reply.ID = ncurrid;
-			m_bUUIDRecieved = true;
-			m_uuid = ncurrid;
-			m_pClientTable->regisitClientUUID(this);
+			bool existed = false;
+			//Prevent same uuid exist in both this server and remote server
+			st_clientNode_baseTrans * nodecheck  = m_pClientTable->clientNodeFromUUID(ncurrid);
+			if (nodecheck !=0 && nodecheck!=this)
+			{
+				existed = true;
+				qCritical()	<<tr("Client:")
+						   <<peerInfo()
+						  <<" want regisit as "
+						 <<strSerial
+						<<":"
+					   <<ncurrid<<", but this id has already logged in in this server."  ;
+			}
+			else 	if (m_pClientTable->cross_svr_find_uuid(ncurrid).length())
+			{
+				existed = true;
+				qCritical()	<<tr("Client:")
+						   <<peerInfo()
+						  <<" want regisit as "
+						 <<strSerial
+						<<":"
+					   <<ncurrid<<", but this id has already logged in in another server."  ;
+			}
+			else
+			{
+				qDebug()	<<tr("Client:")
+						   <<peerInfo()
+						  <<" regisited as "
+						 <<strSerial
+						<<":"
+					   <<ncurrid;
+			}
+			if (existed==false)
+			{
+				reply.ID = ncurrid;
+				m_bUUIDRecieved = true;
+				m_uuid = ncurrid;
+				m_pClientTable->regisitClientUUID(this);
+			}
+			else
+				reply.DoneCode = 2;
 		}
 
 		//Send back
@@ -115,10 +152,47 @@ namespace ParkinglotsSvr{
 		reply.DoneCode = dboper.login_host(strSerialNum,UserID);
 		if (reply.DoneCode==0)
 		{
-			m_bLoggedIn = true;
-			m_bUUIDRecieved = true;
-			m_uuid = UserID;
-			m_pClientTable->regisitClientUUID(this);
+			bool existed = false;
+			//Prevent same uuid exist in both this server and remote server
+			st_clientNode_baseTrans * nodecheck =  m_pClientTable->clientNodeFromUUID(UserID);
+			if (nodecheck!=this && nodecheck!=0 )
+			{
+				existed = true;
+				qCritical()	<<tr("Client:")
+						   <<peerInfo()
+						  <<" want login as "
+						 <<strSerialNum
+						<<":"
+					   <<UserID<<", but this id has already logged in in this server."  ;
+			}
+			else 	if (m_pClientTable->cross_svr_find_uuid(UserID).length())
+			{
+				existed = true;
+				qCritical()	<<tr("Client:")
+						   <<peerInfo()
+						  <<" want login as "
+						 <<strSerialNum
+						<<":"
+					   <<UserID<<", but this id has already logged in in another server."  ;
+			}
+			else
+			{
+				qDebug()	<<tr("Client:")
+						   <<peerInfo()
+						  <<" logged as "
+						 <<strSerialNum
+						<<":"
+					   <<UserID;
+			}
+			if (existed==false)
+			{
+				m_bLoggedIn = true;
+				m_bUUIDRecieved = true;
+				m_uuid = UserID;
+				m_pClientTable->regisitClientUUID(this);
+			}
+			else
+				reply.DoneCode = 2;
 		}
 		//Send back
 		emit evt_SendDataToClient(this->sock(),array);
