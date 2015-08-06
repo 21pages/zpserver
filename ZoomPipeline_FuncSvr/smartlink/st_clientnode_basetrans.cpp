@@ -307,7 +307,7 @@ namespace ParkinglotsSvr{
 						qDebug()<<tr("Watching Dog Checker cross svr  macid ok:")<<macid;
 						continue;
 					}
-					if (m_last_Watching.secsTo(QDateTime::currentDateTime())>=60)
+					if (m_last_Watching.secsTo(QDateTime::currentDateTime())>=800)
 					{
 						QByteArray arrayClean;
 						arrayClean.append(0xca);
@@ -326,6 +326,12 @@ namespace ParkinglotsSvr{
 				m_currentBlock = QByteArray();
 				offset = blocklen;
 				emit evt_close_client(this->sock());
+			}
+			else if (m_currentHeader.Mark == 0x5959)
+			{
+				qDebug()<<tr("Client Send Responce Cmd Header 0x5959.");
+				m_currentMessageSize = 0;
+				m_currentBlock = QByteArray();
 			}
 			else
 			{
