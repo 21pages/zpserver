@@ -284,10 +284,11 @@ namespace ParkinglotsSvr{
 
 				//Send back
 				emit evt_SendDataToClient(this->sock(),m_currentBlock);
-				qDebug()<<tr("Client Send Watching Dog 0xDFDF.");
 				//Check macid
 				const PKLTS_Watchdog * dog = (PKLTS_Watchdog *)m_currentBlock.constData();
 				quint32 macid = dog->macid;
+				qDebug()<<tr("Client Send Watching Dog 0xDFDF->")<<macid;
+
 				//This Message is Over. Start a new one.
 				m_currentMessageSize = 0;
 				m_currentBlock = QByteArray();
@@ -307,7 +308,7 @@ namespace ParkinglotsSvr{
 						qDebug()<<tr("Watching Dog Checker cross svr  macid ok:")<<macid;
 						continue;
 					}
-					if (m_last_Watching.secsTo(QDateTime::currentDateTime())>=800)
+					if (m_last_Watching.secsTo(QDateTime::currentDateTime())>=3600 * 2)
 					{
 						QByteArray arrayClean;
 						arrayClean.append(0xca);
@@ -316,7 +317,11 @@ namespace ParkinglotsSvr{
 						emit evt_SendDataToClient(this->sock(),arrayClean);
 						m_last_Watching = QDateTime::currentDateTime();
 					}
+					else
+						qWarning()<<tr("Watching Dog Checker last goot time is:")<<m_last_Watching;
 				}
+				else
+					qWarning()<<tr("Watching Dog Checker gives a checkid = 0");
 				continue;
 			}
 			else if (m_currentHeader.Mark == 0x0000)
