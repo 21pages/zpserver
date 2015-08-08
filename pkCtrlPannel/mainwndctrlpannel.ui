@@ -24,7 +24,7 @@
        <enum>QTabWidget::Triangular</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>4</number>
       </property>
       <property name="iconSize">
        <size>
@@ -520,18 +520,18 @@
          <widget class="QListView" name="listView_express">
           <property name="iconSize">
            <size>
-            <width>128</width>
-            <height>128</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="movement">
-           <enum>QListView::Snap</enum>
+           <enum>QListView::Static</enum>
           </property>
           <property name="resizeMode">
-           <enum>QListView::Fixed</enum>
+           <enum>QListView::Adjust</enum>
           </property>
           <property name="spacing">
-           <number>16</number>
+           <number>8</number>
           </property>
           <property name="viewMode">
            <enum>QListView::IconMode</enum>
