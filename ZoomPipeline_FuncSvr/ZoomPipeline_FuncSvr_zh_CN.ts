@@ -543,57 +543,67 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="74"/>
+        <location filename="smartlink/st_clientnode_app_imp.cpp" line="66"/>
+        <location filename="smartlink/st_clientnode_app_imp.cpp" line="76"/>
+        <location filename="smartlink/st_clientnode_app_imp.cpp" line="85"/>
+        <location filename="smartlink/st_clientnode_app_imp.cpp" line="161"/>
+        <location filename="smartlink/st_clientnode_app_imp.cpp" line="171"/>
+        <location filename="smartlink/st_clientnode_app_imp.cpp" line="180"/>
+        <source>Client:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="smartlink/st_clientnode_app_imp.cpp" line="111"/>
         <source>client regisit operation = </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="131"/>
+        <location filename="smartlink/st_clientnode_app_imp.cpp" line="205"/>
         <source>client login operation = </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="184"/>
+        <location filename="smartlink/st_clientnode_app_imp.cpp" line="258"/>
         <source>client time correction = </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="216"/>
+        <location filename="smartlink/st_clientnode_app_imp.cpp" line="290"/>
         <source>Break Device List, There are  %1 devNames, other than %2.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="231"/>
+        <location filename="smartlink/st_clientnode_app_imp.cpp" line="305"/>
         <source>Break Device List, There are  %1 devNos, other than %2.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="250"/>
+        <location filename="smartlink/st_clientnode_app_imp.cpp" line="324"/>
         <source>Break Device List, There are  %1 devIDs, other than %2.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="277"/>
+        <location filename="smartlink/st_clientnode_app_imp.cpp" line="351"/>
         <source>client send devlist = </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="315"/>
+        <location filename="smartlink/st_clientnode_app_imp.cpp" line="389"/>
         <source>Break tag_TailData, We need  %1 bytes, larger than real data len %2.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="343"/>
+        <location filename="smartlink/st_clientnode_app_imp.cpp" line="417"/>
         <source>client send macinfo = </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="406"/>
+        <location filename="smartlink/st_clientnode_app_imp.cpp" line="480"/>
         <source>Unknown Event %1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_app_imp.cpp" line="417"/>
+        <location filename="smartlink/st_clientnode_app_imp.cpp" line="491"/>
         <source>client send evt = </source>
         <translation></translation>
     </message>
@@ -616,62 +626,81 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="287"/>
         <source>Client Send Watching Dog 0xDFDF.</source>
-        <translation>客户端发送守护包 0xDFDF</translation>
+        <translation type="vanished">客户端发送守护包 0xDFDF</translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="299"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="290"/>
+        <source>Client Send Watching Dog 0xDFDF-&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="302"/>
         <source>Watching Dog Checker macid ok:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="305"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="308"/>
         <source>Watching Dog Checker cross svr  macid ok:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="313"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="316"/>
         <source>Watching Dog Checker cross svr  macid failed, force reboot remote mac:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="322"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="321"/>
+        <source>Watching Dog Checker last goot time is:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="324"/>
+        <source>Watching Dog Checker gives a checkid = 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="329"/>
         <source>Client Send Immediatlly Disconnection Cmd Header 0x0000.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="331"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="337"/>
+        <source>Client Send Responce Cmd Header 0x5959.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="344"/>
         <source>Client Send a unknown start Header %1 %2. Close client immediately.</source>
         <translation>客户发出了一个未知的开始头 %1 %2. 立刻关闭连接.</translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="362"/>
         <location filename="smartlink/st_clientnode_basetrans.cpp" line="377"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="392"/>
         <source>Client ID %1 is invalid! Close client immediatly.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="363"/>
         <location filename="smartlink/st_clientnode_basetrans.cpp" line="378"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="393"/>
         <source>Client ID is invalid! Close client immediatly.</source>
         <translation>节点的ID是不合标准的，立刻关闭该节点的套接字。</translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="386"/>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="387"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="401"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="402"/>
         <source>Client ID Changed in Runtime! Close client immediatly, %1-&gt;%2.</source>
         <translation>客户端的ID在运行时发生了跳变! 立刻关闭与客户端的连接, %1-&gt;%2.</translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="404"/>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="405"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="419"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="420"/>
         <source>Client </source>
         <translation>节点 </translation>
     </message>
     <message>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="404"/>
-        <location filename="smartlink/st_clientnode_basetrans.cpp" line="405"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="419"/>
+        <location filename="smartlink/st_clientnode_basetrans.cpp" line="420"/>
         <source> is dead, kick out.</source>
         <translation>丢失心跳，终止该节点的连接。</translation>
     </message>
@@ -702,285 +731,285 @@
     <name>ParkinglotsSvr::st_operations</name>
     <message>
         <location filename="smartlink/st_operations.cpp" line="48"/>
-        <location filename="smartlink/st_operations.cpp" line="94"/>
-        <location filename="smartlink/st_operations.cpp" line="111"/>
-        <location filename="smartlink/st_operations.cpp" line="156"/>
-        <location filename="smartlink/st_operations.cpp" line="217"/>
-        <location filename="smartlink/st_operations.cpp" line="224"/>
-        <location filename="smartlink/st_operations.cpp" line="284"/>
-        <location filename="smartlink/st_operations.cpp" line="297"/>
-        <location filename="smartlink/st_operations.cpp" line="359"/>
-        <location filename="smartlink/st_operations.cpp" line="366"/>
-        <location filename="smartlink/st_operations.cpp" line="402"/>
-        <location filename="smartlink/st_operations.cpp" line="442"/>
-        <location filename="smartlink/st_operations.cpp" line="518"/>
-        <location filename="smartlink/st_operations.cpp" line="533"/>
-        <location filename="smartlink/st_operations.cpp" line="561"/>
-        <location filename="smartlink/st_operations.cpp" line="576"/>
-        <location filename="smartlink/st_operations.cpp" line="640"/>
-        <location filename="smartlink/st_operations.cpp" line="657"/>
-        <location filename="smartlink/st_operations.cpp" line="699"/>
-        <location filename="smartlink/st_operations.cpp" line="716"/>
-        <location filename="smartlink/st_operations.cpp" line="763"/>
-        <location filename="smartlink/st_operations.cpp" line="772"/>
-        <location filename="smartlink/st_operations.cpp" line="789"/>
-        <location filename="smartlink/st_operations.cpp" line="843"/>
-        <location filename="smartlink/st_operations.cpp" line="852"/>
-        <location filename="smartlink/st_operations.cpp" line="870"/>
-        <location filename="smartlink/st_operations.cpp" line="1040"/>
-        <location filename="smartlink/st_operations.cpp" line="1050"/>
-        <location filename="smartlink/st_operations.cpp" line="1066"/>
-        <location filename="smartlink/st_operations.cpp" line="1325"/>
-        <location filename="smartlink/st_operations.cpp" line="1335"/>
-        <location filename="smartlink/st_operations.cpp" line="1352"/>
-        <location filename="smartlink/st_operations.cpp" line="1521"/>
-        <location filename="smartlink/st_operations.cpp" line="1531"/>
-        <location filename="smartlink/st_operations.cpp" line="1547"/>
-        <location filename="smartlink/st_operations.cpp" line="1571"/>
+        <location filename="smartlink/st_operations.cpp" line="95"/>
+        <location filename="smartlink/st_operations.cpp" line="112"/>
+        <location filename="smartlink/st_operations.cpp" line="160"/>
+        <location filename="smartlink/st_operations.cpp" line="222"/>
+        <location filename="smartlink/st_operations.cpp" line="229"/>
+        <location filename="smartlink/st_operations.cpp" line="289"/>
+        <location filename="smartlink/st_operations.cpp" line="302"/>
+        <location filename="smartlink/st_operations.cpp" line="365"/>
+        <location filename="smartlink/st_operations.cpp" line="372"/>
+        <location filename="smartlink/st_operations.cpp" line="408"/>
+        <location filename="smartlink/st_operations.cpp" line="449"/>
+        <location filename="smartlink/st_operations.cpp" line="525"/>
+        <location filename="smartlink/st_operations.cpp" line="540"/>
+        <location filename="smartlink/st_operations.cpp" line="568"/>
+        <location filename="smartlink/st_operations.cpp" line="583"/>
+        <location filename="smartlink/st_operations.cpp" line="647"/>
+        <location filename="smartlink/st_operations.cpp" line="664"/>
+        <location filename="smartlink/st_operations.cpp" line="706"/>
+        <location filename="smartlink/st_operations.cpp" line="723"/>
+        <location filename="smartlink/st_operations.cpp" line="770"/>
+        <location filename="smartlink/st_operations.cpp" line="779"/>
+        <location filename="smartlink/st_operations.cpp" line="796"/>
+        <location filename="smartlink/st_operations.cpp" line="850"/>
+        <location filename="smartlink/st_operations.cpp" line="859"/>
+        <location filename="smartlink/st_operations.cpp" line="877"/>
+        <location filename="smartlink/st_operations.cpp" line="1047"/>
+        <location filename="smartlink/st_operations.cpp" line="1057"/>
+        <location filename="smartlink/st_operations.cpp" line="1073"/>
+        <location filename="smartlink/st_operations.cpp" line="1332"/>
+        <location filename="smartlink/st_operations.cpp" line="1342"/>
+        <location filename="smartlink/st_operations.cpp" line="1359"/>
+        <location filename="smartlink/st_operations.cpp" line="1528"/>
+        <location filename="smartlink/st_operations.cpp" line="1538"/>
+        <location filename="smartlink/st_operations.cpp" line="1554"/>
         <location filename="smartlink/st_operations.cpp" line="1578"/>
-        <location filename="smartlink/st_operations.cpp" line="1601"/>
+        <location filename="smartlink/st_operations.cpp" line="1585"/>
+        <location filename="smartlink/st_operations.cpp" line="1608"/>
         <source>Database Access Error :</source>
         <translation>数据库访问错误 :</translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="100"/>
-        <location filename="smartlink/st_operations.cpp" line="104"/>
-        <location filename="smartlink/st_operations.cpp" line="145"/>
+        <location filename="smartlink/st_operations.cpp" line="101"/>
+        <location filename="smartlink/st_operations.cpp" line="105"/>
         <location filename="smartlink/st_operations.cpp" line="149"/>
+        <location filename="smartlink/st_operations.cpp" line="153"/>
         <source>ID is not valid : %1</source>
         <translation>ID 取值范围不正确: %1</translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="107"/>
+        <location filename="smartlink/st_operations.cpp" line="108"/>
         <source>Serial is not valid : %1</source>
         <translation>序列号不正确: %1</translation>
     </message>
     <message>
         <location filename="smartlink/st_operations.cpp" line="55"/>
-        <location filename="smartlink/st_operations.cpp" line="117"/>
-        <location filename="smartlink/st_operations.cpp" line="162"/>
-        <location filename="smartlink/st_operations.cpp" line="235"/>
-        <location filename="smartlink/st_operations.cpp" line="304"/>
-        <location filename="smartlink/st_operations.cpp" line="373"/>
-        <location filename="smartlink/st_operations.cpp" line="418"/>
-        <location filename="smartlink/st_operations.cpp" line="424"/>
-        <location filename="smartlink/st_operations.cpp" line="449"/>
-        <location filename="smartlink/st_operations.cpp" line="541"/>
-        <location filename="smartlink/st_operations.cpp" line="583"/>
-        <location filename="smartlink/st_operations.cpp" line="665"/>
-        <location filename="smartlink/st_operations.cpp" line="724"/>
-        <location filename="smartlink/st_operations.cpp" line="796"/>
-        <location filename="smartlink/st_operations.cpp" line="877"/>
-        <location filename="smartlink/st_operations.cpp" line="1073"/>
-        <location filename="smartlink/st_operations.cpp" line="1359"/>
-        <location filename="smartlink/st_operations.cpp" line="1554"/>
-        <location filename="smartlink/st_operations.cpp" line="1585"/>
-        <location filename="smartlink/st_operations.cpp" line="1608"/>
+        <location filename="smartlink/st_operations.cpp" line="118"/>
+        <location filename="smartlink/st_operations.cpp" line="166"/>
+        <location filename="smartlink/st_operations.cpp" line="240"/>
+        <location filename="smartlink/st_operations.cpp" line="309"/>
+        <location filename="smartlink/st_operations.cpp" line="379"/>
+        <location filename="smartlink/st_operations.cpp" line="425"/>
+        <location filename="smartlink/st_operations.cpp" line="431"/>
+        <location filename="smartlink/st_operations.cpp" line="456"/>
+        <location filename="smartlink/st_operations.cpp" line="548"/>
+        <location filename="smartlink/st_operations.cpp" line="590"/>
+        <location filename="smartlink/st_operations.cpp" line="672"/>
+        <location filename="smartlink/st_operations.cpp" line="731"/>
+        <location filename="smartlink/st_operations.cpp" line="803"/>
+        <location filename="smartlink/st_operations.cpp" line="884"/>
+        <location filename="smartlink/st_operations.cpp" line="1080"/>
+        <location filename="smartlink/st_operations.cpp" line="1366"/>
+        <location filename="smartlink/st_operations.cpp" line="1561"/>
+        <location filename="smartlink/st_operations.cpp" line="1592"/>
+        <location filename="smartlink/st_operations.cpp" line="1615"/>
         <source>Database is not ready.</source>
         <translation>数据库尚未准备好.</translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="152"/>
+        <location filename="smartlink/st_operations.cpp" line="156"/>
         <source>Serial/ID is not valid : %1,%2</source>
         <translation>序列号/ID 不正确: %1,%2</translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="194"/>
+        <location filename="smartlink/st_operations.cpp" line="199"/>
         <source>MacID %1 update a device %2 that belongs to macID %3, please remove old items from mac %1 soon.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="290"/>
+        <location filename="smartlink/st_operations.cpp" line="295"/>
         <source>Database Access Error : No such macid and serialnum: %1:%2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="337"/>
+        <location filename="smartlink/st_operations.cpp" line="343"/>
         <source>MacID %1 add a device %2 that belongs to macID %3, please remove old items from mac %1 soon.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="343"/>
+        <location filename="smartlink/st_operations.cpp" line="349"/>
         <source>Already exists a Device :</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="394"/>
+        <location filename="smartlink/st_operations.cpp" line="400"/>
         <source>a Device :</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="394"/>
+        <location filename="smartlink/st_operations.cpp" line="400"/>
         <source> is not existed in sensorlist, but reported a DAL message.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="478"/>
-        <location filename="smartlink/st_operations.cpp" line="590"/>
+        <location filename="smartlink/st_operations.cpp" line="485"/>
+        <location filename="smartlink/st_operations.cpp" line="597"/>
         <source>DAL EventID Error (Event ID %1 is not valid.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="596"/>
-        <location filename="smartlink/st_operations.cpp" line="731"/>
-        <location filename="smartlink/st_operations.cpp" line="803"/>
-        <location filename="smartlink/st_operations.cpp" line="809"/>
+        <location filename="smartlink/st_operations.cpp" line="603"/>
+        <location filename="smartlink/st_operations.cpp" line="738"/>
+        <location filename="smartlink/st_operations.cpp" line="810"/>
         <location filename="smartlink/st_operations.cpp" line="816"/>
-        <location filename="smartlink/st_operations.cpp" line="884"/>
-        <location filename="smartlink/st_operations.cpp" line="890"/>
+        <location filename="smartlink/st_operations.cpp" line="823"/>
+        <location filename="smartlink/st_operations.cpp" line="891"/>
         <location filename="smartlink/st_operations.cpp" line="897"/>
-        <location filename="smartlink/st_operations.cpp" line="923"/>
-        <location filename="smartlink/st_operations.cpp" line="931"/>
+        <location filename="smartlink/st_operations.cpp" line="904"/>
+        <location filename="smartlink/st_operations.cpp" line="930"/>
         <location filename="smartlink/st_operations.cpp" line="938"/>
-        <location filename="smartlink/st_operations.cpp" line="946"/>
-        <location filename="smartlink/st_operations.cpp" line="954"/>
+        <location filename="smartlink/st_operations.cpp" line="945"/>
+        <location filename="smartlink/st_operations.cpp" line="953"/>
         <location filename="smartlink/st_operations.cpp" line="961"/>
-        <location filename="smartlink/st_operations.cpp" line="970"/>
-        <location filename="smartlink/st_operations.cpp" line="978"/>
+        <location filename="smartlink/st_operations.cpp" line="968"/>
+        <location filename="smartlink/st_operations.cpp" line="977"/>
         <location filename="smartlink/st_operations.cpp" line="985"/>
-        <location filename="smartlink/st_operations.cpp" line="993"/>
-        <location filename="smartlink/st_operations.cpp" line="1001"/>
+        <location filename="smartlink/st_operations.cpp" line="992"/>
+        <location filename="smartlink/st_operations.cpp" line="1000"/>
         <location filename="smartlink/st_operations.cpp" line="1008"/>
-        <location filename="smartlink/st_operations.cpp" line="1014"/>
-        <location filename="smartlink/st_operations.cpp" line="1088"/>
-        <location filename="smartlink/st_operations.cpp" line="1096"/>
+        <location filename="smartlink/st_operations.cpp" line="1015"/>
+        <location filename="smartlink/st_operations.cpp" line="1021"/>
+        <location filename="smartlink/st_operations.cpp" line="1095"/>
         <location filename="smartlink/st_operations.cpp" line="1103"/>
         <location filename="smartlink/st_operations.cpp" line="1110"/>
-        <location filename="smartlink/st_operations.cpp" line="1118"/>
+        <location filename="smartlink/st_operations.cpp" line="1117"/>
         <location filename="smartlink/st_operations.cpp" line="1125"/>
         <location filename="smartlink/st_operations.cpp" line="1132"/>
-        <location filename="smartlink/st_operations.cpp" line="1140"/>
+        <location filename="smartlink/st_operations.cpp" line="1139"/>
         <location filename="smartlink/st_operations.cpp" line="1147"/>
-        <location filename="smartlink/st_operations.cpp" line="1155"/>
-        <location filename="smartlink/st_operations.cpp" line="1163"/>
+        <location filename="smartlink/st_operations.cpp" line="1154"/>
+        <location filename="smartlink/st_operations.cpp" line="1162"/>
         <location filename="smartlink/st_operations.cpp" line="1170"/>
-        <location filename="smartlink/st_operations.cpp" line="1176"/>
-        <location filename="smartlink/st_operations.cpp" line="1187"/>
-        <location filename="smartlink/st_operations.cpp" line="1195"/>
-        <location filename="smartlink/st_operations.cpp" line="1204"/>
-        <location filename="smartlink/st_operations.cpp" line="1215"/>
-        <location filename="smartlink/st_operations.cpp" line="1223"/>
-        <location filename="smartlink/st_operations.cpp" line="1232"/>
-        <location filename="smartlink/st_operations.cpp" line="1243"/>
-        <location filename="smartlink/st_operations.cpp" line="1251"/>
-        <location filename="smartlink/st_operations.cpp" line="1260"/>
-        <location filename="smartlink/st_operations.cpp" line="1271"/>
-        <location filename="smartlink/st_operations.cpp" line="1279"/>
-        <location filename="smartlink/st_operations.cpp" line="1288"/>
-        <location filename="smartlink/st_operations.cpp" line="1374"/>
-        <location filename="smartlink/st_operations.cpp" line="1382"/>
+        <location filename="smartlink/st_operations.cpp" line="1177"/>
+        <location filename="smartlink/st_operations.cpp" line="1183"/>
+        <location filename="smartlink/st_operations.cpp" line="1194"/>
+        <location filename="smartlink/st_operations.cpp" line="1202"/>
+        <location filename="smartlink/st_operations.cpp" line="1211"/>
+        <location filename="smartlink/st_operations.cpp" line="1222"/>
+        <location filename="smartlink/st_operations.cpp" line="1230"/>
+        <location filename="smartlink/st_operations.cpp" line="1239"/>
+        <location filename="smartlink/st_operations.cpp" line="1250"/>
+        <location filename="smartlink/st_operations.cpp" line="1258"/>
+        <location filename="smartlink/st_operations.cpp" line="1267"/>
+        <location filename="smartlink/st_operations.cpp" line="1278"/>
+        <location filename="smartlink/st_operations.cpp" line="1286"/>
+        <location filename="smartlink/st_operations.cpp" line="1295"/>
+        <location filename="smartlink/st_operations.cpp" line="1381"/>
         <location filename="smartlink/st_operations.cpp" line="1389"/>
-        <location filename="smartlink/st_operations.cpp" line="1399"/>
-        <location filename="smartlink/st_operations.cpp" line="1407"/>
-        <location filename="smartlink/st_operations.cpp" line="1416"/>
-        <location filename="smartlink/st_operations.cpp" line="1427"/>
-        <location filename="smartlink/st_operations.cpp" line="1435"/>
-        <location filename="smartlink/st_operations.cpp" line="1444"/>
-        <location filename="smartlink/st_operations.cpp" line="1453"/>
-        <location filename="smartlink/st_operations.cpp" line="1461"/>
+        <location filename="smartlink/st_operations.cpp" line="1396"/>
+        <location filename="smartlink/st_operations.cpp" line="1406"/>
+        <location filename="smartlink/st_operations.cpp" line="1414"/>
+        <location filename="smartlink/st_operations.cpp" line="1423"/>
+        <location filename="smartlink/st_operations.cpp" line="1434"/>
+        <location filename="smartlink/st_operations.cpp" line="1442"/>
+        <location filename="smartlink/st_operations.cpp" line="1451"/>
+        <location filename="smartlink/st_operations.cpp" line="1460"/>
         <location filename="smartlink/st_operations.cpp" line="1468"/>
-        <location filename="smartlink/st_operations.cpp" line="1476"/>
-        <location filename="smartlink/st_operations.cpp" line="1484"/>
+        <location filename="smartlink/st_operations.cpp" line="1475"/>
+        <location filename="smartlink/st_operations.cpp" line="1483"/>
         <location filename="smartlink/st_operations.cpp" line="1491"/>
+        <location filename="smartlink/st_operations.cpp" line="1498"/>
         <source>Device </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="596"/>
-        <location filename="smartlink/st_operations.cpp" line="731"/>
+        <location filename="smartlink/st_operations.cpp" line="603"/>
+        <location filename="smartlink/st_operations.cpp" line="738"/>
         <source>Send a unsupported Device Type.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="634"/>
-        <location filename="smartlink/st_operations.cpp" line="693"/>
+        <location filename="smartlink/st_operations.cpp" line="641"/>
+        <location filename="smartlink/st_operations.cpp" line="700"/>
         <source>MacID %1 report a exception of a device %2 that not belongs to it, please remove old items from mac %1 soon.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="803"/>
-        <location filename="smartlink/st_operations.cpp" line="884"/>
-        <location filename="smartlink/st_operations.cpp" line="938"/>
-        <location filename="smartlink/st_operations.cpp" line="961"/>
-        <location filename="smartlink/st_operations.cpp" line="985"/>
-        <location filename="smartlink/st_operations.cpp" line="1008"/>
-        <location filename="smartlink/st_operations.cpp" line="1103"/>
-        <location filename="smartlink/st_operations.cpp" line="1125"/>
-        <location filename="smartlink/st_operations.cpp" line="1147"/>
-        <location filename="smartlink/st_operations.cpp" line="1170"/>
-        <location filename="smartlink/st_operations.cpp" line="1204"/>
-        <location filename="smartlink/st_operations.cpp" line="1232"/>
-        <location filename="smartlink/st_operations.cpp" line="1260"/>
-        <location filename="smartlink/st_operations.cpp" line="1288"/>
-        <location filename="smartlink/st_operations.cpp" line="1389"/>
-        <location filename="smartlink/st_operations.cpp" line="1416"/>
-        <location filename="smartlink/st_operations.cpp" line="1444"/>
-        <location filename="smartlink/st_operations.cpp" line="1468"/>
-        <location filename="smartlink/st_operations.cpp" line="1491"/>
+        <location filename="smartlink/st_operations.cpp" line="810"/>
+        <location filename="smartlink/st_operations.cpp" line="891"/>
+        <location filename="smartlink/st_operations.cpp" line="945"/>
+        <location filename="smartlink/st_operations.cpp" line="968"/>
+        <location filename="smartlink/st_operations.cpp" line="992"/>
+        <location filename="smartlink/st_operations.cpp" line="1015"/>
+        <location filename="smartlink/st_operations.cpp" line="1110"/>
+        <location filename="smartlink/st_operations.cpp" line="1132"/>
+        <location filename="smartlink/st_operations.cpp" line="1154"/>
+        <location filename="smartlink/st_operations.cpp" line="1177"/>
+        <location filename="smartlink/st_operations.cpp" line="1211"/>
+        <location filename="smartlink/st_operations.cpp" line="1239"/>
+        <location filename="smartlink/st_operations.cpp" line="1267"/>
+        <location filename="smartlink/st_operations.cpp" line="1295"/>
+        <location filename="smartlink/st_operations.cpp" line="1396"/>
+        <location filename="smartlink/st_operations.cpp" line="1423"/>
+        <location filename="smartlink/st_operations.cpp" line="1451"/>
+        <location filename="smartlink/st_operations.cpp" line="1475"/>
+        <location filename="smartlink/st_operations.cpp" line="1498"/>
         <source> Send a wrong DAL Para (%1) Value (unexpected type %2).</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="809"/>
-        <location filename="smartlink/st_operations.cpp" line="890"/>
+        <location filename="smartlink/st_operations.cpp" line="816"/>
+        <location filename="smartlink/st_operations.cpp" line="897"/>
         <source> Send a wrong DAL Para (%1) Value (Para too short, need 2 bytes, got %2 byte(s)).</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="816"/>
+        <location filename="smartlink/st_operations.cpp" line="823"/>
         <source> Send a wrong DAL Para (%1) Value (Para not enough, need 1 para).</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="897"/>
+        <location filename="smartlink/st_operations.cpp" line="904"/>
         <source>Send a wrong DAL Para (%1) Value (Para not enough, need 1 para).</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="923"/>
-        <location filename="smartlink/st_operations.cpp" line="931"/>
-        <location filename="smartlink/st_operations.cpp" line="946"/>
-        <location filename="smartlink/st_operations.cpp" line="954"/>
-        <location filename="smartlink/st_operations.cpp" line="970"/>
-        <location filename="smartlink/st_operations.cpp" line="978"/>
-        <location filename="smartlink/st_operations.cpp" line="993"/>
-        <location filename="smartlink/st_operations.cpp" line="1001"/>
-        <location filename="smartlink/st_operations.cpp" line="1088"/>
-        <location filename="smartlink/st_operations.cpp" line="1096"/>
-        <location filename="smartlink/st_operations.cpp" line="1110"/>
-        <location filename="smartlink/st_operations.cpp" line="1118"/>
-        <location filename="smartlink/st_operations.cpp" line="1132"/>
-        <location filename="smartlink/st_operations.cpp" line="1140"/>
-        <location filename="smartlink/st_operations.cpp" line="1155"/>
-        <location filename="smartlink/st_operations.cpp" line="1163"/>
-        <location filename="smartlink/st_operations.cpp" line="1187"/>
-        <location filename="smartlink/st_operations.cpp" line="1195"/>
-        <location filename="smartlink/st_operations.cpp" line="1215"/>
-        <location filename="smartlink/st_operations.cpp" line="1223"/>
-        <location filename="smartlink/st_operations.cpp" line="1243"/>
-        <location filename="smartlink/st_operations.cpp" line="1251"/>
-        <location filename="smartlink/st_operations.cpp" line="1271"/>
-        <location filename="smartlink/st_operations.cpp" line="1279"/>
-        <location filename="smartlink/st_operations.cpp" line="1374"/>
-        <location filename="smartlink/st_operations.cpp" line="1382"/>
-        <location filename="smartlink/st_operations.cpp" line="1399"/>
-        <location filename="smartlink/st_operations.cpp" line="1407"/>
-        <location filename="smartlink/st_operations.cpp" line="1427"/>
-        <location filename="smartlink/st_operations.cpp" line="1435"/>
-        <location filename="smartlink/st_operations.cpp" line="1453"/>
-        <location filename="smartlink/st_operations.cpp" line="1461"/>
-        <location filename="smartlink/st_operations.cpp" line="1476"/>
-        <location filename="smartlink/st_operations.cpp" line="1484"/>
+        <location filename="smartlink/st_operations.cpp" line="930"/>
+        <location filename="smartlink/st_operations.cpp" line="938"/>
+        <location filename="smartlink/st_operations.cpp" line="953"/>
+        <location filename="smartlink/st_operations.cpp" line="961"/>
+        <location filename="smartlink/st_operations.cpp" line="977"/>
+        <location filename="smartlink/st_operations.cpp" line="985"/>
+        <location filename="smartlink/st_operations.cpp" line="1000"/>
+        <location filename="smartlink/st_operations.cpp" line="1008"/>
+        <location filename="smartlink/st_operations.cpp" line="1095"/>
+        <location filename="smartlink/st_operations.cpp" line="1103"/>
+        <location filename="smartlink/st_operations.cpp" line="1117"/>
+        <location filename="smartlink/st_operations.cpp" line="1125"/>
+        <location filename="smartlink/st_operations.cpp" line="1139"/>
+        <location filename="smartlink/st_operations.cpp" line="1147"/>
+        <location filename="smartlink/st_operations.cpp" line="1162"/>
+        <location filename="smartlink/st_operations.cpp" line="1170"/>
+        <location filename="smartlink/st_operations.cpp" line="1194"/>
+        <location filename="smartlink/st_operations.cpp" line="1202"/>
+        <location filename="smartlink/st_operations.cpp" line="1222"/>
+        <location filename="smartlink/st_operations.cpp" line="1230"/>
+        <location filename="smartlink/st_operations.cpp" line="1250"/>
+        <location filename="smartlink/st_operations.cpp" line="1258"/>
+        <location filename="smartlink/st_operations.cpp" line="1278"/>
+        <location filename="smartlink/st_operations.cpp" line="1286"/>
+        <location filename="smartlink/st_operations.cpp" line="1381"/>
+        <location filename="smartlink/st_operations.cpp" line="1389"/>
+        <location filename="smartlink/st_operations.cpp" line="1406"/>
+        <location filename="smartlink/st_operations.cpp" line="1414"/>
+        <location filename="smartlink/st_operations.cpp" line="1434"/>
+        <location filename="smartlink/st_operations.cpp" line="1442"/>
+        <location filename="smartlink/st_operations.cpp" line="1460"/>
+        <location filename="smartlink/st_operations.cpp" line="1468"/>
+        <location filename="smartlink/st_operations.cpp" line="1483"/>
+        <location filename="smartlink/st_operations.cpp" line="1491"/>
         <source> Need more data.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="1014"/>
+        <location filename="smartlink/st_operations.cpp" line="1021"/>
         <source> DAL Evt 0x02 has 4 paras, but WMODE = %1.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="smartlink/st_operations.cpp" line="1176"/>
+        <location filename="smartlink/st_operations.cpp" line="1183"/>
         <source> DAL Evt 0x02 more than 9 paras, but WMODE = %1.</source>
         <translation></translation>
     </message>
@@ -1831,13 +1860,13 @@
     </message>
     <message>
         <location filename="zpmainframe.cpp" line="125"/>
-        <location filename="zpmainframe.cpp" line="1027"/>
+        <location filename="zpmainframe.cpp" line="1026"/>
         <source>Server still running</source>
         <translation>服务仍然在后台保持运行</translation>
     </message>
     <message>
         <location filename="zpmainframe.cpp" line="126"/>
-        <location filename="zpmainframe.cpp" line="1028"/>
+        <location filename="zpmainframe.cpp" line="1027"/>
         <source>If you want to terminate server, just using exit Toolbar button.</source>
         <translation>如果您想终止服务或者返回主窗口，请邮件单击任务栏图标</translation>
     </message>
@@ -1935,62 +1964,62 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="863"/>
+        <location filename="zpmainframe.cpp" line="862"/>
         <source>Name Already Used.</source>
         <translation>名称已经存在.</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="863"/>
+        <location filename="zpmainframe.cpp" line="862"/>
         <source>The listener name has been used.</source>
         <translation>监听器的名称已经被使用了。</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="868"/>
+        <location filename="zpmainframe.cpp" line="867"/>
         <source>Invalid Paraments.</source>
         <translation>无效的参数.</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="868"/>
+        <location filename="zpmainframe.cpp" line="867"/>
         <source>Address must be valid, Port between 1024 to 32767.</source>
         <translation>监听端口需要介于 1024 到 32767之间。</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="914"/>
+        <location filename="zpmainframe.cpp" line="913"/>
         <source>Open Conf file</source>
         <translation>打开配置文件</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="915"/>
+        <location filename="zpmainframe.cpp" line="914"/>
         <source>Ini files(*.ini)</source>
         <translation>Ini文件(*.ini)</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="931"/>
+        <location filename="zpmainframe.cpp" line="930"/>
         <source>Name can&apos;t be empty.</source>
         <translation>名称不能为空.</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="931"/>
+        <location filename="zpmainframe.cpp" line="930"/>
         <source>Database name can not be empty.</source>
         <translation>数据库资源名称不能为空。</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="936"/>
+        <location filename="zpmainframe.cpp" line="935"/>
         <source>Name already exist.</source>
         <translation>名称已经被使用了。</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="936"/>
+        <location filename="zpmainframe.cpp" line="935"/>
         <source>Database name already exist.</source>
         <translation>名称已经被使用了。</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="1034"/>
+        <location filename="zpmainframe.cpp" line="1033"/>
         <source>Server is  going to closed</source>
         <translation>服务即将关闭</translation>
     </message>
     <message>
-        <location filename="zpmainframe.cpp" line="1035"/>
+        <location filename="zpmainframe.cpp" line="1034"/>
         <source>Waiting for all unfinished progress...</source>
         <translation>将进行最后的清理与状态保存...</translation>
     </message>

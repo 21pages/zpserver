@@ -1603,44 +1603,49 @@
         <translation>关系(&amp;R)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="681"/>
+        <location filename="mainwndctrlpannel.ui" line="683"/>
         <source>A&amp;dvanced Function</source>
         <translation>高级功能(&amp;D)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="684"/>
+        <location filename="mainwndctrlpannel.ui" line="686"/>
         <source>Show advanced options, for administrator only</source>
         <translation>打开高级功能，请慎重使用</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="689"/>
+        <location filename="mainwndctrlpannel.ui" line="691"/>
         <source>Manage Users</source>
         <translation>管理用户</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="694"/>
+        <location filename="mainwndctrlpannel.ui" line="696"/>
         <source>Manage Parkinglots</source>
         <translation>管理停车场</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="699"/>
+        <location filename="mainwndctrlpannel.ui" line="701"/>
         <source>Manage MACs</source>
         <translation>管理网关客户端信息</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="704"/>
+        <location filename="mainwndctrlpannel.ui" line="706"/>
         <source>Manage Devices</source>
         <translation>管理传感器信息</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="709"/>
+        <location filename="mainwndctrlpannel.ui" line="711"/>
         <source>Parkinglots And Users</source>
         <translation>设置用户拥有的停车场</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="714"/>
+        <location filename="mainwndctrlpannel.ui" line="716"/>
         <source>Mac and Parkinglots</source>
         <translation>设置停车场拥有的网关</translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.ui" line="725"/>
+        <source>Reset Selected Devices</source>
+        <translation>校准选中的传感器</translation>
     </message>
     <message>
         <location filename="mainwndctrlpannel.ui" line="365"/>
@@ -1708,27 +1713,27 @@
         <translation>视图(&amp;V)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="636"/>
+        <location filename="mainwndctrlpannel.ui" line="638"/>
         <source>&amp;Connect</source>
         <translation>连接(&amp;C)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="645"/>
+        <location filename="mainwndctrlpannel.ui" line="647"/>
         <source>Con&amp;fig</source>
         <translation>配置(&amp;f)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="650"/>
+        <location filename="mainwndctrlpannel.ui" line="652"/>
         <source>E&amp;xit</source>
         <translation>退出(&amp;x)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="659"/>
+        <location filename="mainwndctrlpannel.ui" line="661"/>
         <source>&amp;About</source>
         <translation>关于(&amp;A)</translation>
     </message>
     <message>
-        <location filename="mainwndctrlpannel.ui" line="668"/>
+        <location filename="mainwndctrlpannel.ui" line="670"/>
         <source>&amp;Refresh</source>
         <translation>刷新(&amp;R)</translation>
     </message>
@@ -1767,6 +1772,18 @@
         <location filename="mainwndctrlpannel.cpp" line="829"/>
         <source>Edit Table </source>
         <translation>编辑表格 </translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.cpp" line="847"/>
+        <source>About to reset selected devices</source>
+        <translation>准备校准选中的传感器</translation>
+    </message>
+    <message>
+        <location filename="mainwndctrlpannel.cpp" line="848"/>
+        <source>If you press ok, all selected devices will be reseted.
+Keep eyes on the parkinglot,make sure that no cars parking there.</source>
+        <translation>如果您点击OK，所有被选中的传感器均会被校准。
+请注意，校准时，车位不能有车停靠。</translation>
     </message>
 </context>
 </TS>
