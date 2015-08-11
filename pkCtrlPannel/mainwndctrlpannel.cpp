@@ -834,7 +834,9 @@ void mainwndCtrlPannel::on_actionMac_and_Parkinglots_triggered()
 	pDlg->deleteLater();
 
 }
+
 void mainwndCtrlPannel::on_actionReset_Selected_Devices_triggered()
+
 {
 	QModelIndexList lst = ui->listView_sum_devices->selectionModel()->selectedIndexes();
 	QSet<int> rows;
