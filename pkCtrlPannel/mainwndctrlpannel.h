@@ -75,6 +75,8 @@ public slots:
 	void on_pushButton_runfu_clicked();
 	//DAL
 	void on_pushButton_dalctrl_clicked();
+	//Send DAL
+	void on_action_Refresh_triggered();
 };
 
 #endif // MAINWNDCTRLPANNEL_H

@@ -834,3 +834,33 @@ void mainwndCtrlPannel::on_actionMac_and_Parkinglots_triggered()
 	pDlg->deleteLater();
 
 }
+void mainwndCtrlPannel::on_action_Refresh_triggered()
+{
+	QModelIndexList lst = ui->listView_sum_devices->selectionModel()->selectedIndexes();
+	QSet<int> rows;
+	foreach (QModelIndex idx, lst)
+	{
+		rows.insert(idx.row());
+	}
+	if (QMessageBox::Ok==QMessageBox::warning(this,tr("About to reset selected devices")
+							 ,tr("If you press ok, all selected devices will be reseted.\nKeep eyes on the parkinglot,make sure that no cars parking there.")
+							 ,QMessageBox::Ok,QMessageBox::Cancel)
+			)
+	{
+		foreach (int nrow,rows)
+		{
+			if (nrow>=0 && nrow < m_pModel_Summary_DEV->rowCount())
+			{
+				QString devID = m_pModel_Summary_DEV->data(m_pModel_Summary_DEV->index(nrow,0)).toString();
+				ui->lineEdit_tarID_Dev->setText(QString("%1").arg(devID));
+				QString macID = m_pModel_Summary_DEV->data(m_pModel_Summary_DEV->index(nrow,13)).toString();
+				ui->lineEdit_tarID_Mac->setText(QString("%1").arg(macID));
+				ui->plainTextEdit_DAL->setPlainText("00");
+				this->on_pushButton_dalctrl_clicked();
+				QCoreApplication::processEvents();
+			}
+		}
+
+	}
+
+}
