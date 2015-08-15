@@ -135,7 +135,7 @@ ENGINE = InnoDB;
 -- Table `parkinglots`.`sensorevent`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `parkinglots`.`sensorevent` (
-  `evtid` INT NOT NULL,
+  `evtid` INT NOT NULL  AUTO_INCREMENT,
   `deviceid` CHAR(48) NOT NULL,
   `eventid` INT NULL,
   `eventparamid` INT NULL,
