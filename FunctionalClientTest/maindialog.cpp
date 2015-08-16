@@ -66,6 +66,7 @@ void MainDialog::on_client_connected()
 		displayMessage(QString("client %1 connected.").arg((quintptr)pSock));
 		ui->pushButton_connect->setEnabled(false);
 		ui->pushButton_clientRegisit->setEnabled(true);
+		ui->pushButton_clientLogin->setEnabled(true);
 	}
 
 }

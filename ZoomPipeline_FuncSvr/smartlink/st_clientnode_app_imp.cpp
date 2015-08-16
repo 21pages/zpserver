@@ -192,7 +192,7 @@ namespace ParkinglotsSvr{
 				m_pClientTable->regisitClientUUID(this);
 			}
 			else
-				reply.DoneCode = 2;
+				reply.DoneCode = 3;
 		}
 		//Send back
 		emit evt_SendDataToClient(this->sock(),array);

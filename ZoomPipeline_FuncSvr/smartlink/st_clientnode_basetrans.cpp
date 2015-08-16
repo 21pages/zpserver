@@ -363,10 +363,47 @@ namespace ParkinglotsSvr{
 		{
 			if (bIsValidUserId( m_currentHeader.SrcID) )
 			{
-				m_bUUIDRecieved = true;
-				m_uuid =  m_currentHeader.SrcID;
-				//regisit client node to hash-table;
-				m_pClientTable->regisitClientUUID(this);
+				bool existed = false;
+				quint32 UserID = m_currentHeader.SrcID;
+				//Prevent same uuid exist in both this server and remote server
+				st_clientNode_baseTrans * nodecheck =  m_pClientTable->clientNodeFromUUID(UserID);
+				if (nodecheck!=this && nodecheck!=0 )
+				{
+					existed = true;
+					qCritical()	<<tr("Client:")
+							   <<peerInfo()
+							<<" use user id = "
+						   <<UserID<<", but this id has already logged in in this server."  ;
+					emit evt_Message(this,tr("Client %1 use user id %2 whitch is already exist in this cluster.").arg(peerInfo()).arg(UserID));
+				}
+				else 	if (m_pClientTable->cross_svr_find_uuid(UserID).length())
+				{
+					existed = true;
+					qCritical()	<<tr("Client:")
+							   <<peerInfo()
+								<<" use user id = "
+						   <<UserID<<", but this id has already logged in in another server."  ;
+					emit evt_Message(this,tr("Client %1 use user id %2 whitch is already exist in this cluster.").arg(peerInfo()).arg(UserID));
+				}
+				else
+				{
+					qDebug()	<<tr("Client:")
+							   <<peerInfo()
+							 <<" Has a valid UserID:"
+						   <<UserID;
+				}
+				if (existed==false)
+				{
+					m_bUUIDRecieved = true;
+					m_uuid =  m_currentHeader.SrcID;
+					//regisit client node to hash-table;
+					m_pClientTable->regisitClientUUID(this);
+				}
+				else
+				{
+					emit evt_close_client(this->sock());
+					nRes = 1;
+				}
 			}
 			else if (m_currentHeader.SrcID==0xffffffff)
 			{
