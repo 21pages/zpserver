@@ -514,7 +514,7 @@ namespace ParkinglotsSvr{
 					if (db.isValid()==true && db.isOpen()==true )
 					{
 						QSqlQuery query(db);
-						QString sql = "update sensorlist set lastacttime = ?, status = 0 , macid = ? where deviceid = ? and status > 1;";
+						QString sql = "update sensorlist set lastacttime = ?, status = 0 , macid = ? where deviceid = ? and status !=1;";
 						query.prepare(sql);
 						QString devID = hex2ascii(pEvent->DeviceID,24);
 						query.addBindValue(QDateTime::currentDateTimeUtc());
@@ -556,7 +556,7 @@ namespace ParkinglotsSvr{
 					if (db.isValid()==true && db.isOpen()==true )
 					{
 						QSqlQuery query(db);
-						QString sql = "update sensorlist set batteryvoltage = ?, lastacttime = ?, status = 0, macid = ? where deviceid = ? and status > 1;";
+						QString sql = "update sensorlist set batteryvoltage = ?, lastacttime = ?, status = 0, macid = ? where deviceid = ? and status != 1;";
 						query.prepare(sql);
 						QString devID = hex2ascii(pEvent->DeviceID,24);
 						query.addBindValue(value);
