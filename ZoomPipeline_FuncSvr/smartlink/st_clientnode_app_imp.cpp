@@ -62,18 +62,20 @@ namespace ParkinglotsSvr{
 			st_clientNode_baseTrans * nodecheck  = m_pClientTable->clientNodeFromUUID(ncurrid);
 			if (nodecheck !=0 && nodecheck!=this)
 			{
-				existed = true;
-				qCritical()	<<tr("Client:")
+				//existed = true;
+				qWarning()	<<tr("Client:")
 						   <<peerInfo()
 						  <<" want regisit as "
 						 <<strSerial
 						<<":"
 					   <<ncurrid<<", but this id has already logged in in this server."  ;
+				if (nodecheck)
+					emit evt_close_client(nodecheck);
 			}
 			else 	if (m_pClientTable->cross_svr_find_uuid(ncurrid).length())
 			{
-				existed = true;
-				qCritical()	<<tr("Client:")
+				//existed = true;
+				qWarning()	<<tr("Client:")
 						   <<peerInfo()
 						  <<" want regisit as "
 						 <<strSerial
@@ -157,18 +159,21 @@ namespace ParkinglotsSvr{
 			st_clientNode_baseTrans * nodecheck =  m_pClientTable->clientNodeFromUUID(UserID);
 			if (nodecheck!=this && nodecheck!=0 )
 			{
-				existed = true;
-				qCritical()	<<tr("Client:")
+				//existed = true;
+				qWarning()	<<tr("Client:")
 						   <<peerInfo()
 						  <<" want login as "
 						 <<strSerialNum
 						<<":"
 					   <<UserID<<", but this id has already logged in in this server."  ;
+				if (nodecheck)
+					emit evt_close_client(nodecheck);
+
 			}
 			else 	if (m_pClientTable->cross_svr_find_uuid(UserID).length())
 			{
-				existed = true;
-				qCritical()	<<tr("Client:")
+				//existed = true;
+				qWarning()	<<tr("Client:")
 						   <<peerInfo()
 						  <<" want login as "
 						 <<strSerialNum
